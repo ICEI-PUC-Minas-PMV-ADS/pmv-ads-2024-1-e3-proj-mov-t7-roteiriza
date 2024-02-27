@@ -73,64 +73,50 @@ Obs.: todas as informações para gerar os indicadores devem estar no diagrama d
 
 ## Requisitos
 
-As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto. Para determinar a prioridade de requisitos, aplicar uma técnica de priorização de requisitos e detalhar como a técnica foi aplicada.
+As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
 
 ### Requisitos Funcionais
 
 |ID    | Descrição do Requisito  | Prioridade |
 |------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+|RF-001| A aplicação deve incluir uma página de cadastro para novos usuários | ALTA | 
+|RF-002| A aplicação deve incluir uma página de login para usuários cadastrados | ALTA |
+|RF-003| A aplicação deve incluir uma página de cadastro de uma nova viagem | ALTA |
+|RF-004| A aplicação deve incluir tópicos das principais informações referentes à viagens | ALTA |
+|RF-005| A aplicação deve incluir um checklist da mala de viagem | ALTA |
+|RF-006| A aplicação deve incluir um calendário para visualização do roteiro | MÉDIA |
+|RF-007| A aplicação deve incluir uma seção com informações de emergência | BAIXA |
+|RF-008| A aplicação deve incluir um valor final de todos os gastos relacionados a viagem | BAIXA |
+
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
-
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+|ID     | Descrição do Requisito  | Prioridade |
+|-------|-----------------------------------------|----|
+|RNF-001| A aplicação deve conter bom nível de contraste entre os elementos, facilitando a acessibilidade | ALTA |
+|RNF-002| A aplicação deve funcionar de forma consistente em celulares iOS e Android | ALTA |
+|RNF-003| A aplicação deve ser responsiva, permitindo a visualização em diferentes tamanhos de telas | ALTA |
+|RNF-004| A aplicação deve fornecer uma experiência de uso rápida e fluida | ALTA |
+|RNF-005| A aplicação deve funcionar em sua totalidade, mesmo offline | BAIXA |
 
 ## Restrições
 
-O projeto está restrito pelos itens apresentados na tabela a seguir.
+O projeto está restrito aos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
-
-Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
-
-> **Links Úteis**:
-> - [O que são Requisitos Funcionais e Requisitos Não Funcionais?](https://codificar.com.br/requisitos-funcionais-nao-funcionais/)
-> - [O que são requisitos funcionais e requisitos não funcionais?](https://analisederequisitos.com.br/requisitos-funcionais-e-requisitos-nao-funcionais-o-que-sao/)
+|RE-001| O projeto deverá ser entregue até o final do semestre, na data de 23/06/24 |
+|RE-002| É proibida a terceirização de desenvolvimento do sistema em sua totalidade ou de módulos isolados |
+|RE-003| O código de desenvolvimento da aplicação não pode ser obtido através de sistemas de Inteligência Artificial |
+|RE-004| A aplicação deve ser desenvolvida em JavaScript |
+|RE-005| A aplicação deve utilizar a biblioteca de JavaScript React Native |
 
 ## Diagrama de Casos de Uso
 
-O diagrama de casos de uso é o próximo passo após a elicitação de requisitos, que utiliza um modelo gráfico e uma tabela com as descrições sucintas dos casos de uso e dos atores. Ele contempla a fronteira do sistema e o detalhamento dos requisitos funcionais com a indicação dos atores, casos de uso e seus relacionamentos. 
+A seguir, é possível visualizar o Diagrama de Casos de Uso de acordo com os requisitos estabelecidos.
 
-As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de Casos de Uso”.
+![Diagrama de caso de uso](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/5136afd8-43fe-4308-bcb0-10381fb8837e)
 
-> **Links Úteis**:
-> - [Criando Casos de Uso](https://www.ibm.com/docs/pt-br/elm/6.0?topic=requirements-creating-use-cases)
-> - [Como Criar Diagrama de Caso de Uso: Tutorial Passo a Passo](https://gitmind.com/pt/fazer-diagrama-de-caso-uso.html/)
-> - [Lucidchart](https://www.lucidchart.com/)
-> - [Astah](https://astah.net/)
-> - [Diagrams](https://app.diagrams.net/)
 
 # Matriz de Rastreabilidade
 
