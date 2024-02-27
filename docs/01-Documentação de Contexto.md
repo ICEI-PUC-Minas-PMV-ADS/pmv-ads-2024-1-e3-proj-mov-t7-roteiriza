@@ -1,46 +1,35 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Atualmente viajar é algo comum na vida dos brasileiros, seja por motivos de lazer, de emprego ou até mesmo em busca de uma condição de vida mais favorável. De acordo com a pesquisa feita pelo Ministério do Turismo, em 2021 o Brasil registrou aproximadamente  12,3 milhões de viagens efetuadas, sendo que 99,3% delas ocorreram dentro do território nacional.
+
+Diante desse cenário, percebemos a importância de um planejamento de viagens abrangente, visando não apenas estabelecer o orçamento destinado a hospedagem, lazer e necessidades básicas, mas também otimizar o tempo e evitar contratempos, especialmente para quem viaja a trabalho.
+Contudo, sabe-se que nem todos estão familiarizados com o processo de planejamento de viagens, visto que, de acordo a pesquisa feita pelo Booking.com, apenas 44% da população brasileira tem o hábito de planejar suas viagens, em outras palavras, menos da metade dos cidadãos não realizam um roteiro para suas jornadas, seja por não saber como começar, quais recursos utilizar, as vantagens que o planejamento prévio proporciona, tais como, otimização de tempo, economia de gastos, melhor gerenciamento para passeios, garantia de não deixar nenhum item importante para trás, dentre outros.
+Portanto, para ajudar a facilitar esse processo, criamos o Roteiriza, o melhor aplicativo de planejamento de viagens. Nele o usuário consegue se organizar de maneira fácil e intuitiva, sem nenhuma burocracia. Tudo isso utilizando apenas o seu celular!
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
 
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
+Sabe-se que muitas pessoas deixam de desfrutar plenamente de suas viagens, ou mesmo optam por não viajar, devido a imprevistos, sejam eles de natureza financeira como mostra na pesquisa feita pelo IBGE onde 48,9% das pessoas não viajam por falta de dinheiro ou decorrentes da ausência de um planejamento eficaz de sua rotina durante os dias em questão.
 
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
+A falta de um planejamento detalhado geralmente impacta diretamente no momento em que se chega no destino. Tendo em vista que, sem um planejamento prévio o indivíduo acaba ficando deslocado em relação a quais lugares visitar, quais lugares acessar em caso de emergências, fazendo com que a pessoa gaste tempo procurando essas informações quando decidem se aventurar pela cidade e consequentemente, acabam tendo gastos exorbitantes sem necessidade e um mal aproveitamento dos dias de sua viagem.
+Além disso, a incerteza financeira pode se tornar um obstáculo significativo, pois acaba influenciando diretamente na qualidade da experiência do viajante, muitas das vezes ocasionando estresse financeiro e a impossibilidade de aproveitar ocasiões inesperadas, impedindo que esses indivíduos alcancem o potencial pleno de suas viagens. 
 
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+Portanto, o desafio ao planejar uma viagem está na falta de clareza sobre por onde começar esse roteiro, resultando em desorganização financeira, desperdício de tempo e riscos de esquecimento de itens essenciais. Por isso uma abordagem estruturada se torna crucial para otimizar a experiência do viajante e evitar contratempos.
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+Assim, o principal propósito da nossa plataforma é oferecer uma alternativa simplificada e direta para a organização de viagens. A seguir, enumeramos as funcionalidades que buscamos atender:
+- Proporcionar um ambiente pessoal de organização;
+- Proporcionar uma forma simples de visualizar seu planejamento a curto, médio e longo prazo;
+- Proporcionar de forma simples de visualização seu planejamento envolvendo gastos, hospedagens, serviços e anotações diversas.
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
- 
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+A justificativa para este projeto surge do interesse dos brasileiros por viagens, como evidenciado pela pesquisa conduzida pelo Ministério do Turismo em 2021, a qual revelou que o Brasil registrou aproximadamente 12,3 milhões de viagens, com um impacto econômico de cerca de 9,8 bilhões de reais. Além disso, os dados da mesma pesquisa indicam que, em média, os gastos com hospedagem totalizaram R$1.292, enquanto os gastos com alimentação atingiram uma média de R$501,00.
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
+Portanto, nossa proposta é desenvolver um planejador de viagens abrangente e intuitivo, visando atender às necessidades dos usuários de forma eficiente e acessível.
 
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
-
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
-
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+O projeto possui como público alvo qualquer pessoa acima dos 18 anos que possui dificuldades em planejar viagens a curto, médio e longo prazo.
