@@ -10,7 +10,7 @@
 
 ## Sobre o Roteiriza
 
-O "Roteiriza" é um aplicativo inovador que visa simplificar e otimizar o planejamento de viagens para os brasileiros, surgindo como uma solução para aqueles que enfrentam dificuldades na organização de suas viagens. Com uma interface intuitiva e acessível, o Roteiriza permite aos usuários elaborarem roteiros detalhados, abrangendo desde orçamento até atividades qu serão realizadas durante a viagem.
+O "Roteiriza" é um aplicativo inovador que visa simplificar e otimizar o planejamento de viagens para os brasileiros, surgindo como uma solução para aqueles que enfrentam dificuldades na organização de suas viagens. Com uma interface intuitiva e acessível, o Roteiriza permite aos usuários elaborarem roteiros detalhados, abrangendo desde orçamento até atividades que serão realizadas durante a viagem.
 
 O aplicativo busca proporcionar uma experiência de viagem mais fluida e sem contratempos, tendo como seus principais objetivos oferecer um ambiente pessoal de organização, permitir a visualização simplificada do planejamento de viagem, com integração de gastos, hospedagens, passagens e mala de viagem, tudo de forma acessível e descomplicada. Com o Roteiriza, os usuários podem desfrutar plenamente de suas viagens, maximizando seu tempo, economizando recursos e garantindo uma experiência memorável.
 
