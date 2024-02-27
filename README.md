@@ -1,23 +1,31 @@
-# TÍTULO DO PROJETO
+# ROTEIRIZA
 
-`CURSO`
+`ANÁLISE E DESENVOLVIMENTO DE SISTEMAS`
 
-`DISCIPLINA`
+`PROJETO: DESENVOLVIMENTO DE UMA APLICAÇÃO MÓVEL EM UM AMBIENTE DE NEGÓCIO`
 
-`SEMESTRE`
+`3° SEMESTRE | 2024`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+![Logo-Roteiriza](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/75809e30-d702-4d6f-8962-897ca9440eaa)
+
+## Sobre o Roteiriza
+
+O "Roteiriza" é um aplicativo inovador que visa simplificar e otimizar o planejamento de viagens para os brasileiros, surgindo como uma solução para aqueles que enfrentam dificuldades na organização de suas viagens. Com uma interface intuitiva e acessível, o Roteiriza permite aos usuários elaborarem roteiros detalhados, abrangendo desde orçamento até atividades qu serão realizadas durante a viagem.
+
+O aplicativo busca proporcionar uma experiência de viagem mais fluida e sem contratempos, tendo como seus principais objetivos oferecer um ambiente pessoal de organização, permitir a visualização simplificada do planejamento de viagem, com integração de gastos, hospedagens, passagens e mala de viagem, tudo de forma acessível e descomplicada. Com o Roteiriza, os usuários podem desfrutar plenamente de suas viagens, maximizando seu tempo, economizando recursos e garantindo uma experiência memorável.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
-* Nome completo do aluno 3
-* Nome completo do aluno 4
+* <html><head></head><body><a href="https://github.com/AndreeGS">André Guilherme Santos de Oliveira</a></body></html>
+* <html><head></head><body><a href="https://github.com/brunasantos-dev">Bruna Santos</a></body></html>
+* <html><head></head><body><a href="https://github.com/GabrielBruno7">Gabriel Bruno de Oliveira Souza</a></body></html>
+* <html><head></head><body><a href="https://github.com/joaoalmei">João Vitor Jorge Almeida</a></body></html>
+* <html><head></head><body><a href="https://github.com/luanagpinax">Luana Guimarães Pina</a></body></html>
+* <html><head></head><body><a href="https://github.com/taymilagres">Tayane Ferreira Milagres</a></body></html>
 
 ## Orientador
 
-* Nome completo do professor 1
+* Sinaide Nunes Bezerra
 
 ## Instruções de utilização
 
