@@ -116,6 +116,7 @@ O projeto está restrito aos itens apresentados na tabela a seguir.
 A seguir, é possível visualizar o Diagrama de Casos de Uso de acordo com os requisitos estabelecidos.
 
 ![Diagrama de caso de uso](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/5136afd8-43fe-4308-bcb0-10381fb8837e)
+_Diagrama de Casos de Uso_
 
 
 # Matriz de Rastreabilidade
