@@ -15,3 +15,136 @@ _Diagrama de Fluxo_
 ## Wireframes
 
 Levando em consideração o fluxo do usuário, e os requisitos funcionais e não funcionais do sistema, apresentaremos a seguir todas as telas, em formato de wireframes de baixa fidelidade, que irão compor o Roteiriza.
+
+### Cadastro
+
+A tela "Cadastro" deverá permitir que um novo usuário se cadastre ao aplicativo, através do preenchimento dos seguintes campos: Nome, E-mail e Senha.
+
+[INSERIR IMAGEM]
+
+_Wireframe - Cadastro_
+
+
+### Login
+
+A tela "Login" deverá permitir que usuários já cadastrados realizem o login e possam ter acesso ao aplicativo. O usuário deverá conseguir realizar o login através do preenchimento dos seguintes campos: E-mail e Senha.
+
+[INSERIR IMAGEM]
+
+_Wireframe - Login_
+
+
+### Solicitação de Nova Senha
+
+[INSERIR DESCRIÇÃO]
+
+[INSERIR IMAGEM]
+
+_Wireframe - Solicitação de Nova Senha_
+
+
+### Criar Nova Viagem
+
+A tela "Criar nova viagem" deverá permitir que novos usuários ou já cadastrados possam criar um novo planejamento de viagem. Novos usuários serão automaticamente redirecionados para essa tela, após a realização do cadastro e, posteriormente, login.
+
+![Nova viagem 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/259237cf-071d-46a0-9198-6062e30fb004)
+
+_Wireframe - Criar Nova Viagem - Figura 1_
+
+![Nova viagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/3cb24f25-2608-422c-9675-a4746f43e6c6)
+
+_Wireframe - Criar Nova Viagem - Figura 2_
+
+
+### Viagens Criadas
+
+A tela "Viagens Criadas" deverá disponibilizar todas as viagens que foram previamente criadas pelo usuário. Usuários já cadastrados serão automaticamente redirecionados para essa tela, após a realização do login.
+
+![Escolha das Viagens](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/ac3ab4f4-eb28-4f8f-a53a-c54dc8a368ae)
+
+_Wireframe - Viagens Criadas_
+
+
+### Página Inicial da Viagem
+
+Após selecionar uma viagem previamente criada na tela "Viagens Criadas", a tela "Página Inicial da Viagem" deverá disponibilizar boxes com as informações principais da viagem, como: mala de viagem, passagem, hospedagem, alimentação, passeios, roteiro e emergência.
+
+![Página Inicial](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/27405493-f1d3-42b9-bab3-b891bf3cda32)
+
+_Wireframe - Página Inicial da Viagem_
+
+
+### Informações da Passagem
+
+[INSERIR DESCRIÇÃO]
+
+[INSERIR IMAGEM]
+
+_Wireframe - Informações da Passagem_
+
+
+### Informações da Hospedagem
+
+[INSERIR DESCRIÇÃO]
+
+[INSERIR IMAGEM]
+
+_Wireframe - Informações da Hospedagem_
+
+
+### Informações de Alimentação
+
+A tela "Informações de Alimentação" deverá fornecer ao usuário uma lista com todos os restaurantes adicionados à viagem, além de possibilitar a adição de novos restaurantes à lista.
+
+![Informações de Alimentação](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/a4025f61-5257-4da2-ae5b-a9164af047af)
+
+_Wireframe - Informações de Alimentação - Figura 1_
+
+![Informações de Alimentação 2](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/b194d3bd-efb9-45bf-8b44-fcec04ce2fe6)
+
+_Wireframe - Informações de Alimentação - Figura 1_
+
+
+### Informações de Passeios
+
+[INSERIR DESCRIÇÃO]
+
+[INSERIR IMAGEM]
+
+_Wireframe - Informações de Passeios_
+
+
+### Informações de Emergência
+
+[INSERIR DESCRIÇÃO]
+
+[INSERIR IMAGEM]
+
+_Wireframe - Informações de Emergência_
+
+
+### Roteiro de Viagem
+
+A tela "Roteiro de Viagem" deverá fornecer ao usuário o planejamento completo da viagem, em formato de calendário, levando em consideração todos os dados que foram adicionados anteriormente pelo usuário, como: data de ida e volta da viagem, atividades que serão realizadas ao longo de cada dia (manhã, tarde e noite) e valor gasto em cada dia (expectativa).
+
+![Roteiro de Viagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/34fa3b38-88a3-4e8c-aba7-9b41cb2b85b0)
+
+_Wireframe - Roteiro de Viagem_
+
+
+### Mala de Viagem
+
+Na tela "Mala de Viagem" o usuário deverá conseguir criar um checklist com todos os itens que deseja levar para sua viagem.
+
+![Mala de Viagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/dd6e8194-d6b2-4d30-bde6-49f9488bb899)
+
+_Wireframe - Mala de Viagem_
+
+
+### Área do Usuário
+
+A tela "Área do Usuário" deverá disponibilizar ao usuário seus dados cadastrados, como: nome, e-mail e senha. Além disso, deverá permitir que o usuário realize a edição do seu e-mail e senha.
+
+![Área do Usuário](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/16592a28-a0dc-4c3b-9597-3597efda6dc6)
+
+_Wireframe - Área do Usuário_
