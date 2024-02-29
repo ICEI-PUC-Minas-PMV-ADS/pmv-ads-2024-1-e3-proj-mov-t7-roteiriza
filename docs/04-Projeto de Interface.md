@@ -76,18 +76,21 @@ _Wireframe - Página Inicial da Viagem_
 
 ### Informações da Passagem
 
-[INSERIR DESCRIÇÃO]
+A tela de "Informações da Passagem" deve permitir que o usuário adicione informações sobre sua passagem, tais como data de saída e retorno, meio de transporte, quantidade de pessoas e valor total, para que ele possa consultar posteriormente.
 
-[INSERIR IMAGEM]
+![Informações de Passagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/04c38b02-3028-4985-9ee7-a8300203b781)
+
 
 _Wireframe - Informações da Passagem_
 
 
 ### Informações da Hospedagem
 
-[INSERIR DESCRIÇÃO]
+A Tela de "Informações de Hospedagem" deve fornecer todas as informações adicionadas pelo usuário sobre sua hospedagem, tais como endereço, datas de check-in e check-out, dias em que ficará hospedado e valores.
 
-[INSERIR IMAGEM]
+![Informações de Hospedagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/b549af9f-12a2-409f-8f31-f69ec352eab6)
+
+
 
 _Wireframe - Informações da Hospedagem_
 
@@ -107,18 +110,27 @@ _Wireframe - Informações de Alimentação - Figura 1_
 
 ### Informações de Passeios
 
-[INSERIR DESCRIÇÃO]
+A tela "Informações de Passeios" deverá fornecer ao usuário uma lista com todos os lugares para passeios adicionados à viagem, além de possibilitar a adição de novos lugares para visitar à lista.
 
-[INSERIR IMAGEM]
+![Informações de Passeios](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/ccd2c733-4100-4308-a9ee-a99a52049bea)
+
+_Figura 1: Tela da lista de Passeios_
+
+![Informações de Passeios (1)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/d2c12cb4-449c-468c-af18-955bb7a66282)
+
+_Figura 2: Tela da adição de novos passeios_
+
 
 _Wireframe - Informações de Passeios_
 
 
 ### Informações de Emergência
+A tela de "Informações de Emergência" deverá fornecer ao usuário números e endereços de emergência adicionados.
 
-[INSERIR DESCRIÇÃO]
+![Informações de Emergência](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/ca4a6260-cefc-47a7-924f-9761bb234719)
 
-[INSERIR IMAGEM]
+
+
 
 _Wireframe - Informações de Emergência_
 
