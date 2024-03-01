@@ -1,6 +1,6 @@
 # Introdução
 
-Atualmente viajar é algo comum na vida dos brasileiros, seja por motivos de lazer, de emprego ou até mesmo em busca de uma condição de vida mais favorável. De acordo com a pesquisa feita pelo <a href="https://www.gov.br/turismo/pt-br/assuntos/noticias/brasileiros-passam-em-media-uma-semana-por-ano-viajando">Brasil (2022)</a>, em 2021 o Brasil registrou aproximadamente  12,3 milhões de viagens efetuadas, sendo que 99,3% delas ocorreram dentro do território nacional.
+Atualmente viajar é algo comum na vida dos brasileiros, seja por motivos de lazer, de emprego ou até mesmo em busca de uma condição de vida mais favorável. De acordo com a pesquisa feita pelo <a href="https://www.gov.br/turismo/pt-br/assuntos/noticias/brasileiros-passam-em-media-uma-semana-por-ano-viajando">Ministério do Turismo Brasil (2022)</a>, em 2021 o Brasil registrou aproximadamente  12,3 milhões de viagens efetuadas, sendo que 99,3% delas ocorreram dentro do território nacional.
 
 Diante desse cenário, percebemos a importância de um planejamento de viagens abrangente, visando não apenas estabelecer o orçamento destinado a hospedagem, lazer e necessidades básicas, mas também otimizar o tempo e evitar contratempos, especialmente para quem viaja a trabalho.
 
@@ -10,7 +10,7 @@ Portanto, para ajudar a facilitar esse processo, criamos o Roteiriza, o melhor a
 
 ## Problema
 
-Sabe-se que muitas pessoas deixam de desfrutar plenamente de suas viagens, ou mesmo optam por não viajar, devido a imprevistos, sejam eles de natureza financeira como mostra na <a href="https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/28567-brasileiro-viaja-pouco-costuma-ir-de-carro-ou-onibus-e-ficar-na-casa-de-parentes-ou-amigos#:~:text=Os%20principais%20motivos%20para%20n%C3%A3o,%2C7%20mil)%20foram%20internacionais.">pesquisa feita pelo IBGE</a> onde 48,9% das pessoas não viajam por falta de dinheiro ou decorrentes da ausência de um planejamento eficaz de sua rotina durante os dias em questão.
+Sabe-se que muitas pessoas deixam de desfrutar plenamente de suas viagens, ou mesmo optam por não viajar, devido a imprevistos, sejam eles de natureza financeira como mostra na pesquisa feita pela <a href="https://agenciadenoticias.ibge.gov.br/agencia-noticias/2012-agencia-de-noticias/noticias/28567-brasileiro-viaja-pouco-costuma-ir-de-carro-ou-onibus-e-ficar-na-casa-de-parentes-ou-amigos#:~:text=Os%20principais%20motivos%20para%20n%C3%A3o,%2C7%20mil)%20foram%20internacionais.">Agência IBGE Brasil (2021)</a> onde 48,9% das pessoas não viajam por falta de dinheiro ou decorrentes da ausência de um planejamento eficaz de sua rotina durante os dias em questão.
 
 A falta de um planejamento detalhado geralmente impacta diretamente no momento em que se chega no destino. Tendo em vista que, sem um planejamento prévio o indivíduo acaba ficando deslocado em relação a quais lugares visitar, quais lugares acessar em caso de emergências, fazendo com que a pessoa gaste tempo procurando essas informações quando decidem se aventurar pela cidade e consequentemente, acabam tendo gastos exorbitantes sem necessidade e um mal aproveitamento dos dias de sua viagem.
 
