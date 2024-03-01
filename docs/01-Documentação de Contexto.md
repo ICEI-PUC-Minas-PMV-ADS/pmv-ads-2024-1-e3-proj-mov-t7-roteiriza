@@ -1,6 +1,6 @@
 # Introdução
 
-Atualmente  é algo comum na vida dos brasileiros, seja por motivos de lazer, de emprego ou até mesmo em busca de uma condição de vida mais favorável. De acordo com a pesquisa feita pelo <a href="https://www.gov.br/turismo/pt-br/assuntos/noticias/brasileiros-passam-em-media-uma-semana-por-ano-viajando">Brasil (2022)</a>, em 2021 o Brasil registrou aproximadamente  12,3 milhões de viagens efetuadas, sendo que 99,3% delas ocorreram dentro do território nacional.
+Atualmente viajar  é algo comum na vida dos brasileiros, seja por motivos de lazer, de emprego ou até mesmo em busca de uma condição de vida mais favorável. De acordo com a pesquisa feita pelo <a href="https://www.gov.br/turismo/pt-br/assuntos/noticias/brasileiros-passam-em-media-uma-semana-por-ano-viajando">Brasil (2022)</a>, em 2021 o Brasil registrou aproximadamente  12,3 milhões de viagens efetuadas, sendo que 99,3% delas ocorreram dentro do território nacional.
 
 Diante desse cenário, percebemos a importância de um planejamento de viagens abrangente, visando não apenas estabelecer o orçamento destinado a hospedagem, lazer e necessidades básicas, mas também otimizar o tempo e evitar contratempos, especialmente para quem viaja a trabalho.
 
