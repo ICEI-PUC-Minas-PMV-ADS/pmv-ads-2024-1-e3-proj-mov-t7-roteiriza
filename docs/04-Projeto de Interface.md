@@ -60,7 +60,7 @@ _Wireframe - Criar Nova Viagem - Figura 2_
 
 A tela "Viagens Criadas" deverá disponibilizar todas as viagens que foram previamente criadas pelo usuário. Usuários já cadastrados serão automaticamente redirecionados para essa tela, após a realização do login.
 
-![Escolha das Viagens](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/ac3ab4f4-eb28-4f8f-a53a-c54dc8a368ae)
+![Viagens Criadas](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/57459c69-ae2d-47b9-9042-6ff3fcf7615f)
 
 _Wireframe - Viagens Criadas_
 
