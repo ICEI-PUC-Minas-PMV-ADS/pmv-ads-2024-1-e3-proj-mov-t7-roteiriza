@@ -60,7 +60,7 @@ _Wireframe - Criar Nova Viagem - Figura 2_
 
 A tela "Viagens Criadas" deverá disponibilizar todas as viagens que foram previamente criadas pelo usuário. Usuários já cadastrados serão automaticamente redirecionados para essa tela, após a realização do login.
 
-![Viagens Criadas](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/57459c69-ae2d-47b9-9042-6ff3fcf7615f)
+![Viagens_Criadas](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/f208896f-4f3c-4e04-823e-28b53e217978)
 
 _Wireframe - Viagens Criadas_
 
@@ -99,7 +99,7 @@ _Wireframe - Informações da Hospedagem_
 
 A tela "Informações de Alimentação" deverá fornecer ao usuário uma lista com todos os restaurantes adicionados à viagem, além de possibilitar a adição de novos restaurantes à lista.
 
-![Informações de Alimentação](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/a4025f61-5257-4da2-ae5b-a9164af047af)
+![Informações de Alimentação](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/3d6a3e8f-00d2-406e-8e1f-a4adfa25e4a2)
 
 _Wireframe - Informações de Alimentação - Figura 1_
 
@@ -112,7 +112,7 @@ _Wireframe - Informações de Alimentação - Figura 1_
 
 A tela "Informações de Passeios" deverá fornecer ao usuário uma lista com todos os lugares para passeios adicionados à viagem, além de possibilitar a adição de novos lugares para visitar à lista.
 
-![Informações de Passeios](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/ccd2c733-4100-4308-a9ee-a99a52049bea)
+![Informações de Passeios](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/fa248a8d-e11e-48f5-afa9-216dfb9b0c86)
 
 _Figura 1: Tela da lista de Passeios_
 
@@ -148,7 +148,7 @@ _Wireframe - Roteiro de Viagem_
 
 Na tela "Mala de Viagem" o usuário deverá conseguir criar um checklist com todos os itens que deseja levar para sua viagem.
 
-![Mala de Viagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/dd6e8194-d6b2-4d30-bde6-49f9488bb899)
+![Mala de Viagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/fafa7558-9537-4a3a-bb54-2b46158e489e)
 
 _Wireframe - Mala de Viagem_
 
