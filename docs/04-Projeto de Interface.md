@@ -20,7 +20,7 @@ Levando em consideração o fluxo do usuário, e os requisitos funcionais e não
 
 A tela "Cadastro" deverá permitir que um novo usuário se cadastre ao aplicativo, através do preenchimento dos seguintes campos: Nome, E-mail e Senha.
 
-[INSERIR IMAGEM]
+![Cadastro](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107646150/07adc5f2-00c7-42e7-9aaa-084ce26d7f07)
 
 _Wireframe - Cadastro_
 
@@ -29,19 +29,23 @@ _Wireframe - Cadastro_
 
 A tela "Login" deverá permitir que usuários já cadastrados realizem o login e possam ter acesso ao aplicativo. O usuário deverá conseguir realizar o login através do preenchimento dos seguintes campos: E-mail e Senha.
 
-[INSERIR IMAGEM]
+![Login](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107646150/ded545d8-7f8e-408c-a47f-4032707661c9)
+<br>
 
 _Wireframe - Login_
 
 
 ### Solicitação de Nova Senha
 
-[INSERIR DESCRIÇÃO]
+A tela "Recuperar senha" deverá permitir que usuários já cadastrados solicitem uma nova senha e possam ter acesso ao aplicativo. O usuário receberá um código de recuperação em seu email.
 
-[INSERIR IMAGEM]
-
+![Recuperação de senha](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107646150/2aea6065-c794-4847-8ba3-2689cda58e4a)
+<br>
 _Wireframe - Solicitação de Nova Senha_
 
+![Código de verificação](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107646150/a0fabd6d-f193-42d8-b875-fd54251f91f0)
+<br>
+_Wireframe - Código de Nova Senha_
 
 ### Criar Nova Viagem
 
