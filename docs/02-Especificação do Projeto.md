@@ -18,6 +18,17 @@ Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos 
 >
 Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
 
+| **Olívia**  | **Informações** | **Aplicativos mais utilizados** |
+| ----------- | --------------- | ------------------------------- |
+| ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/02d334e9-a051-4cb5-8b09-5b187bac4df2) | Idade: 31 anos <br><br> Ocupação: Olivia atua como <br> Analista de Marketing em uma agência de <br> publicidade. Ela é responsável por analisar <br> dados de desempenho e identificar oportunidades <br>para melhorar a visibilidade online das marcas. | • Hootsuit <br> • Google Analytics <br> • Trello |
+| **Motivações** | **Frustrações** | **Hobbies** |
+| Sua motivação principal é criar <br> experiências memoráveis, explorar <br> novos lugares e culturas. | Olivia fica frustrada quando encontra dificuldades <br> em organizar seus planos de viagem. Ela gostaria <br> de mais praticidade e soluções simples. |  Além de viajar, Olivia gosta de fotografia <br> e experimentar novas culinárias. |
+
+
+
+
+
+
 ## Histórias de Usuários
 
 Com base na análise das personas forma identificadas as seguintes histórias de usuários:
