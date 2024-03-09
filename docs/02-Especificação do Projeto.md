@@ -4,27 +4,23 @@ Abaixo é possível conferir as especificações do projeto Roteiriza, como as p
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
-
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
-
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
-
 | **Olívia**  | **Informações** | **Aplicativos mais utilizados** |
 | ----------- | --------------- | ------------------------------- |
 | ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/02d334e9-a051-4cb5-8b09-5b187bac4df2) | Idade: 31 anos <br><br> Ocupação: Olivia atua como <br> Analista de Marketing em uma agência de <br> publicidade. Ela é responsável por analisar <br> dados de desempenho e identificar oportunidades <br>para melhorar a visibilidade online das marcas. | • Hootsuit <br> • Google Analytics <br> • Trello |
 | **Motivações** | **Frustrações** | **Hobbies** |
 | Sua motivação principal é criar <br> experiências memoráveis, explorar <br> novos lugares e culturas. | Olivia fica frustrada quando encontra dificuldades <br> em organizar seus planos de viagem. Ela gostaria <br> de mais praticidade e soluções simples. |  Além de viajar, Olivia gosta de fotografia <br> e experimentar novas culinárias. |
 
+| **Pedro**  | **Informações** | **Aplicativos mais utilizados** |
+| ----------- | --------------- | ------------------------------- |
+| ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/9e958e36-061b-49ed-8d04-4862dc795890)| Idade: 45 anos <br><br> Ocupação: Pedro é um Consultor Financeiro <br>autônomo. Ele presta  consultoria a clientes <br> individuais e empresas, auxiliando-os na gestão <br> financeira, planejamento de investimentos  e <br> estratégias.  | • Google Sheets <br> • Easynvest <br> • WhatsApp Business |
+| **Motivações** | **Frustrações** | **Hobbies** |
+| Otimizar seus gastos e ter uma <br> experiência econômica e bem <br> planejada. | Ele não gosta de imprevistos financeiros ou de <br> desperdiçar tempo e dinheiro. |  Pedro gosta de praticar esportes ao ar livre <br> e ler sobre finanças pessoais. |
 
+| **André**  | **Informações** | **Aplicativos mais utilizados** |
+| ----------- | --------------- | ------------------------------- |
+|![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/d8d1de2f-98d1-428f-91f0-ad83a47d8e36)| Idade: 24 anos <br><br> Ocupação: André é um Instrutor de Esportes <br> Radicais, trabalhando em uma escola <br> especializada em atividades ao ar livre. Ele <br>ensina e lidera grupos em trilhas, escaladas e <br> esportes radicais. | • AllTrails <br> • Instagram <br> • Meetup <br> • GoPro App |
+| **Motivações** | **Frustrações** | **Hobbies** |
+| André é apaixonado por aventuras e <br>busca por destinos exóticos, gosta <br> de explorar atividades radicais em <br>cada viagem. | Ele fica frustrado quando não encontra <br> informações detalhadas sobre atividades <br> de aventura em um destino e quando há <br> falta de opções personalizadas para suas <br>  preferências de viagem.|  Além de viajar, André pratica esportes <br> radicais, e gosta de <br> participar de eventos esportivos.|
 
 
 
