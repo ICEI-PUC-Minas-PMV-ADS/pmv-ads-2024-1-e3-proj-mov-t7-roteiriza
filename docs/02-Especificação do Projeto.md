@@ -71,12 +71,10 @@ Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em segu
 
 ## Indicadores de Desempenho
 
-Apresente aqui os principais indicadores de desempenho e algumas metas para o processo. Atenção: as informações necessárias para gerar os indicadores devem estar contempladas no diagrama de classe. Colocar no mínimo 5 indicadores. 
+Para os indicadores de desempenho, vamos usar o número de downloads, a quantidade de usuários cadastrados, a quantidade de viagens cadastradas por usuário, o número de desinstalações que ocorreram no período de 2 semanas e o número de artefatos entregues na sprint. A tabela para visualização da métrica é detalhada na imagem a seguir.
 
-Usar o seguinte modelo: 
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/21f50e9b-a7c9-43a1-aff1-3d32d76de6c1)
 
-![Indicadores de Desempenho](img/02-indic-desemp.png)
-Obs.: todas as informações para gerar os indicadores devem estar no diagrama de classe a ser apresentado a posteriori. 
 
 ## Requisitos
 
@@ -128,40 +126,47 @@ _Diagrama de Casos de Uso_
 
 # Matriz de Rastreabilidade
 
-A matriz de rastreabilidade é uma ferramenta usada para facilitar a visualização dos relacionamento entre requisitos e outros artefatos ou objetos, permitindo a rastreabilidade entre os requisitos e os objetivos de negócio. 
+A matriz de rastreabilidade foi desenhada para identificarmos quais requisitos estão conectados e como é a interação entre eles. A matriz foi dividida em duas tabelas, a primeira referenciando as ligações entre os requisitos e personas; na segunda, buscamos evidenciar as relações entre os requisitos, personas e o plano de teste. A seguir é apresentado o planejamento da matriz.
 
-A matriz deve contemplar todos os elementos relevantes que fazem parte do sistema, conforme a figura meramente ilustrativa apresentada a seguir.
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/b524ac3f-a345-45c3-96ab-89fc87feefef)
+_Matriz de Rastreabilidade por requisitos_
 
-![Exemplo de matriz de rastreabilidade](img/02-matriz-rastreabilidade.png)
-
-> **Links Úteis**:
-> - [Artigo Engenharia de Software 13 - Rastreabilidade](https://www.devmedia.com.br/artigo-engenharia-de-software-13-rastreabilidade/12822/)
-> - [Verificação da rastreabilidade de requisitos usando a integração do IBM Rational RequisitePro e do IBM ClearQuest Test Manager](https://developer.ibm.com/br/tutorials/requirementstraceabilityverificationusingrrpandcctm/)
-> - [IBM Engineering Lifecycle Optimization – Publishing](https://www.ibm.com/br-pt/products/engineering-lifecycle-optimization/publishing/)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/a8570e5f-1376-48c5-b22b-fc903e09a6a7)
+_Matriz de Rastreabilidade por testes_
 
 
 # Gerenciamento de Projeto
 
-De acordo com o PMBoK v6 as dez áreas que constituem os pilares para gerenciar projetos, e que caracterizam a multidisciplinaridade envolvida, são: Integração, Escopo, Cronograma (Tempo), Custos, Qualidade, Recursos, Comunicações, Riscos, Aquisições, Partes Interessadas. Para desenvolver projetos um profissional deve se preocupar em gerenciar todas essas dez áreas. Elas se complementam e se relacionam, de tal forma que não se deve apenas examinar uma área de forma estanque. É preciso considerar, por exemplo, que as áreas de Escopo, Cronograma e Custos estão muito relacionadas. Assim, se eu amplio o escopo de um projeto eu posso afetar seu cronograma e seus custos.
+O gerenciamento de projetos é uma ferramenta crucial para o controle eficiente do andamento de qualquer empreendimento. Por meio dele, é possível analisar e identificar possíveis vulnerabilidades no planejamento, garantindo uma gestão mais eficaz e assertiva.
+
+Nosso objetivo é desenvolver um método de gerenciamento que combine facilidade de visualização com informações abrangentes. Dessa forma, torna-se mais acessível compreender o progresso do projeto e tomar decisões embasadas.
+
+A seguir, apresentamos uma sequência de tópicos que compõem nosso sistema de gerenciamento.
 
 ## Gerenciamento de Tempo
 
-Com diagramas bem organizados que permitem gerenciar o tempo nos projetos, o gerente de projetos agenda e coordena tarefas dentro de um projeto para estimar o tempo necessário de conclusão.
+Para o gerenciamento do tempo, foi construído uma tabela com o cronograma por telas dentro da aplicação. Levamos em consideração desde a construção dos Wireframes até o Deploy da aplicação.
 
-![Diagrama de rede simplificado notação francesa (método francês)](img/02-diagrama-rede-simplificado.png)
-
-O gráfico de Gantt ou diagrama de Gantt também é uma ferramenta visual utilizada para controlar e gerenciar o cronograma de atividades de um projeto. Com ele, é possível listar tudo que precisa ser feito para colocar o projeto em prática, dividir em atividades e estimar o tempo necessário para executá-las.
-
-![Gráfico de Gantt](img/02-grafico-gantt.png)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/3cfd7790-f218-417f-84c1-c8a97431b5ae)
+_Cronograma do Projeto_
 
 ## Gerenciamento de Equipe
 
-O gerenciamento adequado de tarefas contribuirá para que o projeto alcance altos níveis de produtividade. Por isso, é fundamental que ocorra a gestão de tarefas e de pessoas, de modo que os times envolvidos no projeto possam ser facilmente gerenciados. 
+A seguir é apresentado os colaboradores que vão atuar no projeto.
 
-![Simple Project Timeline](img/02-project-timeline.png)
+| Nome           | Função        |
+|----------------|---------------|
+| Luana Pina     | Scrum Master  |
+| Bruna          | Product Owner |
+| Tayane Milagres| Desenvolvedor |
+| João           | Desenvolvedor |
+| Gabriel        | Design        |
+| André Guilherme| Design        |
+
 
 ## Gestão de Orçamento
 
-O processo de determinar o orçamento do projeto é uma tarefa que depende, além dos produtos (saídas) dos processos anteriores do gerenciamento de custos, também de produtos oferecidos por outros processos de gerenciamento, como o escopo e o tempo.
+O gerenciamento do projeto pode ser visualizado na tabela a seguir, onde apresentamos as despesas esperadas do projeto.
 
-![Orçamento](img/02-orcamento.png)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/c4c25a81-dfde-44b8-b103-abc8bf70166c)
+_Gestão de orçamento_
