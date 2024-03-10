@@ -49,24 +49,40 @@ Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o 
 
 Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
 
-### Processo 1 – NOME DO PROCESSO
+### Processo 1 – Cadastro de Usuário
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 1. Em seguida, apresente o modelo do processo 1, descrito no padrão BPMN. 
+O processo de cadastro de Usuário pode ser visto a seguir:
 
-![Processo 1](img/02-bpmn-proc1.png)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/318be60a-00b4-4bc4-b277-e025c88809fb)
+_Processo 1 cadastro de usuário_
 
-### Processo 2 – NOME DO PROCESSO
+### Processo 2 – Login
 
-Apresente aqui o nome e as oportunidades de melhorias para o processo 2. Em seguida, apresente o modelo do processo 2, descrito no padrão BPMN.
+O processo de login pode ser visto a seguir:
 
-![Processo 2](img/02-bpmn-proc2.png)
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/8a527699-f684-41d5-a67f-b348e4d97ad6)
+_Processo 2 login_
+
+### Processo 3 – Cadastro de Viagem
+
+O processo de cadastro pode ser visto a seguir:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/e0f0f338-439f-42ef-8fbd-b39285b8b628)
+_Processo 3 cadastro de viagem_
+
+### Processo 4 - Cadastro de Hospedagem
+
+O processo de cadastro de uma hospedagem pode ser visto a seguir:
+
+![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/3dc30db3-3bc0-4a77-8aea-6bce2e9bd2c3)
+_Processo 4 cadastro de hospedagem_
 
 ## Indicadores de Desempenho
 
 Para os indicadores de desempenho, vamos usar o número de downloads, a quantidade de usuários cadastrados, a quantidade de viagens cadastradas por usuário, o número de desinstalações que ocorreram no período de 2 semanas e o número de artefatos entregues na sprint. A tabela para visualização da métrica é detalhada na imagem a seguir.
 
 ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/21f50e9b-a7c9-43a1-aff1-3d32d76de6c1)
-
+_Indicadores de Desempenho_
 
 ## Requisitos
 
