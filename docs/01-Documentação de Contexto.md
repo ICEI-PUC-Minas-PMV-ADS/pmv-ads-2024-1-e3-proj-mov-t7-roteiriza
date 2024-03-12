@@ -35,4 +35,4 @@ Portanto, nossa proposta é desenvolver um planejador de viagens abrangente e in
 
 ## Público-Alvo
 
-O projeto possui como público alvo qualquer pessoa acima dos 18 anos que possui dificuldades em planejar viagens a curto, médio e longo prazo.
+O projeto tem como público-alvo qualquer indivíduo com mais de 18 anos que enfrenta dificuldades ao planejar viagens de curto, médio ou longo prazo.
