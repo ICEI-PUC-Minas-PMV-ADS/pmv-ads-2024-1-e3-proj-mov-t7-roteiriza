@@ -41,14 +41,6 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 ## Modelagem do Processo de Negócio 
 
-### Análise da Situação Atual
-
-Apresente aqui os problemas existentes que viabilizam sua proposta. Apresente o modelo do sistema como ele funciona hoje. Caso sua proposta seja inovadora e não existam processos claramente definidos, apresente como as tarefas que o seu sistema pretende implementar são executadas atualmente, mesmo que não se utilize tecnologia computacional. 
-
-### Descrição Geral da Proposta
-
-Apresente aqui uma descrição da sua proposta abordando seus limites e suas ligações com as estratégias e objetivos do negócio. Apresente aqui as oportunidades de melhorias.
-
 ### Processo 1 – Cadastro de Usuário
 
 O processo de cadastro de Usuário pode ser visto a seguir:
