@@ -27,12 +27,16 @@ A tela "Criar nova viagem" deverá permitir que novos usuários ou já cadastrad
 ## Viagens Criadas
 A tela "Viagens Criadas" deverá disponibilizar todas as viagens que foram previamente criadas pelo usuário. Usuários já cadastrados serão automaticamente redirecionados para essa tela, após a realização do login.
 
-[INSERIR WIREFRAME ALTA FIDELIDADE]
+![Viagens Criadas](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/09b558ef-a9de-4bbf-8d79-3e267ae4bf3d)
+
+_Figura 1: Tela de viagens já criadas_
 
 ## Página Inicial da Viagem
 Após selecionar uma viagem previamente criada na tela "Viagens Criadas", a tela "Página Inicial da Viagem" deverá disponibilizar boxes com as informações principais da viagem, como: mala de viagem, passagem, hospedagem, alimentação, passeios, roteiro e emergência.
 
-[INSERIR WIREFRAME ALTA FIDELIDADE]
+![Página Inicial](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/a5c15408-4ae9-46ff-9610-33b03e37534f)
+
+_Figura 1: Tela Inicial de Viagem_
 
 ## Informações da Passagem
 A tela de "Informações da Passagem" deve permitir que o usuário adicione informações sobre sua passagem, tais como data de saída e retorno, meio de transporte, quantidade de pessoas e valor total, para que ele possa consultar posteriormente.
@@ -52,7 +56,13 @@ _Figura 1: Tela de Informações de Hospedagem_
 ## Informações de Alimentação
 A tela "Informações de Alimentação" deverá fornecer ao usuário uma lista com todos os restaurantes adicionados à viagem, além de possibilitar a adição de novos restaurantes à lista.
 
-[INSERIR WIREFRAME ALTA FIDELIDADE]
+![Informações de Alimentação](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/3bfa2da5-2399-4fd1-87d4-20ba1cec9ff4)
+
+_Figrura 1: Tela de locais para alimentação já cadastrados pelo usuário_
+
+![Informações de Alimentação (1)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/a2502a1a-f09d-448f-b113-dd0cfae4ae76)
+
+_Figura 2: Tela de Cadastro de Lugares para alimentação_
 
 ## Informações de Passeios
 A tela "Informações de Passeios" deverá fornecer ao usuário uma lista com todos os lugares para passeios adicionados à viagem, além de possibilitar a adição de novos lugares para visitar.
@@ -77,17 +87,25 @@ _Figura 1: Tela de Informações de Emergência_
 ## Roteiro de Viagem
 A tela "Roteiro de Viagem" deverá fornecer ao usuário o planejamento completo da viagem, em formato de calendário, levando em consideração todos os dados que foram adicionados anteriormente pelo usuário, como: data de ida e volta da viagem, atividades que serão realizadas ao longo de cada dia (manhã, tarde e noite) e valor gasto em cada dia (expectativa).
 
-[INSERIR WIREFRAME ALTA FIDELIDADE]
+![Roteiro de Viagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/8c48bc9b-c47f-4724-9e7e-a2d61d3e292d)
+
+_Figura 1: Tela do Roteiro da Viagem_
 
 ## Mala de Viagem
 Na tela "Mala de Viagem" o usuário deverá conseguir criar um checklist com todos os itens que deseja levar para sua viagem.
 
-[INSERIR WIREFRAME ALTA FIDELIDADE]
+![Mala de Viagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/ea6fc7f5-35f2-4715-b29c-2f43781e2ffe)
+
+_Figura 1: Tela de Mala de Viagem_
+
 
 ## Área do Usuário
 A tela "Área do Usuário" deverá disponibilizar ao usuário seus dados cadastrados, como: nome, e-mail e senha. Além disso, deverá permitir que o usuário realize a edição do seu e-mail e senha.
 
-[INSERIR WIREFRAME ALTA FIDELIDADE]
+![Área do Usuário](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/384cb3ab-29e4-415a-b419-d9367d3de98d)
+
+_Figura 1: Tela de Área do Usuário_
+
 
 
 
