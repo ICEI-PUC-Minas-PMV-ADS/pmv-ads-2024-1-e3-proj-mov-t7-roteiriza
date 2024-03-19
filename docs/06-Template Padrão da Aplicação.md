@@ -1,5 +1,5 @@
 # Template Padrão da Aplicação
-O padrão de layout a ser utilizado pelo site tem como referência a estrutura principal do sistema, que foi elaborada e exibida anteriormente, no tópico de Wireframes.
+O padrão de layout a ser utilizado pelo site tem como referência a estrutura principal do sistema, que foi elaborada e exibida anteriormente, no tópico de Wireframes do Projeto de Interface.
 
 Segue abaixo o layout padrão da aplicação que será utilizado em todas as páginas com a definição de identidade visual, aspectos de responsividade e iconografia.
 
