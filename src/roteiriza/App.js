@@ -1,7 +1,7 @@
 import { Text, SafeAreaView, StyleSheet } from 'react-native';
 
 // or any files within the Snack
-import Cadastro from './components/Cadastro';
+import Cadastro  from './components/Cadastro';
 
 export default function App() {
   return (
@@ -17,5 +17,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#ecf0f1',
     padding: 8,
+    paddingTop: 70,
   },
 });
