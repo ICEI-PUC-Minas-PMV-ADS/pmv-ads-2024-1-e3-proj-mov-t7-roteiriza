@@ -39,9 +39,13 @@ _Modelo Físico do Banco de Dados - Figura 2_
 
 ## Tecnologias Utilizadas
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
-
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+- **Linguagens:** JavaScript;
+- **Frameworks:** React Native;
+- **IDE:** Visual Studio Code;
+- **Banco de Dados Relacional:** SQLite;
+- **Hospedagem:** A definir;
+- **Design de interface:** Figma;
+- **Análise de Acessibilidade:** Lighthouse.
 
 ## Hospedagem
 
