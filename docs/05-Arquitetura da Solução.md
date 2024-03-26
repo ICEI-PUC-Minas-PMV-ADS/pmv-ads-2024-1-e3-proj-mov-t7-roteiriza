@@ -16,12 +16,14 @@ O modelo ER da aplicação é representado nas imagens a seguir.
 ## Modelo Lógico
 
 ![lÓGICO](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/c3d36e12-42e5-40cd-af01-c04b663392a1)
+_Modelo Lógico_
 
 O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
 
 ## Modelo Conceitual
  
 ![Group_61](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/fe67b130-6bdd-4736-a7d8-0847ae248ec8)
+_Modelo Conceitual_
 
 ## Modelo Físico
 
@@ -29,7 +31,11 @@ O modelo físico do banco de dados pode ser visto nas imagens a seguir.
 
 ![BD-1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/23e5bf58-12ac-4a04-80ff-d2a92c231e5a)
 
+_Modelo Físico do Banco de Dados - Figura 1_
+
 ![BD-2](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/eaffc7f5-7f73-416e-9af8-b278eb80edfa)
+
+_Modelo Físico do Banco de Dados - Figura 2_
 
 ## Tecnologias Utilizadas
 
