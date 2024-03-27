@@ -1,6 +1,7 @@
 
-import { StyleSheet, View, Alert, Image, Button, Dimensions, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, View, Alert, Image,Dimensions, TouchableOpacity, Linking } from 'react-native';
 import { Appbar, Text, TextInput} from 'react-native-paper';
+import Button from './styles/button';
 
 
 export default function AssetExample() {
@@ -41,8 +42,8 @@ export default function AssetExample() {
             </View>
         </View>
         <View style={styles.containerDoubleCard} >
-            <Button style={styles.buttoDXn} title="SALVAR"/>
-            <Button style={styles.buttoDXn} title="CANCELAR"/>
+            <Button textButton={"SALVAR"} color="#F5BD60"/>
+            <Button textButton={"CANCELAR"} color="#F5BD60"/>
         </View>
     </View>
   );
@@ -65,14 +66,10 @@ const styles = StyleSheet.create({
   },
   containerDoubleCard: {
     flexDirection: 'row',
-    backgroundColor: 'red',
+    backgroundColor: 'purple',
     height: 50,
-    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  buttoDXn: {
-    height: 10,
-    width: 10,
-
-  }
 
 });
