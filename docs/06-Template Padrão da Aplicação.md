@@ -112,7 +112,7 @@ Na tela "Mala de Viagem" o usuário deverá conseguir criar um checklist com tod
 _Figura 16: Tela de Mala de Viagem_
 
 
-## Tela daÁrea do Usuário
+## Tela da Área do Usuário
 A tela "Área do Usuário" deverá disponibilizar ao usuário seus dados cadastrados, como: nome, e-mail e senha. Além disso, deverá permitir que o usuário realize a edição do seu e-mail e senha.
 
 ![Área do Usuário](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/384cb3ab-29e4-415a-b419-d9367d3de98d)
