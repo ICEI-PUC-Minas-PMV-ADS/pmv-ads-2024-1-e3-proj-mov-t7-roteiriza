@@ -37,7 +37,7 @@
 
 1. **Tarefa:** Ir para a página de adicionar viagem e preencher os detalhes.
 2. **Critérios de Sucesso:**
-   - A página de adicionar viagem é acessível e intuitiva.
+   - As páginas de adicionar viagem são acessíveis e intuitivas.
    - Os campos estão bem definidos e acessiveis para preencher.
    - Não ocorre erros ao enviar os dados.
 
@@ -134,5 +134,5 @@ Após concluir as tarefas, os participantes compartilharão o feedback sobre a u
 
 # Acessibilidade
 
-Consideraremos a extensão LightHouse para que a plataforma Match Game atinja o mínimo de 60% de acessibilidade. 
+Consideraremos a extensão LightHouse para que a plataforma Roteiriza atinja o mínimo de 60% de acessibilidade. 
 
