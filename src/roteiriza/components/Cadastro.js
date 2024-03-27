@@ -25,8 +25,6 @@ export default function AssetExample() {
           <Text style={styles.Text}>Cadastre-se</Text>
         </Button>
         <Text style={styles.login}>Já tem uma conta? <Text style={{fontWeight: "bold", color: '#063A7A'}} >Faça seu login</Text></Text>
-
-        <Text> </Text>
       </View>
     </View>
   );
