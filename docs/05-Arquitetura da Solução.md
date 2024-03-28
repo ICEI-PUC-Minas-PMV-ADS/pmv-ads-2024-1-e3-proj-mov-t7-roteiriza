@@ -43,7 +43,7 @@ _Modelo Físico do Banco de Dados - Figura 2_
 - **Frameworks:** React Native;
 - **IDE:** Visual Studio Code;
 - **Banco de Dados Relacional:** SQLite;
-- **Hospedagem:** A definir;
+- **Hospedagem:** Heroku;
 - **Design de interface:** Figma;
 - **Análise de Acessibilidade:** Lighthouse.
 
