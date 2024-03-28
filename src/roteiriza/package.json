@@ -18,7 +18,8 @@
     "react-native-linear-gradient": "^2.8.3",
     "react-native-paper": "^5.12.3",
     "react-native-web": "~0.19.6",
-    "react-navigation": "^5.0.0"
+    "react-navigation": "^5.0.0",
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

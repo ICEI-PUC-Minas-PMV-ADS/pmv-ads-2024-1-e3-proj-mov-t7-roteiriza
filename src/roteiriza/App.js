@@ -2,6 +2,7 @@ import { Text, SafeAreaView, StyleSheet } from 'react-native';
 import Cadastro  from './components/Cadastro';
 import Atualizar_viagem  from './components/Atualizar_viagem';
 
+
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
