@@ -1,6 +1,7 @@
 # Plano de Testes de Software
 
 ## Plano de Testes de Funcionalidades
+Os testes de funcionalidades do software acontecerão conforme o plano de testes mostrado a seguir:
 
 | ID | Descrição do Teste | Requisito | Etapas do Teste | Resultado Esperado |
 | -- | ------------------ | --------- | --------------- | ------------------ |
