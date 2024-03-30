@@ -18,21 +18,3 @@
 | 12 | Registrar uma passagem | RF-004 | 1. Logar-se no app<br>2. Ter uma viagem já cadastrada<br>3. Entrar na sessão Passagem<br>4. Inserir Datas<br> 5. Inserir Pessoas<br> 6. Inserir Valor<br>7. Inserir Transporte<br>8. Clicar em adicionar para adicionar a passagem | O resultado esperado deste teste é o usuario conseguir registrar uma passagem corretamente. |
 | 13 | Registrar um Passeio  | RF-004| 1. Logar-se no app<br>2. Ter uma viagem já cadastrada<br>3. Entrar na sessão Passeios<br>4. Inserir Local <br> 5. Inserir Endereço<br>6. Inserir Data<br>7. Inserir Transporte<br>8. Inserir Valor<br>9. Clicar em adicionar para adicionar o passeio | O resultado esperado deste teste é o usuario conseguir registrar um passeio corretamente. |
 | 14 | Visualização do roteiro de Viagem | RF-006| 1. Logar-se no app<br>2. Ter uma viagem já cadastrada<br>3. Entrar na sessão Roteiro<br>4. Clicar no calendário o dia desejado |  O resultado esperado deste teste é o usuario conseguir visualizar o seu roteiro corretamente. |
-
-
-
-
-
-
- 
-## Ferramentas de Testes (Opcional)
-
-Comente sobre as ferramentas de testes utilizadas.
- 
-> **Links Úteis**:
-> - [IBM - Criação e Geração de Planos de Teste](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Práticas e Técnicas de Testes Ágeis](http://assiste.serpro.gov.br/serproagil/Apresenta/slides.pdf)
-> -  [Teste de Software: Conceitos e tipos de testes](https://blog.onedaytesting.com.br/teste-de-software/)
-> - [Criação e Geração de Planos de Teste de Software](https://www.ibm.com/developerworks/br/local/rational/criacao_geracao_planos_testes_software/index.html)
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
-> - [UX Tools](https://uxdesign.cc/ux-user-research-and-user-testing-tools-2d339d379dc7)
