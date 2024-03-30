@@ -5,8 +5,9 @@ import Cadastro  from './pages/Cadastro';
 import Login from './pages/Login';
 import Database from '../roteiriza/service/UsuarioService';
 
-export default function App() {
 
+
+export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <Login />

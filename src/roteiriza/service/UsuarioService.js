@@ -4,6 +4,7 @@ const DB_EXEC = Database.getConnection();
 
 export const getUsuario = async () => {
   let results = await DB_EXEC('select * from usuarios');
+  console.log(results);
   return results.rows._array;
 }
 
@@ -17,13 +18,10 @@ export const login = async (param) => {
     else if (results.email != param.email || results.password != param.password){
       return console.log('Email ou senha incorretos');
     }
-    else{
-      return console.log('Login realizado com sucesso!');
-    }
 }
 
 
-export const createUser = async (param) => {
+export const cadastrar = async (param) => {
   await DB_EXEC(
     'insert into usuarios (name, email, password) values (?,?,?)', [param.name, param.email, param.password]
   )
