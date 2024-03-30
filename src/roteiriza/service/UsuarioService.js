@@ -7,25 +7,27 @@ export const getUsuario = async () => {
   return results.rows._array;
 }
 
-export const createUsuario = async (param) => {
+export const login = async (param) => {
   let results = await DB_EXEC(
-    insert into usuarios(name, email, password)
-    values(?,?,?)
-    , [param.name, param.email, param.password]);
+    'select usuarios.email, usuarios.password from usuarios where usuarios.email = ?',[param.email])
+
+    if (results == null){
+      return console.log('Email não existe na base de dados')
+    }
+    else if (results.email != param.email || results.password != param.password){
+      return console.log('Email ou senha incorretos');
+    }
+    else{
+      return console.log('Login realizado com sucesso!');
+    }
+}
+
+
+export const createUser = async (param) => {
+  await DB_EXEC(
+    'insert into usuarios (name, email, password) values (?,?,?)', [param.name, param.email, param.password]
+  )
   return results.rowsAffected;
 }
 
-export const updateUsuario = async (param) => {
-  let results = await DB_EXEC(
-    update into usuarios set name=?, email=?, password=? 
-    where id =?
-    , [param.name, param.email, param.password, param.id]);
-  return results.rowsAffected;
-}
 
-export const deleteUsuario = async (id) => {
-  let results = await DB_EXEC(
-    delete usuarios where id =?
-    , [id]);
-  return results.rowsAffected;
-} 

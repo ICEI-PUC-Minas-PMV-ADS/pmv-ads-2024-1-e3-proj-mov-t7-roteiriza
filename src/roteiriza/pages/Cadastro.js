@@ -3,13 +3,13 @@ import { StyleSheet, View, Alert, Image, Dimensions } from 'react-native';
 import { Appbar, Text, TextInput, Button } from 'react-native-paper';
 import { FontAwesome6, Octicons } from '@expo/vector-icons';
 
-import Input from './Input';
+import Input from '../components/Input';
 
 export default function AssetExample() {
   return (
     <View style={styles.container}>
       <View style = {styles.content}>
-        <Image style={styles.logo} source={require('../assets/logo.png')} />
+        <Image style={styles.logo} source={require('../assets/img.png')} />
 
 
         <Input label="Nome completo" />
@@ -26,7 +26,6 @@ export default function AssetExample() {
         </Button>
         <Text style={styles.login}>Já tem uma conta? <Text style={{fontWeight: "bold", color: '#063A7A'}} >Faça seu login</Text></Text>
 
-        <Text> </Text>
       </View>
     </View>
   );

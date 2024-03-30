@@ -1,12 +1,15 @@
 import { Text, SafeAreaView, StyleSheet } from 'react-native';
 
 // or any files within the Snack
-import Cadastro  from './components/Cadastro';
+import Cadastro  from './pages/Cadastro';
+import Login from './pages/Login';
+import Database from '../roteiriza/service/UsuarioService';
 
 export default function App() {
+
   return (
     <SafeAreaView style={styles.container}>
-      <Cadastro />
+      <Login />
     </SafeAreaView>
   );
 }
