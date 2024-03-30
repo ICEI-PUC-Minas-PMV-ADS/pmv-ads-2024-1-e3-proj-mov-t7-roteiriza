@@ -54,7 +54,8 @@ _Figura 7: Tela Inicial de Viagem_
 ## Tela de Informações da Passagem
 A tela de "Informações da Passagem" deve permitir que o usuário adicione informações sobre sua passagem, tais como data de saída e retorno, meio de transporte, quantidade de pessoas e valor total, para que ele possa consultar posteriormente.
 
-![Informações de Passagem (2)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/1088edb8-6235-4f2c-8c91-fa306a37c13a)
+![Informações de Passagem (3)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/4957a650-0ad0-4dab-a087-e98d808e4781)
+
 
 _Figura 8: Tela de Informações de Passagem_
 
@@ -62,7 +63,8 @@ _Figura 8: Tela de Informações de Passagem_
 ## Tela de Informações da Hospedagem
 A Tela de "Informações de Hospedagem" deve conter campos para que o usuário insira as informações sobre sua hospedagem, para que possa salvar e acessar posteriormente.
 
-![Informações de Hospedagem (2)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/514edd10-4579-4820-9997-837aa409a8bf)
+![Informações de Hospedagem (3)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/04c1097c-9b78-4f83-9160-b78b28a5c8d8)
+
 
 _Figura 9: Tela de Informações de Hospedagem_
 
@@ -80,11 +82,14 @@ _Figura 11: Tela de Cadastro de Lugares para alimentação_
 ## Tela de Informações de Passeios
 A tela "Informações de Passeios" deverá fornecer ao usuário uma lista com todos os lugares para passeios adicionados à viagem, além de possibilitar a adição de novos lugares para visitar.
 
-![Informações de Passeios (3)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/3f18f505-4827-4c6f-9f0c-626dac91b4ab)
+![Informações de Passeios (5)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/1199aa75-9ca7-40b7-b6d9-8387a6456b64)
+
 
 _Figura 12: Tela para criação de novos passeios_
 
-![Informações de Passeios (4)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/e218665d-b9e5-4684-b96d-5737aeb6331f)
+![Informações de Passeios (6)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/75918174-2b9f-4c5b-8c8d-b9319f7c173f)
+
+
 
 _Figura 13: Tela com os passeios já criados_
 
@@ -92,7 +97,9 @@ _Figura 13: Tela com os passeios já criados_
 ## Tela de Informações de Emergência
 A tela de "Informações de Emergência" deverá possuir campos para que o usuário insira os números de emergência, podendo assim salva-los para acessar futuramente.
 
-![Informações de Emergência (5)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/d093758c-300a-41bb-a33b-8d8443b205a6)
+![Informações de Emergência (6)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/54842144-b311-4283-b497-532469309a1e)
+
+
 
 
 _Figura 14: Tela de Informações de Emergência_
@@ -100,7 +107,9 @@ _Figura 14: Tela de Informações de Emergência_
 ## Tela do Roteiro de Viagem
 A tela "Roteiro de Viagem" deverá fornecer ao usuário o planejamento completo da viagem, em formato de calendário, levando em consideração todos os dados que foram adicionados anteriormente pelo usuário, como: data de ida e volta da viagem, atividades que serão realizadas ao longo de cada dia (manhã, tarde e noite) e valor gasto em cada dia (expectativa).
 
-![Roteiro de Viagem](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/8c48bc9b-c47f-4724-9e7e-a2d61d3e292d)
+![Roteiro de Viagem (1)](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/c4cc7763-a569-46d5-bca7-d40c4e57d1b4)
+
+
 
 _Figura 15: Tela do Roteiro da Viagem_
 
