@@ -21,8 +21,8 @@ _Modelo Lógico_
 O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
 
 ## Modelo Conceitual
- 
-![Group_61](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/fe67b130-6bdd-4736-a7d8-0847ae248ec8)
+
+![Wireframe - 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/114627827/d0a18987-f4cb-4ee8-bcac-8effd7006a7a)
 _Modelo Conceitual_
 
 ## Modelo Físico
