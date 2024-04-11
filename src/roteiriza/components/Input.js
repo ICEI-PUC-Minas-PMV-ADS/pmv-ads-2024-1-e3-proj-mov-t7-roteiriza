@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Appbar, TextInput} from 'react-native-paper';
 
 
@@ -12,6 +12,9 @@ const Input = (props) => {
         />
   );
 };
+
+
+
 
 const styles = StyleSheet.create({
   input: {
