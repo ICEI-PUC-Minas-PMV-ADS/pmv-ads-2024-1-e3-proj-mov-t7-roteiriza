@@ -6,11 +6,14 @@ import Button from './styles/buttonAdicionar';
 
 const Passeios = () => {
     return(
-        <ScrollView>
-            <View>
-                <HeaderTop headerTitle={"Passeios"}/>
+           
+        <ScrollView >
+            <View  style={styles.fixedElement}>
+                <HeaderTop headerTitle={"Passeios"}  />
+            </View>
 
-                <View>
+            <View>               
+                <View style={styles.container}>
                     <ContainerPasseios />
                     
                     <View style={styles.buttonBox}>
@@ -30,7 +33,8 @@ const Passeios = () => {
                     </View>
                 </View>
             </View>
-        </ScrollView>  
+     </ScrollView>
+
     );
 
 }
@@ -38,6 +42,9 @@ const Passeios = () => {
 export default Passeios;
 
 const styles = StyleSheet.create({
+    fixedElement: {
+        zIndex: 5
+    },
     buttonBox: {
         flexDirection: 'row',
         alignItems: 'center',

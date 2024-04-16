@@ -51,7 +51,7 @@ const ContainerPasseios= () =>{
                     <View style={styles.input}>
                         <InputMenor 
                             nome={'Valor a ser gasto'} 
-                            valor={'Manhã'}
+                            valor={'160,00'}
                         />
                         <Image source={require('../../assets/img/moneyIcon.png')} style={styles.iconLeftMoney}/>
                     </View>

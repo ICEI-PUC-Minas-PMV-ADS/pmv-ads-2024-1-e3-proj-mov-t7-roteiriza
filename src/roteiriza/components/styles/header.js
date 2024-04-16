@@ -23,7 +23,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 60,
-        marginLeft: 25
+        marginLeft: 25,
+        marginBottom: 5
+        
 
     },
     titleHeader: {

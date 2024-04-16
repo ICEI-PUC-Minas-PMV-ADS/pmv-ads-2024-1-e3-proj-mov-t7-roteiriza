@@ -3,13 +3,15 @@ import { Text, SafeAreaView, StyleSheet } from 'react-native';
 // or any files within the Snack
 import Cadastro  from './components/Cadastro';
 import Passeios from './components/Passeios';
+import MeusPasseios from './components/MeusPasseios'
 
 
 export default function App() {
   return (
     <SafeAreaView>
       {/*<Cadastro />*/}
-      <Passeios />
+      {/*<Passeios />*/}
+      <MeusPasseios />
     </SafeAreaView>
   );
 }
