@@ -1,26 +1,24 @@
-import { Text, SafeAreaView, StyleSheet } from 'react-native';
-
-// or any files within the Snack
-import Cadastro  from './pages/Cadastro';
-import Login from './pages/Login';
-import Database from '../roteiriza/service/UsuarioService';
-
-
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+ 
+import Cadastro from './pages/Cadastro';
+import Perfil from './pages/perfil';
+ 
+const Stack = createStackNavigator()
+ 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Login />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{headerShown: true}}>
+        <Stack.Screen
+          name='Cadastro'
+          component={Cadastro}
+        />
+        <Stack.Screen
+          name='Perfil'
+          component={Perfil}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-    paddingTop: 70,
-  },
-});
