@@ -8,7 +8,7 @@ import Body from '../components/Body';
 const Usuario = () => {
   return (
     <Container>
-      <Header title={'Perfil do usuário'} />
+      <Header title={'Roteiro'} />
 
       <Body>
         <Typography style={TypographyStyles.bodyText}>

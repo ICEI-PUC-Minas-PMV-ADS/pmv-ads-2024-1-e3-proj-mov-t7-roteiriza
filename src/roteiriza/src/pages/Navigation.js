@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { BottomNavigation} from 'react-native-paper';
-import { StyleSheet } from 'react-native';
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 import Home from './Home';
 import Viagem from './Viagem';
@@ -8,45 +9,88 @@ import Bagagem from './Bagagem';
 import Roteiro from './Roteiro';
 import Usuario from './Usuario';
 
+const Tab = createBottomTabNavigator();
+
 const Navigation = () => {
-  const [index, setIndex] = useState(0);
-  const [routes] = useState([
-    { key: 'home', icon: 'home'},
-    { key: 'viagem', icon: 'dots-grid'},
-    { key: 'bagagem', icon: 'bag-suitcase-outline'},
-    { key: 'roteiro', icon: 'map-outline'},
-    { key: 'usuario', icon: 'account'},
-  ]);
-
-  const renderScene = BottomNavigation.SceneMap({
-    home: Home,
-    viagem: Viagem,
-    bagagem: Bagagem,
-    roteiro: Roteiro,
-    usuario: Usuario,
-  });
-
   return (
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-      barStyle={styles.background}
-    />
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, focused }) => {
+          let iconName;
+
+          if (route.name === 'home') {
+            iconName = 'home';
+            iconSize = 24;
+          } else if (route.name === 'viagem') {
+            iconName = 'compass';
+            iconSize = 26;
+          } else if (route.name === 'bagagem') {
+            iconName = 'suitcase';
+            iconSize = 24;
+          } else if (route.name === 'roteiro') {
+            iconName = 'map';
+            iconSize = 20;
+          } else if (route.name === 'usuario') {
+            iconName = 'user';
+            iconSize = 24;
+          }
+
+          return <Icon name={iconName} size={iconSize} color={focused ? '#F5BD60' : color} />;
+        },
+        tabBarActiveTintColor: '#F5BD60',
+        tabBarInactiveTintColor: '#ccc',
+        tabBarStyle: {
+          backgroundColor: '#063A7A', 
+          borderTopColor: 'transparent',
+          paddingTop: 12,
+          borderTopRightRadius: 15,
+          borderTopLeftRadius: 15,
+          height: 70,
+        },
+      })}
+    >
+      <Tab.Screen
+        name="home"
+        component={Home}
+        options={{
+          tabBarLabel: '',
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="viagem"
+        component={Viagem}
+        options={{
+          tabBarLabel: '',
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="bagagem"
+        component={Bagagem}
+        options={{
+          tabBarLabel: '',
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="roteiro"
+        component={Roteiro}
+        options={{
+          tabBarLabel: '',
+          headerShown: false,
+        }}
+      />
+      <Tab.Screen
+        name="usuario"
+        component={Usuario}
+        options={{
+          tabBarLabel: '',
+          headerShown: false,
+        }}
+      />
+    </Tab.Navigator>
   );
 };
-
-
-const styles = StyleSheet.create({
-  background: {
-    height: 60,
-    backgroundColor: '#063A7A',
-    paddingTop: 10,
-    borderRadius: 15,
-    shadowOffset: { width: 2, height: -10 },
-    shadowOpacity: 0.3,
-    shadowRadius: 30,
-  },
-});
 
 export default Navigation;

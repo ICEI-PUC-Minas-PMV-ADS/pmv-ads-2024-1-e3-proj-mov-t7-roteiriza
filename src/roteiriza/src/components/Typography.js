@@ -5,7 +5,7 @@ import { useFonts } from 'expo-font';
 const Typography = ({ children, style }) => {
     // Ínicio do código para carregar a fonte Inter de forma assíncrona.
     let [fontsLoaded] = useFonts({
-      'Inter': require('../assets/Inter font/Inter-Regular.ttf'), // Adjust the path as needed
+      'Inter': require('../assets/Inter_font/Inter-Regular.ttf'), // Adjust the path as needed
     });
   
     if (!fontsLoaded) {
