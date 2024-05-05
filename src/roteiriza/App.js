@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Viagem01 from '../pages/Viagem01';
-import Viagem02 from '../pages/Viagem02';
+import Viagem01 from '../roteiriza/pages/Viagem01';
+import Viagem02 from '../roteiriza/pages/Viagem02';
 
 const Stack = createStackNavigator()
 
@@ -11,11 +11,11 @@ export default function App(){
       <Stack.Navigator screenOptions={{headerShown: true}}>
 
       <Stack.Screen
-        name = 'NovaViagem1'
+        name = 'Viagem01'
         component={Viagem01}
       />
       <Stack.Screen
-        name = 'NovaViagem2'
+        name = 'Viagem02'
         component={Viagem02}
       />
 </Stack.Navigator>

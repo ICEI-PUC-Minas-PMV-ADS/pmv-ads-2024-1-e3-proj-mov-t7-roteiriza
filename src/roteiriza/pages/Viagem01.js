@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
-import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 const Viagem01 = () => {
@@ -16,14 +15,14 @@ const Viagem01 = () => {
   const mapContainerHeight = 660 / 1000 * windowHeight;
   const gap = 30; // Espaço entre os contêineres
   const handleRederect = () => {
-    navigation.navigate('NovaViagem02')
+    navigation.navigate('Viagem02')
   }
   return (
     <View style={styles.container}>
       {/* Map Container */}
       <View style={[styles.mapContainer, { flex: 0.8 }]}>
         <ImageBackground
-          source={require('./assets/mapanovaviagem.jpg')}
+          source={require('../assets/mapanovaviagem.jpg')}
           style={[styles.image, { marginTop: 50, marginBottom: 50 }]} // Adicionando margem superior e inferior
           resizeMode="cover"
         >
