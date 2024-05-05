@@ -1,10 +1,6 @@
 # Arquitetura da Solução
 
-<span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>
-
-Definição de como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
-
-![Arquitetura da Solução](img/02-mob-arch.png)
+Mostraremos a seguir como o software é estruturado em termos dos componentes que fazem parte da solução e do ambiente de hospedagem da aplicação.
 
 ## Diagrama de Classes
 
@@ -20,12 +16,14 @@ O modelo ER da aplicação é representado nas imagens a seguir.
 ## Modelo Lógico
 
 ![lÓGICO](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/c3d36e12-42e5-40cd-af01-c04b663392a1)
+_Modelo Lógico_
 
 O Esquema Relacional corresponde à representação dos dados em tabelas juntamente com as restrições de integridade e chave primária.
 
 ## Modelo Conceitual
- 
-![Group_61](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/fe67b130-6bdd-4736-a7d8-0847ae248ec8)
+
+![Wireframe - 1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/114627827/d0a18987-f4cb-4ee8-bcac-8effd7006a7a)
+_Modelo Conceitual_
 
 ## Modelo Físico
 
@@ -33,13 +31,21 @@ O modelo físico do banco de dados pode ser visto nas imagens a seguir.
 
 ![BD-1](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/23e5bf58-12ac-4a04-80ff-d2a92c231e5a)
 
+_Modelo Físico do Banco de Dados - Figura 1_
+
 ![BD-2](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/116499898/eaffc7f5-7f73-416e-9af8-b278eb80edfa)
+
+_Modelo Físico do Banco de Dados - Figura 2_
 
 ## Tecnologias Utilizadas
 
-Descreva aqui qual(is) tecnologias você vai usar para resolver o seu problema, ou seja, implementar a sua solução. Liste todas as tecnologias envolvidas, linguagens a serem utilizadas, serviços web, frameworks, bibliotecas, IDEs de desenvolvimento, e ferramentas.
-
-Apresente também uma figura explicando como as tecnologias estão relacionadas ou como uma interação do usuário com o sistema vai ser conduzida, por onde ela passa até retornar uma resposta ao usuário.
+- **Linguagens:** JavaScript;
+- **Frameworks:** React Native;
+- **IDE:** Visual Studio Code;
+- **Banco de Dados Relacional:** SQLite;
+- **Hospedagem:** Heroku;
+- **Design de interface:** Figma;
+- **Análise de Acessibilidade:** Lighthouse.
 
 ## Hospedagem
 
@@ -54,15 +60,29 @@ Explique como a hospedagem e o lançamento da plataforma foi feita.
 
 ## Qualidade de Software
 
-Conceituar qualidade de fato é uma tarefa complexa, mas ela pode ser vista como um método gerencial que através de procedimentos disseminados por toda a organização, busca garantir um produto final que satisfaça às expectativas dos stakeholders.
+Para fins de análise de qualidade da aplicação, utilizaremos como base os critérios da norma de Qualidade de Produto de Software - ISO/IEC 9126. Conforme a norma, levantamos 6 características de qualidade com 2 subcaracterísticas cada, elas são:
 
-No contexto de desenvolvimento de software, qualidade pode ser entendida como um conjunto de características a serem satisfeitas, de modo que o produto de software atenda às necessidades de seus usuários. Entretanto, tal nível de satisfação nem sempre é alcançado de forma espontânea, devendo ser continuamente construído. Assim, a qualidade do produto depende fortemente do seu respectivo processo de desenvolvimento.
+### 1. Funcionalidade
+- **Adequação:** Será analisado se o software atende a todos os requisitos que foram propostos durante o planejamento do produto. A fim de garantir que todos os desejos do cliente foram atendidos de forma íntegra.
+- **Acurácia:** Será analisado se o produto final gera os resultados previstos corretamente, para que não haja inconsistências durante o uso do software final.
 
-A norma internacional ISO/IEC 25010, que é uma atualização da ISO/IEC 9126, define oito características e 30 subcaracterísticas de qualidade para produtos de software.
-Com base nessas características e nas respectivas sub-características, identifique as sub-características que sua equipe utilizará como base para nortear o desenvolvimento do projeto de software considerando-se alguns aspectos simples de qualidade. Justifique as subcaracterísticas escolhidas pelo time e elenque as métricas que permitirão a equipe avaliar os objetos de interesse.
+### 2. Confiabilidade
+- **Tolerância de Falhas:** Tendo em vista que o software é voltado à adição de informações pelo usuário, será analisado como ele se comportará em caso de falhas do sistema em relação a recuperabilidade dos dados preenchidos pelo usuário.
+- **Maturidade:** Será analisado os diferentes cenários propícios à falhas do software, visando otimizar o sistema com o objetivo de obter o mínimo de falhas possíveis dentro das condições atuais.
 
-> **Links Úteis**:
->
-> - [ISO/IEC 25010:2011 - Systems and software engineering — Systems and software Quality Requirements and Evaluation (SQuaRE) — System and software quality models](https://www.iso.org/standard/35733.html/)
-> - [Análise sobre a ISO 9126 – NBR 13596](https://www.tiespecialistas.com.br/analise-sobre-iso-9126-nbr-13596/)
-> - [Qualidade de Software - Engenharia de Software 29](https://www.devmedia.com.br/qualidade-de-software-engenharia-de-software-29/18209/)
+### 3. Usabilidade
+- **Apreensibilidade:** Será analisada a capacidade de aprendizado de utilização do software pelo usuário, com o objetivo de obter um produto final intuitivo e de fácil acesso às suas funcionalidades.
+- **Atratividade:** Será analisado o índice de atratividade do software, visando direcionar a atenção do usuário a determinadas funções da aplicação, facilitando seu entendimento indicando o próximo passo a ser dado pelo usuário para concluir a ação desejada.
+
+### 4. Eficiência:
+- **Comportamento em relação ao tempo:** Será analisada a capacidade de resposta e apresentação de informações do aplicativo para o usuário, visando um sistema ágil e um desempenho otimizado.
+- **Conformidade:** Será analisado como o software lida com os recursos disponibilizados e seu tempo de entrega de informações ao usuário, visando um equilíbrio aceitável entre a busca de dados pelo software e o tempo de resposta da aplicação.
+
+### 5. Manutenibilidade:
+- **Analisabilidade:** Visando facilitar o entendimento da aplicação para o time de desenvolvimento, será feita uma análise de código do software para identificar pontos de melhoria, problemas que precisam ser resolvidos, além de buscar implementar um código limpo e de fácil compreensão.
+- **Modificabilidade:** Será analisada a capacidade do código em aceitar novas alterações para manutenção e correção de eventuais problemas de forma fácil e organizada. Visando manter um código limpo, semântico e bem identado.
+
+### 6. Portabilidade:
+- **Capacidade de ser instalado:** Será analisada as possíveis dificuldades enfrentadas durante a instalação do software, visando garantir uma instalação fácil e segura.
+- **Adaptabilidade:** Será analisado como o software se comportará nos sistemas Android e IOS, para garantir seu bom funcionamento nesses dois ambientes.
+
