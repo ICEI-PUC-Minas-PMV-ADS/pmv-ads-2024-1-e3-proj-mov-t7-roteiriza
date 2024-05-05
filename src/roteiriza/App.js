@@ -1,22 +1,14 @@
-import { Text, SafeAreaView, StyleSheet } from 'react-native';
+import React from 'react';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-// or any files within the Snack
-import Cadastro  from './components/Cadastro';
+import Navigation from './src/pages/Navigation';
 
-export default function App() {
+const App = () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <Cadastro />
-    </SafeAreaView>
-  );
-}
+    <SafeAreaProvider>
+      <Navigation />
+    </SafeAreaProvider>
+  )
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-    padding: 8,
-    paddingTop: 70,
-  },
-});
+export default App;
