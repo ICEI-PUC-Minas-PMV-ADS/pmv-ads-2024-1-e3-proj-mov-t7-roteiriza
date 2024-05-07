@@ -1,16 +1,19 @@
-import firebase from 'firebase';
+import { initializeApp } from '@firebase/app';
+import { getFirestore } from '@firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC3T5Uqo4WwmygkIvYiCv-5RdESGtkyr8E",
-  authDomain: "teste-bbc13.firebaseapp.com",
-  projectId: "teste-bbc13",
-  storageBucket: "teste-bbc13.appspot.com",
-  messagingSenderId: "662570204489",
-  appId: "1:662570204489:web:24cd11d3f40fd6a12aae98"
+  apiKey: "AIzaSyC-Tz-volbh5B9ajv_3IlI8kUMbKF2-8zA",
+  authDomain: "teste-auth-84f28.firebaseapp.com",
+  projectId: "teste-auth-84f28",
+  storageBucket: "teste-auth-84f28.appspot.com",
+  messagingSenderId: "508782609622",
+  appId: "1:508782609622:web:6b36e2cf364252d67af577"
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+// Inicialize o Firebase
+const app = initializeApp(firebaseConfig);
 
-export {firebase}; 
+// Obtenha uma instância do Firestore
+const firestore = getFirestore(app);
+
+export { app, firestore };
