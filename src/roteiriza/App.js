@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from '@firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail  } from 'firebase/auth';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
 
 import { app, firestore } from './firebase/config';
 import Autenticador from './pages/Autenticador';
 import AuthenticatedScreen from './pages/authenticatedScreen';
 import Perfil from './pages/perfil';
+import Forgot_password from './pages/Esq_Senha';
 
 const App = () => {
   const [name, setName] = useState('');
@@ -25,7 +26,20 @@ const App = () => {
     return () => unsubscribe();
   }, [auth]);
 
-  
+  const handleResetPassword = (emailRec) => {
+    if(user){
+      sendPasswordResetEmail( auth, emailRec)
+        .then(() => {
+          alert('Sucesso Um e-mail de redefinição de senha foi enviado.');
+          
+        })
+        .catch((error) => {
+          alert('Erro Ocorreu um erro ao enviar o e-mail de redefinição de senha. Por favor, tente novamente.');
+          console.error('Erro ao redefinir a senha:', error);
+        });
+    }
+  }
+
   const handleAuthentication = async () => {
     try {
 
@@ -82,9 +96,10 @@ const App = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {user ? (
         // Show user's email if user is authenticated
-        <Perfil email={email} name={name} password={password} userId={userId} />
+        <Forgot_password user={user} handleResetPassword={handleResetPassword} />
       ) : (
         // Show sign-in or sign-up form if user is not authenticated
+        
         <Autenticador
           name={name}
           setName={setName}

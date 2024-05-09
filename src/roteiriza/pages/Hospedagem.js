@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import Input from '../components/input';
 import Typography from '../components/Typography';
@@ -12,7 +13,23 @@ const Hospedagem = () => {
   const [dias, setDias] = useState('');
   const [valor, setValor] = useState('');
 
+  const [mostrarCalendarioDataInicio, setMostrarCalendarioDataInicio] = useState(false);
+  const [mostrarCalendarioDataFinal, setMostrarCalendarioDataFinal] = useState(false);
+
   const hospRef = firebase.firestore().collection('hospedagem')
+
+  // Função para lidar com a seleção da data de início
+  const handleSelecionarDataInicio = (data) => {
+    setCheckIn(data.toISOString().split('T')[0]);
+    setMostrarCalendarioDataInicio(false);
+  };
+
+  // Função para lidar com a seleção da data final
+  const handleSelecionarDataFinal = (data) => {
+    setCheckOut(data.toISOString().split('T')[0]);
+    setMostrarCalendarioDataFinal(false);
+  };
+
 
   const loadHospedagem = () => {
 
@@ -82,6 +99,7 @@ const Hospedagem = () => {
           placeholder=""
           autoCapitalize="none"
           style={styles.input}
+          onFocus={() => setMostrarCalendarioDataInicio(true)}
         />
       </View>
       <View style={styles.inputHalf}>
@@ -92,6 +110,7 @@ const Hospedagem = () => {
           placeholder=""
           autoCapitalize="none"
           style={styles.input}
+          onFocus={() => setMostrarCalendarioDataFinal(true)}
         />
       </View>
     </View>
@@ -121,12 +140,28 @@ const Hospedagem = () => {
 
     <View style={styles.botaoContainer}>
       <TouchableOpacity style={styles.btn1} onPress={saveHospedagem}>
-        <Text style={[styles.text, { color: '#FFFFFF' }]}>Salvar</Text> {/* Cor do texto dentro do botão */}
+        <Text style={[styles.text, { color: '#FFFFFF' }]}>Salvar</Text> 
       </TouchableOpacity>
       <TouchableOpacity style={styles.btn2} onPress={cancelHospedagem}>
-        <Text style={styles.text}>Cancelar</Text> {/* Cor do texto dentro do botão */}
+        <Text style={styles.text}>Cancelar</Text> 
       </TouchableOpacity>
     </View>
+
+    <DateTimePickerModal
+      isVisible={mostrarCalendarioDataInicio}
+      mode="date"
+      locale="pt_BR" 
+      onConfirm={handleSelecionarDataInicio}
+      onCancel={() => setMostrarCalendarioDataInicio(false)}
+    />
+    <DateTimePickerModal
+      isVisible={mostrarCalendarioDataFinal}
+      mode="date"
+      locale="pt_BR" 
+      onConfirm={handleSelecionarDataFinal}
+      onCancel={() => setMostrarCalendarioDataFinal(false)}
+    />
+
   </View>
   );
 };
@@ -139,11 +174,13 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: '90%',
+    height: 65,
     marginBottom: 10,
   },
   line: {
     flexDirection: 'row',
     width: '90%',
+    height: 75,
     justifyContent: 'space-between',
     marginBottom: 10,
   },
@@ -189,12 +226,13 @@ const styles = StyleSheet.create({
 
   input: {
     flex: 1,
-    height: 50,
+    height: 30,
     borderColor: '#063A7A',
     borderWidth: 1,
     padding: 8,
     borderRadius: 10,
   },
+
    text: {
     color: '#063A7A',
     fontWeight: 'bold',
