@@ -31,7 +31,7 @@ const ListaAdicionada = ({NomeLocal, Data, Horario })=> {
                 transparent={true}
                 visible={modalVisible}
                 onRequestClose={() => {
-                    // Define o modal como invisivel
+                    // Deixa o modal como invisivel
                     setModalVisible(false);
                 }}
             >

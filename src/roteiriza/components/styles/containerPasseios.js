@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Text, View, Image, StyleSheet} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import InputNormal from '../styles/inputPadrao'
 import InputMenor from '../styles/inputMenor'
+import app from '../../services/firebaseConfig'
+import firebaseConfig from '../../services/firebaseConfig'
+import {collection, getDocs, getFirestore} from "firebase/firestore"
+
 
 const ContainerPasseios= () =>{
+    const [address, setAddress] = useState(" ");
+    const [date, setDate] = useState(" ");
+    const [hour, setHour] = useState(" ");
+    const [local, setLocal] = useState()
+    const [totalCost, setTotalCost] = useState(" ");
+    const [transport, setTransport] = useState(" ");
+
+    const db = getFirestore(firebaseConfig)
+    const tourCollectionRef = collection(db, 'tours')
+
+    useEffect = ( ()=> {
+        const getTours = async () => {
+            const data = await getDocs(tourCollectionRef)
+            console.log(data)
+        }
+        getTours()
+    })
+
     return(
        <View style={styles.container}>             
             <Image source={require('../../assets/img/imgpasseios2.png')} style={styles.img}/>
