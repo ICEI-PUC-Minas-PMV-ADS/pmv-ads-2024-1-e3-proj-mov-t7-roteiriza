@@ -9,6 +9,8 @@ import DropdownTransport from '../components/dropdownTransport';
 
 
 import {firebase} from '../firebase/config';
+import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
+import { app, firestore } from '../firebase/config';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 
@@ -23,7 +25,7 @@ const Passagem = () =>{
   const [valor, setValor] = useState("")
 
   //firebase
-  const hospRef = firebase.firestore().collection('passagem')
+  
 
   //Calendario
   const [mostrarCalendarioDataSaida, setMostrarCalendarioDataSaida] = useState(false);
@@ -46,6 +48,8 @@ const Passagem = () =>{
   };
 
   const savePassagem = () => {
+
+    const hospRef = collection(firestore, 'passagem');
 
     if(dataSaida && dataRetorno && qntdPessoas && transporte && valor && qntdMalas){
 
@@ -193,6 +197,7 @@ const Passagem = () =>{
             textButton={"SALVAR"} 
             color='#F5BD60' 
             fontColor='#FFFFFF'
+            onpress={savePassagem}
           />
 
          <Button 
@@ -201,6 +206,7 @@ const Passagem = () =>{
             fontColor='#181818' 
             borderColor={'black'} 
             borderWidth={2}
+            onpress={cancelPassagem}
           />
         </View>
 
