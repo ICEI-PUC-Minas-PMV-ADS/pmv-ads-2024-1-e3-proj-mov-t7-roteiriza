@@ -8,7 +8,7 @@ import Bagagem from './pagina2/Bagagem';
 import Roteiro from './pagina2/Roteiro';
 import Usuario from './pagina2/Usuario';
 
-const Navigation = ({ user }) => {
+const Navigation = ({ user, handleAuthentication}) => {
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'home', icon: 'home'},

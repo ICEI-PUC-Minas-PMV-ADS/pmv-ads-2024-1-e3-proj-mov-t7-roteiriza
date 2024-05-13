@@ -1,15 +1,22 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { Octicons, FontAwesome6} from '@expo/vector-icons'
+import { useNavigation } from '@react-navigation/native';
+
 
 import Container from '../components/Container';
 import Typography from '../components/Typography';
 
 const Autenticador = ({name, setName, email, setEmail, password, setPassword, isLogin, setIsLogin, handleAuthentication }) => {
 
+  const navigation = useNavigation();
+
+
   let logoSource = isLogin ? require('../assets/roteirizaLogo.png') : require('../assets/logo.png');
 
-  handleForgotPassword = {}
+  const handleForgotPassword = () =>{
+    navigation.navigate('recSenha');
+  }
 
   return (
     <Container>

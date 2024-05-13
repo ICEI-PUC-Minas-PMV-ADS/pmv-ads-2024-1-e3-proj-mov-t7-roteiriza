@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet, SafeAreaView } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
+
+
 
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail  } from 'firebase/auth';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
@@ -13,7 +18,10 @@ import Forgot_password from './pages/Esq_Senha';
 import Passagem from './pages/Passagem'
 import Teste from './pages/Teste';
 import Hospedagem from './pages/Hospedagem';
-import Navigation from './pages/Navigation';
+import Navigation  from './pages/Navigation';
+
+import Container from './components/Container';
+
 
 
 const App = () => {
@@ -23,6 +31,8 @@ const App = () => {
   const [user, setUser] = useState(null); // Track user authentication state
   const [isLogin, setIsLogin] = useState(true);
   const [userId, setUserId] = useState(null); // Track user document ID
+
+  const Stack = createStackNavigator()
 
   const auth = getAuth(app);
   useEffect(() => {
@@ -100,37 +110,40 @@ const App = () => {
   };
 
   return (
-    <SafeAreaProvider>
-      <ScrollView contentContainerStyle={styles.container}>
+    <SafeAreaProvider style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         {user ? (
-          // Mostrar o email do usuário se o usuário estiver autenticado
-          <Navigation user={user}/>
+          <Navigation user={user} handleAuthentication={handleAuthentication}/>
         ) : (
-          // Mostrar formulário de login ou registro se o usuário não estiver autenticado
-          <Autenticador
-            name={name}
-            setName={setName}
-            email={email}
-            setEmail={setEmail}
-            password={password}
-            setPassword={setPassword}
-            isLogin={isLogin}
-            setIsLogin={setIsLogin}
-            handleAuthentication={handleAuthentication}
-          />
+          <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: true }}>
+              <Stack.Screen name="Autenticador">
+                {props => (
+                  <Autenticador
+                    {...props}
+                    name={name}
+                    setName={setName}
+                    email={email}
+                    setEmail={setEmail}
+                    password={password}
+                    setPassword={setPassword}
+                    isLogin={isLogin}
+                    setIsLogin={setIsLogin}
+                    handleAuthentication={handleAuthentication}
+                  />
+                )}
+              </Stack.Screen>
+              <Stack.Screen name="recSenha" component={Forgot_password} />
+            </Stack.Navigator>
+          </NavigationContainer>
         )}
       </ScrollView>
     </SafeAreaProvider>
   );
+ 
+  
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    justifyContent: 'center',
-    padding: 0,
-    backgroundColor: '#f0f0f0',
-  },
-});
+
 
 export default App;
