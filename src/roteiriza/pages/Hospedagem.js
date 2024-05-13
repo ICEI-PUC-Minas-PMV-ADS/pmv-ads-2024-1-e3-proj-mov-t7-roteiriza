@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
 
-import Input from '../components/input';
+
+import Input from '../components/Input';
 import Typography from '../components/Typography';
-import {firebase} from '../firebase/config';
+import { firebase } from '../firebase/config';
+
 
 const Hospedagem = () => {
   const [local, setLocal] = useState('');
@@ -16,7 +19,6 @@ const Hospedagem = () => {
   const [mostrarCalendarioDataInicio, setMostrarCalendarioDataInicio] = useState(false);
   const [mostrarCalendarioDataFinal, setMostrarCalendarioDataFinal] = useState(false);
 
-  const hospRef = firebase.firestore().collection('hospedagem')
 
   // Função para lidar com a seleção da data de início
   const handleSelecionarDataInicio = (data) => {
@@ -36,6 +38,8 @@ const Hospedagem = () => {
   };
 
   const saveHospedagem = () => {
+
+    const hospRef = collection(firestore, 'passagem');
 
     if(local && checkIn && checkOut && dias && valor){
 

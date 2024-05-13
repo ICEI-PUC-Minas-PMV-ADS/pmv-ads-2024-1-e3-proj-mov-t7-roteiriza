@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, SafeAreaView } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail  } from 'firebase/auth';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
 
@@ -8,6 +10,11 @@ import Autenticador from './pages/Autenticador';
 import AuthenticatedScreen from './pages/authenticatedScreen';
 import Perfil from './pages/perfil';
 import Forgot_password from './pages/Esq_Senha';
+import Passagem from './pages/Passagem'
+import Teste from './pages/Teste';
+import Hospedagem from './pages/Hospedagem';
+import Navigation from './pages/Navigation';
+
 
 const App = () => {
   const [name, setName] = useState('');
@@ -93,26 +100,27 @@ const App = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      {user ? (
-        // Show user's email if user is authenticated
-        <Forgot_password user={user} handleResetPassword={handleResetPassword} />
-      ) : (
-        // Show sign-in or sign-up form if user is not authenticated
-        
-        <Autenticador
-          name={name}
-          setName={setName}
-          email={email}
-          setEmail={setEmail}
-          password={password}
-          setPassword={setPassword}
-          isLogin={isLogin}
-          setIsLogin={setIsLogin}
-          handleAuthentication={handleAuthentication}
-        />
-      )}
-    </ScrollView>
+    <SafeAreaProvider>
+      <ScrollView contentContainerStyle={styles.container}>
+        {user ? (
+          // Mostrar o email do usuário se o usuário estiver autenticado
+          <Navigation user={user}/>
+        ) : (
+          // Mostrar formulário de login ou registro se o usuário não estiver autenticado
+          <Autenticador
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            isLogin={isLogin}
+            setIsLogin={setIsLogin}
+            handleAuthentication={handleAuthentication}
+          />
+        )}
+      </ScrollView>
+    </SafeAreaProvider>
   );
 }
 
@@ -120,8 +128,7 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    padding: 16,
+    padding: 0,
     backgroundColor: '#f0f0f0',
   },
 });
