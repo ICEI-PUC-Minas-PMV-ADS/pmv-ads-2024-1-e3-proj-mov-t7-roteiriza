@@ -9,16 +9,19 @@ import { app } from '../firebase/config'
 const ForgotPasswordScreen = ({ user }) => {
 
     const [EmailRec, setEmailRec] = useState('');
+    const [User , setUser] = useState('')
 
     const auth = getAuth(app);
 
     useEffect(() => {
       const unsubscribe = onAuthStateChanged(auth, (user) => {
         setUser(user);
-        console.log(user.email)
+        
       });
       
-      setEmailRec(user.email)
+      if (user){      
+        setEmailRec(user.email)
+      }
 
       return () => unsubscribe();
     }, [auth]);
@@ -73,10 +76,7 @@ const ForgotPasswordScreen = ({ user }) => {
         <TouchableOpacity onPress={handleResetPassword} style={styles.button}>
           <Text style={styles.buttonText}>Enviar código</Text>
         </TouchableOpacity>
-        <View style={styles.footer}>
-          <Text>Novo membro?</Text>
-          <Text style={styles.link}>Registrar-se</Text>
-        </View>
+        
       </View>
     </Background>
   );

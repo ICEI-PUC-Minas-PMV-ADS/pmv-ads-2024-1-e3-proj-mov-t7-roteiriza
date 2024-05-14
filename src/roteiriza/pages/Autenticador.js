@@ -23,48 +23,47 @@ const Autenticador = ({name, setName, email, setEmail, password, setPassword, is
       <View style={styles.imgContainer}>
         <Image source={logoSource} />
       </View>
+      <View style={styles.authContainer}>
+        {!isLogin && (
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.input}
+              value={name}
+              onChangeText={setName}
+              placeholder="Name"
+              autoCapitalize="none"
+              inlineImageRight="circle-user"
 
-      {!isLogin && (
+            />
+            <FontAwesome6 name="circle-user" style={styles.userIcon} size={24} color="#063A7A" />
+          </View>
+        )}
         <View style={styles.inputContainer}>
           <TextInput
             style={styles.input}
-            value={name}
-            onChangeText={setName}
-            placeholder="Name"
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Email"
             autoCapitalize="none"
-            inlineImageRight="circle-user"
+            inlineImageRight="mail"
+          />
+          <Octicons name="mail" style={styles.mailIcon} size={24} color="#063A7A" />
+
+        </View>
+
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            value={password}
+            onChangeText={setPassword}
+            placeholder="Senha"
+            secureTextEntry
+            inlineImageRight="lock"
 
           />
-          <FontAwesome6 name="circle-user" style={styles.userIcon} size={24} color="#063A7A" />
+          <Octicons name="lock" style={styles.passwordIcon} size={24} color="#063A7A" />
         </View>
-      )}
-
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={email}
-          onChangeText={setEmail}
-          placeholder="Email"
-          autoCapitalize="none"
-          inlineImageRight="mail"
-        />
-        <Octicons name="mail" style={styles.mailIcon} size={24} color="#063A7A" />
-
       </View>
-
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={password}
-          onChangeText={setPassword}
-          placeholder="Senha"
-          secureTextEntry
-          inlineImageRight="lock"
-
-        />
-        <Octicons name="lock" style={styles.passwordIcon} size={24} color="#063A7A" />
-      </View>
-
       {isLogin && (
         <TouchableOpacity onPress={handleForgotPassword}>
           <Text style={styles.toggleText}>Esqueceu sua senha? Redefina agora</Text>
@@ -88,13 +87,10 @@ const Autenticador = ({name, setName, email, setEmail, password, setPassword, is
 }
 
 const styles = StyleSheet.create({
-  authContainer: {
-    width: '100%',
-    height: '100%',
+  authContainer: { 
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
-    padding: 40,
     borderRadius: 8,
   },
   title: {

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { BottomNavigation} from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 
-import Home from './pagina2/Home';
+import Viagem01 from './Viagem01';
+import Viagem02 from './Viagem02';
 import Viagem from './pagina2/Viagem';
-import Bagagem from './pagina2/Bagagem';
+import MeusPasseios from './MeusPasseios';
 import Roteiro from './Esq_Senha';
 import Usuario from './pagina2/Usuario';
 
@@ -23,11 +24,11 @@ const Navigation = ({ user, handleAuthentication}) => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    home: () => <Home user={user} />,
-    viagem: () => <Viagem user={user} />,
-    bagagem: () => <Bagagem user={user} />,
-    roteiro: () => <Roteiro user={user} />,
-    usuario: () => <Usuario user={user} />,
+    home:   () => <Viagem01 user={user} handleAuthentication={handleAuthentication}/>,
+    viagem: () => <Viagem user={user} handleAuthentication={handleAuthentication}/>,
+    bagagem: () => <MeusPasseios user={user} handleAuthentication={handleAuthentication}/>,
+    roteiro: () => <Roteiro user={user} handleAuthentication={handleAuthentication}/>,
+    usuario: () => <Usuario user={user} handleAuthentication={handleAuthentication}/>,
   });
 
   return (
