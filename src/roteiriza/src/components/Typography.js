@@ -28,9 +28,15 @@ export const TypographyStyles = {
     fontSize: 20,
     fontWeight: 'bold',
   },
+  subHeaderTitle: {
+    ...styles.text,
+    color: '#75B1FA',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
   bodyText: {
     ...styles.text,
-    color: '#063A7A',
+    color: '#181818',
     fontSize: 14,
     fontWeight: 500,
     height: 20,
