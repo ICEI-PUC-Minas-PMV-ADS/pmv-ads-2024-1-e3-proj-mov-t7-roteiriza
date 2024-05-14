@@ -43,20 +43,7 @@ const App = () => {
     return () => unsubscribe();
   }, [auth]);
 
-  const handleResetPassword = (emailRec) => {
-    if(user){
-      sendPasswordResetEmail( auth, emailRec)
-        .then(() => {
-          alert('Sucesso Um e-mail de redefinição de senha foi enviado.');
-          
-        })
-        .catch((error) => {
-          alert('Erro Ocorreu um erro ao enviar o e-mail de redefinição de senha. Por favor, tente novamente.');
-          console.error('Erro ao redefinir a senha:', error);
-        });
-    }
-  }
-
+  
   const handleAuthentication = async () => {
     try {
 
@@ -133,7 +120,17 @@ const App = () => {
                   />
                 )}
               </Stack.Screen>
-              <Stack.Screen name="recSenha" component={Forgot_password} />
+        
+
+              <Stack.Screen name="recSenha">
+                {props =>(
+                    <Forgot_password
+                      {...props}         
+                      user={null}
+                    />
+                )}
+                  
+              </Stack.Screen>             
             </Stack.Navigator>
           </NavigationContainer>
         )}

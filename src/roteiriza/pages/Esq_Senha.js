@@ -1,15 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, Alert } from 'react-native';
-import { auth } from '@firebase/auth';
 import { Background } from '../components/ContainerTitle';
 
-const ForgotPasswordScreen = ({ user, handleResetPassword }) => {
+import { getAuth, onAuthStateChanged, signOut, sendPasswordResetEmail  } from 'firebase/auth';
 
-    const [emailRec, setEmailRec] = useState('');
+import { app } from '../firebase/config'
 
-    const handleResetPasswordClick = () => {
-      handleResetPassword(emailRec);
+const ForgotPasswordScreen = ({ user }) => {
+
+    const [EmailRec, setEmailRec] = useState('');
+
+    const auth = getAuth(app);
+
+    useEffect(() => {
+      const unsubscribe = onAuthStateChanged(auth, (user) => {
+        setUser(user);
+        console.log(user.email)
+      });
+      
+      setEmailRec(user.email)
+
+      return () => unsubscribe();
+    }, [auth]);
+
+    const handleResetPassword = () => {
+      console.log('a função foi chamada')
+      console.log(EmailRec)
+      console.log(user)
+      
+      if(user){
+        sendPasswordResetEmail( auth, EmailRec)
+          .then(() => {
+            alert('Sucesso Um e-mail de redefinição de senha foi enviado.');
+            
+          })
+          .catch((error) => {
+            alert('Erro Ocorreu um erro ao enviar o e-mail de redefinição de senha. Por favor, tente novamente.');
+            console.error('Erro ao redefinir a senha:', error);
+          });
+      }
+      else{
+        
+        sendPasswordResetEmail( auth, EmailRec)
+        console.log('Houve uma tentativa')
+      }
     }
+  
 
   return (
     <Background style={styles.container} colors={['#ffff', '#ffff']}>
@@ -25,7 +61,7 @@ const ForgotPasswordScreen = ({ user, handleResetPassword }) => {
 
         <TextInput
           style={styles.input}
-          value={emailRec}
+          value={EmailRec}
           onChangeText={setEmailRec}
           placeholder="Digite seu e-mail"
           keyboardType="email-address"
@@ -34,7 +70,7 @@ const ForgotPasswordScreen = ({ user, handleResetPassword }) => {
       </View>
 
       <View style={styles.bottom}>
-        <TouchableOpacity onPress={handleResetPasswordClick} style={styles.button}>
+        <TouchableOpacity onPress={handleResetPassword} style={styles.button}>
           <Text style={styles.buttonText}>Enviar código</Text>
         </TouchableOpacity>
         <View style={styles.footer}>

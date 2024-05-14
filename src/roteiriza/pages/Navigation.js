@@ -5,10 +5,14 @@ import { StyleSheet } from 'react-native';
 import Home from './pagina2/Home';
 import Viagem from './pagina2/Viagem';
 import Bagagem from './pagina2/Bagagem';
-import Roteiro from './pagina2/Roteiro';
+import Roteiro from './Esq_Senha';
 import Usuario from './pagina2/Usuario';
 
 const Navigation = ({ user, handleAuthentication}) => {
+
+  console.log(user)
+  console.log(user.email)
+  
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'home', icon: 'home'},
@@ -19,11 +23,11 @@ const Navigation = ({ user, handleAuthentication}) => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    home: Home,
-    viagem: Viagem,
-    bagagem: Bagagem,
-    roteiro: Roteiro,
-    usuario: Usuario,
+    home: () => <Home user={user} />,
+    viagem: () => <Viagem user={user} />,
+    bagagem: () => <Bagagem user={user} />,
+    roteiro: () => <Roteiro user={user} />,
+    usuario: () => <Usuario user={user} />,
   });
 
   return (
