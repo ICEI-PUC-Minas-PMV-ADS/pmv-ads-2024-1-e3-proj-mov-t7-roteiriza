@@ -91,7 +91,6 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   introducao: {
-    marginTop: -10,
     marginBottom: 40,
   },
 

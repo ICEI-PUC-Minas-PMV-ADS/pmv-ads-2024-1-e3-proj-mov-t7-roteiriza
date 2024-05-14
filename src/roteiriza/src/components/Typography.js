@@ -39,7 +39,7 @@ export const TypographyStyles = {
     color: '#181818',
     fontSize: 14,
     fontWeight: 500,
-    height: 20,
+    lineHeight: 20,
     marginTop: 5,
   },
   bodyTextHighlighted: {
