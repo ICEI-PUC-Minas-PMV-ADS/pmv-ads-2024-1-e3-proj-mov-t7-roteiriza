@@ -42,6 +42,13 @@ export const TypographyStyles = {
     lineHeight: 20,
     marginTop: 5,
   },
+  cardText: {
+    ...styles.text,
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 20,
+  },
   bodyTextHighlighted: {
     ...styles.text,
     color: '#75B1FA',
