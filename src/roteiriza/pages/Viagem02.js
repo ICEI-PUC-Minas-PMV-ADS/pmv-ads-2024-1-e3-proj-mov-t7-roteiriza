@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, TouchableWithoutFeedback, Dimensions } from 'react-native';
 import { app, firestore } from '../firebase/config';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -6,17 +6,16 @@ import { MaterialIcons } from '@expo/vector-icons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
 
-const Viagem02 = () => {
+const Viagem02 = ({ user, handleAuthentication, userId }) => {
   // Estados para os campos de entrada e controle da exibição do seletor de data
   const [destino, setDestino] = useState('');
   const [dataInicio, setDataInicio] = useState('');
   const [dataFinal, setDataFinal] = useState('');
   const [mostrarCalendarioDataInicio, setMostrarCalendarioDataInicio] = useState(false);
   const [mostrarCalendarioDataFinal, setMostrarCalendarioDataFinal] = useState(false);
+  const [idDoUsuario, setidDoUsuario] = useState('');
   // Estado para exibir mensagens na tela
   const [mensagem, setMensagem] = useState('');
-
-     
 
   // Função para lidar com a seleção da data de início
   const handleSelecionarDataInicio = (data) => {
@@ -41,6 +40,7 @@ const Viagem02 = () => {
   // Função para adicionar os dados da viagem
   const handleAdicionar = () => {
 
+    
     const userRef = collection(firestore, 'viagem'); 
 
     if (destino !== '' && dataInicio !== '' && dataFinal !== '') {
@@ -48,10 +48,11 @@ const Viagem02 = () => {
         Destino_Viagem:destino,
         DataInicio_Viagem:dataInicio,
         DataFinal_Viagem:dataFinal,
+        userId: userId
   
       }
   
-        addDoc (userRef,viagem) 
+        addDoc(userRef,viagem) 
           setMensagem('Parabéns! Viagem roteirizada com sucesso!');
         
 

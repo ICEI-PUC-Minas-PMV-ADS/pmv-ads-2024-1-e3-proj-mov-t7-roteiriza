@@ -30,7 +30,8 @@ const App = () => {
   const [password, setPassword] = useState('');
   const [user, setUser] = useState(null); // Track user authentication state
   const [isLogin, setIsLogin] = useState(true);
-  const [userId, setUserId] = useState(null); // Track user document ID
+  const [userId, setUserId] = useState(''); // Track user document ID
+  const [objectUser, setObjectUser] = useState('');
 
   const Stack = createStackNavigator()
 
@@ -48,22 +49,24 @@ const App = () => {
     try {
 
       if (user) {
-        // If user is already authenticated, log out
+        
         console.log('User logged out successfully!');
         await signOut(auth);
       } else {
-        // Sign in or sign up
         if (isLogin) {
-          // Sign in
           const login = await signInWithEmailAndPassword(auth, email, password);
           console.log('User signed in successfully!');
           
           if(login){
             let querySnapshot = await getDocs(query(collection(firestore, 'users'), where('Email', '==', email)));
 
-            const docSnap = querySnapshot.docs[0];
-            setUserId(docSnap.id);
-            
+            if (!querySnapshot.empty) {
+              const docSnap = querySnapshot.docs[0];
+              const userData = { id: docSnap.id, ...docSnap.data() };
+
+              setObjectUser(userData);
+              setUserId(docSnap.id);
+            }
           }
           else{
             console.log('Ocorreu um erro ao pegar o id do documento no login!')
@@ -81,12 +84,13 @@ const App = () => {
             Senha: password
           };
 
-          // Adicione um novo usuário e obtenha a referência do documento adicionado
           const docRef = await addDoc(userRef, item);
 
-          // Extraia o ID do documento adicionado
           const docId = docRef.id;
           setUserId(docId);
+
+          const userData = {id: docId, Name: name, Email: email, Senha: password }
+          setObjectUser(userData);
 
           console.log('User created successfully!');
         }
@@ -97,10 +101,12 @@ const App = () => {
   };
 
   return (
+    
+
     <SafeAreaProvider style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         {user ? (
-          <Navigation user={user} handleAuthentication={handleAuthentication}/>
+          <Navigation userId = {userId} user={user} handleAuthentication={handleAuthentication} objectUser = {objectUser}/>
         ) : (
           <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: true }}>

@@ -7,15 +7,15 @@ import Header from '../../components/Header';
 import Container from '../../components/Container';
 import Body from '../../components/Body';
 
-const Usuario = ( {user, handleAuthentication}) => {
+const Usuario = ( {user, handleAuthentication, objectUser }) => {
   const [text, setText] = useState('');
   const [EmailUser, setEmailUser] = useState('');
   const [PasswordUser, setPasswordUser] = useState('');
 
   useEffect(() => {
     if (user) {
-      setEmailUser(user.email);
-      setPasswordUser(user.password);
+      setEmailUser(objectUser.Email);
+      setPasswordUser(objectUser.Senha);
     }
   }, [user]);
 

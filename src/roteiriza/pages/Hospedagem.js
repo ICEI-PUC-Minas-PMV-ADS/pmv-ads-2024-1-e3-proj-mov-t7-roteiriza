@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { View, Image, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
+import { app, firestore } from '../firebase/config';
+
 
 
 import Input from '../components/Input';
 import Typography from '../components/Typography';
-import { firebase } from '../firebase/config';
 
 
-const Hospedagem = () => {
+const Hospedagem = ({ user,  handleAuthentication, userId }) => {
   const [local, setLocal] = useState('');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
@@ -39,7 +41,9 @@ const Hospedagem = () => {
 
   const saveHospedagem = () => {
 
-    const hospRef = collection(firestore, 'passagem');
+    console.log(userId)
+
+    const hospRef = collection(firestore, 'hospedagem');
 
     if(local && checkIn && checkOut && dias && valor){
 
@@ -48,25 +52,17 @@ const Hospedagem = () => {
         Dt_checkIn: checkIn,
         Dt_checkOut: checkOut,
         Dias: dias,
-        Valor: valor
+        Valor: valor,
+        userId: userId
       }
-
-      hospRef
-        .add(dadosHosp)
-        .then((ref) =>{
-          
-          setLocal('');
-          setCheckIn('');
-          setCheckOut('');
-          setDias('');
-          setValor('')
-
-          alert('Cadastro de hospedagem realizado com sucesso!');
-
-        })
-         .catch((error) => {
-            alert(error.message);
-          });
+      try{
+        addDoc(hospRef, dadosHosp)
+        alert('Cadastro de hospedagem realizado com sucesso!');
+      }
+      catch(error){
+        console.log("Ocorreu um erro ao salvar no banco de dados!", error)
+        alert("Ocorreu um erro ao salvar!")
+      }
     }
     else{
       alert('Preencha os campos corretamente!')
@@ -175,6 +171,7 @@ export default Hospedagem;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
+    paddingTop: 20
   },
   inputContainer: {
     width: '90%',
@@ -195,8 +192,8 @@ const styles = StyleSheet.create({
   logo: {
     height: 300,
     width: 280,
-    marginBottom: 30,
-    marginTop: 10,
+    marginBottom: 40,
+    marginTop: 30,
     borderRadius: 7,
   },
   btn1: {
@@ -225,7 +222,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '88%',
-    marginTop: 65
+    marginTop: 20
   },
 
   input: {
@@ -233,7 +230,7 @@ const styles = StyleSheet.create({
     height: 30,
     borderColor: '#063A7A',
     borderWidth: 1,
-    padding: 8,
+    padding: 4,
     borderRadius: 10,
   },
 

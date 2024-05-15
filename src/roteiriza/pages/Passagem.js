@@ -47,6 +47,9 @@ const Passagem = () =>{
 
   const savePassagem = () => {
 
+    const hospRef = collection(firestore, 'passagem');
+
+
     if(dataSaida && dataRetorno && qntdPessoas && transporte && valor && qntdMalas){
 
       let dadosPassagem = {

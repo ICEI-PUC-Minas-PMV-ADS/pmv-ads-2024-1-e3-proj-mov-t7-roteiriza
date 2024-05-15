@@ -8,12 +8,13 @@ import Viagem from './pagina2/Viagem';
 import MeusPasseios from './MeusPasseios';
 import Roteiro from './Esq_Senha';
 import Usuario from './pagina2/Usuario';
+import Hospedagem from './Hospedagem';
 
-const Navigation = ({ user, handleAuthentication}) => {
+import StackNavigation from './StackNavigation';
 
-  console.log(user)
-  console.log(user.email)
-  
+const Navigation = ({ user, handleAuthentication, userId, objectUser}) => {
+
+
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'home', icon: 'home'},
@@ -24,11 +25,11 @@ const Navigation = ({ user, handleAuthentication}) => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    home:   () => <Viagem01 user={user} handleAuthentication={handleAuthentication}/>,
-    viagem: () => <Viagem user={user} handleAuthentication={handleAuthentication}/>,
-    bagagem: () => <MeusPasseios user={user} handleAuthentication={handleAuthentication}/>,
+    home:   () => <StackNavigation user={user} handleAuthentication={handleAuthentication} userId = {userId} objectUser={objectUser}/>,
+    viagem: () => <Hospedagem user={user} handleAuthentication={handleAuthentication} userId = {userId}/>,
+    bagagem: () => <MeusPasseios user={user} handleAuthentication={handleAuthentication} />,
     roteiro: () => <Roteiro user={user} handleAuthentication={handleAuthentication}/>,
-    usuario: () => <Usuario user={user} handleAuthentication={handleAuthentication}/>,
+    usuario: () => <Usuario user={user} handleAuthentication={handleAuthentication} objectUser = {objectUser}/>,
   });
 
   return (

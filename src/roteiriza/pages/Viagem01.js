@@ -3,8 +3,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { View, Text, ImageBackground, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const Viagem01 = () => {
+const Viagem01 = ({ user, handleAuthentication, userId }) => {
 
+  const navigation = useNavigation();
 
   // Obtendo as dimensões da janela
   const windowWidth = Dimensions.get('window').width;
@@ -15,7 +16,9 @@ const Viagem01 = () => {
 
   const gap = 30; // Espaço entre os contêineres
 
- 
+  const handleRederect = () => {
+    navigation.navigate('Viagem02')
+  }
 
   return (
     <View style={styles.container}>
@@ -35,7 +38,7 @@ const Viagem01 = () => {
         <Text style={styles.title}>Roteirize{"\n"}sua viagem</Text>
         <Text style={styles.subtitle}>Adicione informações sobre o seu roteiro, hospedagem, alimentação, organização da mala e muito mais.</Text>
         {/* Add Button */}
-        <TouchableOpacity style={styles.addButton}>    
+        <TouchableOpacity style={styles.addButton} onPress={handleRederect}>    
           <View style={styles.iconCircle}>
             <Ionicons name="add" size={24} color="#ffffff" />
           </View>
@@ -50,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column', // Alterando a direção do flexbox para vertical
-    padding: 20, // Adicionando um padding para criar uma margem
+    padding: 10, // Adicionando um padding para criar uma margem
   },
   mapContainer: {
     flex: 1,
