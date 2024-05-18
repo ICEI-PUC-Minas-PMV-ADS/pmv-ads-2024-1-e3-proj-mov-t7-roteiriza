@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView, StyleSheet, SafeAreaView } from 'react-native';
+import { ScrollView, StyleSheet, SafeAreaView, LogBox } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -25,6 +25,8 @@ import Container from './components/Container';
 
 
 const App = () => {
+  LogBox.ignoreAllLogs(true);
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -66,6 +68,10 @@ const App = () => {
 
               setObjectUser(userData);
               setUserId(docSnap.id);
+
+              console.log(userData)
+
+              console.log(objectUser)
             }
           }
           else{
