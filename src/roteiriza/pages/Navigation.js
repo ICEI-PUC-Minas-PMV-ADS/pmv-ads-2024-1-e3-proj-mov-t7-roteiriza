@@ -14,8 +14,7 @@ import Home from './HomeViagem';
 import StackNavigation from './StackNavigation';
 
 const Navigation = ({ user, handleAuthentication, userId, objectUser}) => {
-
-
+  
   const [index, setIndex] = useState(0);
   const [routes] = useState([
     { key: 'home', icon: 'home'},
@@ -26,8 +25,8 @@ const Navigation = ({ user, handleAuthentication, userId, objectUser}) => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    home:   () => <StackNavigation user={user} handleAuthentication={handleAuthentication} userId = {userId} objectUser={objectUser}/>,
-    viagem: () => <Home user={user} handleAuthentication={handleAuthentication} userId = {userId} objectUser={objectUser}/>,
+    home:   () => <StackNavigation user={user} handleAuthentication={handleAuthentication} userId = {userId} objectUser={objectUser} />,
+    viagem: () => <Home user={user} handleAuthentication={handleAuthentication} objectUser={objectUser} userId = {userId} />,
     bagagem: () => <MeusPasseios user={user} handleAuthentication={handleAuthentication} />,
     roteiro: () => <Roteiro user={user} handleAuthentication={handleAuthentication}/>,
     usuario: () => <Usuario user={user} handleAuthentication={handleAuthentication} objectUser = {objectUser}/>,

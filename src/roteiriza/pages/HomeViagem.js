@@ -1,24 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+
 import Typography, { TypographyStyles } from '../components/Typography';
 import Header from '../components/Header';
 import Container from '../components/Container';
 import Body from '../components/Body';
 
-const Home = (user,  handleAuthentication, userId, objectUser) => {
-
-    const [nameUser, setNameUser] = useState('');
-    
-    useEffect(() => {
-        
-
-        console.log(userId)
+import { firestore } from '../firebase/config';
+import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
 
 
-      }, [user]);  
+const Home = ({user, handleAuthentication, userId, objectUser}) => {
+
+  const [UserName, setUserName] = useState('');
+
+  const [ListViagem, setListViagem] = useState([]);
 
 
+  useEffect(() => {
+    if (user && objectUser) {
+      setUserName(objectUser.Name);
+      listViagem();
+      console.log(ListViagem)
+    }
+    else{
+      console.log('Erro ao passar dados')
+    }
+  }, [user]);
 
+
+  const listViagem = async () => {
+    try{
+      const q = query(collection(firestore, 'viagem'), where('userId', '==', userId));
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        console.log('A função foi chamada')
+
+        const docSnap = querySnapshot.docs.map(doc => doc.data());
+
+        setListViagem(docSnap)
+
+      } 
+      else{
+        console.log('Sem viagens cadastradas')
+        setListViagem([]);
+      }
+    }  
+    catch(error){
+      console.log('Ocorreu um erro: ', error)
+    }
+  }
 
 
   const handlePressEdit = () => {
@@ -30,7 +62,7 @@ const Home = (user,  handleAuthentication, userId, objectUser) => {
 
   return (
     <Container>
-      <Header title={'Olá! $nome_user,'} />
+      <Header title={`Olá! ${UserName}`} />
       <Body>
         <View style={styles.introducao}>
           <Typography style={TypographyStyles.bodyText}>

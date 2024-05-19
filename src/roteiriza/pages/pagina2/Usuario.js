@@ -19,6 +19,8 @@ const Usuario = ( {user, handleAuthentication, objectUser }) => {
     }
   }, [user]);
 
+
+
   return (
     <Container>
       <Header title={'Perfil do usuário'} />

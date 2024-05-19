@@ -19,6 +19,8 @@ import Passagem from './pages/Passagem'
 import Teste from './pages/Teste';
 import Hospedagem from './pages/Hospedagem';
 import Navigation  from './pages/Navigation';
+import Usuario from './pages/pagina2/Usuario';
+import Home from './pages/HomeViagem';
 
 import Container from './components/Container';
 
@@ -64,14 +66,12 @@ const App = () => {
 
             if (!querySnapshot.empty) {
               const docSnap = querySnapshot.docs[0];
+              
               const userData = { id: docSnap.id, ...docSnap.data() };
 
               setObjectUser(userData);
               setUserId(docSnap.id);
 
-              console.log(userData)
-
-              console.log(objectUser)
             }
           }
           else{

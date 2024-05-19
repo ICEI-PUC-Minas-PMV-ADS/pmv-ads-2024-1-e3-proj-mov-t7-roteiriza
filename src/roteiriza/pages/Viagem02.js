@@ -43,6 +43,8 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
     
     const userRef = collection(firestore, 'viagem'); 
 
+    console.log(userId)
+
     if (destino !== '' && dataInicio !== '' && dataFinal !== '') {
       let viagem = {
         Destino_Viagem:destino,
