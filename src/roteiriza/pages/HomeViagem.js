@@ -7,7 +7,7 @@ import Container from '../components/Container';
 import Body from '../components/Body';
 
 import { firestore } from '../firebase/config';
-import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
+import { collection, addDoc, query, where, getDocs, deleteDoc, doc} from '@firebase/firestore';
 
 
 const Home = ({ user, handleAuthentication, userId, objectUser }) => {
@@ -26,6 +26,7 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
   }, [user, objectUser]);
 
   const listViagem = async () => {
+    
     try {
       const q = query(collection(firestore, 'viagem'), where('userId', '==', userId));
       const querySnapshot = await getDocs(q);
@@ -33,9 +34,12 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
       if (!querySnapshot.empty) {
         console.log('A função foi chamada');
 
-        const docSnap = querySnapshot.docs.map(doc => doc.data());
+        const docSnap = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data()}));
 
         setListViagem(docSnap);
+
+        console.log(ListViagem)
+
       } else {
         console.log('Sem viagens cadastradas');
         setListViagem([]);
@@ -59,9 +63,18 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
     Linking.openURL('#'); // ADICIONAR O LINK DE EDIÇÃO
   };
 
-  const handlePressDelete = () => {
-    Linking.openURL('#'); // ADICIONAR O LINK DE REMOÇÃO
-  };
+  const handlePressDelete = async (viagemId) => {
+
+      try{
+        await deleteDoc(doc(firestore, 'viagem', viagemId));
+
+        listViagem();
+      }
+      catch(error){
+        console.log('Ocorreu um erro ao tentar excluir viagem!', error)
+      }
+    } 
+  ;
 
  
   return (
@@ -100,7 +113,7 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
                           source={require('../assets/edit.png')}
                         />
                       </TouchableOpacity>
-                      <TouchableOpacity onPress={handlePressDelete}>
+                      <TouchableOpacity onPress={() =>{handlePressDelete(viagem.id)}}>
                         <Image
                           style={styles.icons}
                           source={require('../assets/delete.png')}
