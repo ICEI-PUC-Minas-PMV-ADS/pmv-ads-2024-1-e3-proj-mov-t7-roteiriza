@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView  } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 import Typography, { TypographyStyles } from '../components/Typography';
 import Header from '../components/Header';
@@ -11,6 +13,9 @@ import { collection, addDoc, query, where, getDocs, deleteDoc, doc} from '@fireb
 
 
 const Home = ({ user, handleAuthentication, userId, objectUser }) => {
+
+  const navigation = useNavigation(); 
+
   const [UserName, setUserName] = useState('');
   const [ListViagem, setListViagem] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -59,22 +64,20 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
     setSelectedImage(images[randomIndex]);
   };
 
-  const handlePressEdit = () => {
-    Linking.openURL('#'); // ADICIONAR O LINK DE EDIÇÃO
+  const handlePressEdit = (viagemId) => {
+    navigation.navigate('Atualizar_viagem')
   };
 
   const handlePressDelete = async (viagemId) => {
-
-      try{
-        await deleteDoc(doc(firestore, 'viagem', viagemId));
-
-        listViagem();
-      }
-      catch(error){
-        console.log('Ocorreu um erro ao tentar excluir viagem!', error)
-      }
-    } 
-  ;
+    try{
+      await deleteDoc(doc(firestore, 'viagem', viagemId));
+      listViagem();
+    }
+    catch(error){
+      console.log('Ocorreu um erro ao tentar excluir viagem!', error)
+    }
+  };
+  
 
  
   return (
@@ -107,7 +110,7 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
                       </Typography>
                     </View>
                     <View style={styles.alignIcons}>
-                      <TouchableOpacity onPress={handlePressEdit}>
+                      <TouchableOpacity onPress={() => {handlePressEdit(viagem.id)}}>
                         <Image
                           style={styles.icons}
                           source={require('../assets/edit.png')}

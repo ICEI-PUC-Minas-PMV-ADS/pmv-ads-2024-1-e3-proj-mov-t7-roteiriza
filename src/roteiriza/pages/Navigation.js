@@ -25,8 +25,8 @@ const Navigation = ({ user, handleAuthentication, userId, objectUser}) => {
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    home:   () => <StackNavigation user={user} handleAuthentication={handleAuthentication} userId = {userId} objectUser={objectUser} />,
-    viagem: () => <Home user={user} handleAuthentication={handleAuthentication} objectUser={objectUser} userId = {userId} />,
+    home:   () => <StackNavigation type='home' user={user} handleAuthentication={handleAuthentication} userId = {userId} objectUser={objectUser} />,
+    viagem: () => <StackNavigation type='viagem' user={user} handleAuthentication={handleAuthentication} objectUser={objectUser} userId = {userId} />,
     bagagem: () => <MeusPasseios user={user} handleAuthentication={handleAuthentication} />,
     roteiro: () => <Roteiro user={user} handleAuthentication={handleAuthentication}/>,
     usuario: () => <Usuario user={user} handleAuthentication={handleAuthentication} objectUser = {objectUser}/>,
