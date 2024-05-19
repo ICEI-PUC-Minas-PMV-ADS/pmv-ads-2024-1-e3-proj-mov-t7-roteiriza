@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, Linking } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView  } from 'react-native';
 
 import Typography, { TypographyStyles } from '../components/Typography';
 import Header from '../components/Header';
@@ -10,127 +10,113 @@ import { firestore } from '../firebase/config';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
 
 
-const Home = ({user, handleAuthentication, userId, objectUser}) => {
-
+const Home = ({ user, handleAuthentication, userId, objectUser }) => {
   const [UserName, setUserName] = useState('');
-
   const [ListViagem, setListViagem] = useState([]);
-
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     if (user && objectUser) {
       setUserName(objectUser.Name);
       listViagem();
-      console.log(ListViagem)
+      selectRandomImage();
+    } else {
+      console.log('Erro ao passar dados');
     }
-    else{
-      console.log('Erro ao passar dados')
-    }
-  }, [user]);
-
+  }, [user, objectUser]);
 
   const listViagem = async () => {
-    try{
+    try {
       const q = query(collection(firestore, 'viagem'), where('userId', '==', userId));
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        console.log('A função foi chamada')
+        console.log('A função foi chamada');
 
         const docSnap = querySnapshot.docs.map(doc => doc.data());
 
-        setListViagem(docSnap)
-
-      } 
-      else{
-        console.log('Sem viagens cadastradas')
+        setListViagem(docSnap);
+      } else {
+        console.log('Sem viagens cadastradas');
         setListViagem([]);
       }
-    }  
-    catch(error){
-      console.log('Ocorreu um erro: ', error)
+    } catch (error) {
+      console.log('Ocorreu um erro: ', error);
     }
-  }
+  };
 
+  const images = [
+    require('../assets/imgRandom/Viagem-01.png'),
+    require('../assets/imgRandom/Viagem-02.png')
+  ];
+
+  const selectRandomImage = () => {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    setSelectedImage(images[randomIndex]);
+  };
 
   const handlePressEdit = () => {
-    Linking.openURL('#'); //ADICIONAR O LINK DE EDIÇÃO
-  };
-  const handlePressDelete = () => {
-    Linking.openURL('#'); //ADICIONAR O LINK DE REMOÇÃO
+    Linking.openURL('#'); // ADICIONAR O LINK DE EDIÇÃO
   };
 
+  const handlePressDelete = () => {
+    Linking.openURL('#'); // ADICIONAR O LINK DE REMOÇÃO
+  };
+
+ 
   return (
     <Container>
       <Header title={`Olá! ${UserName}`} />
       <Body>
-        <View style={styles.introducao}>
-          <Typography style={TypographyStyles.bodyText}>
-            Qual viagem você quer organizar agora?
-          </Typography>
-        </View>
-        <View style={styles.travelBoxes}>
-          <View>
-            <Image
-              style={styles.viagem_01}
-              source={require('../assets/Viagem-01.png')}
-            />
-            <View style={styles.boxInfoViagem}>
-              <View>
-                <Typography style={TypographyStyles.subHeaderTitle}>
-                  Rio de Janeiro
-                </Typography>
-                <Typography style={TypographyStyles.bodyText}>
-                  16 de janeiro | 22 de janeiro
-                </Typography>
-              </View>
-              <View style={styles.alignIcons}>
-                <TouchableOpacity onPress={handlePressEdit}>
-                  <Image
-                    style={styles.icons}
-                    source={require('../assets/edit.png')}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={handlePressDelete}>
-                  <Image
-                    style={styles.icons}
-                    source={require('../assets/delete.png')}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
+        <ScrollView>
+          <View style={styles.introducao}>
+            <Typography style={TypographyStyles.bodyText}>
+              Qual viagem você quer organizar agora?
+            </Typography>
           </View>
-          <View>
-            <Image
-              style={styles.viagem_02}
-              source={require('../assets/Viagem-02.png')}
-            />
-            <View style={styles.boxInfoViagem}>
-              <View>
-                <Typography style={TypographyStyles.subHeaderTitle}>
-                  São Paulo
-                </Typography>
-                <Typography style={TypographyStyles.bodyText}>
-                  20 de julho | 25 de julho
-                </Typography>
-              </View>
-              <View style={styles.alignIcons}>
-                <TouchableOpacity onPress={handlePressEdit}>
-                  <Image
-                    style={styles.icons}
-                    source={require('../assets/edit.png')}
-                  />
-                </TouchableOpacity>
-                <TouchableOpacity onPress={handlePressDelete}>
-                  <Image
-                    style={styles.icons}
-                    source={require('../assets/delete.png')}
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
+          <View style={styles.travelBoxes}>
+            {ListViagem.length > 0 ? (
+              ListViagem.map((viagem, index) => (
+                <View key={index} style={styles.viagemContainer}>
+                  {selectedImage && (
+                    <Image
+                      style={styles.viagem_01}
+                      source={selectedImage}
+                    />
+                  )}
+                  <View style={styles.boxInfoViagem}>
+                    <View>
+                      <Typography style={TypographyStyles.subHeaderTitle}>
+                        {viagem.Destino_Viagem}
+                      </Typography>
+                      <Typography style={TypographyStyles.bodyText}>
+                        {viagem.DataInicio_Viagem} | {viagem.DataFinal_Viagem}
+                      </Typography>
+                    </View>
+                    <View style={styles.alignIcons}>
+                      <TouchableOpacity onPress={handlePressEdit}>
+                        <Image
+                          style={styles.icons}
+                          source={require('../assets/edit.png')}
+                        />
+                      </TouchableOpacity>
+                      <TouchableOpacity onPress={handlePressDelete}>
+                        <Image
+                          style={styles.icons}
+                          source={require('../assets/delete.png')}
+                        />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </View>
+              ))
+            ) : (
+              <Typography style={TypographyStyles.bodyText}>
+                Nenhuma viagem cadastrada.
+              </Typography>
+            )}
           </View>
-        </View>
+        </ScrollView>
       </Body>
     </Container>
   );
