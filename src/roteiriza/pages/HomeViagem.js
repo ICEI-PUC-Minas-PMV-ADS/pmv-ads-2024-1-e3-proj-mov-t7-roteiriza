@@ -18,17 +18,20 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
 
   const [UserName, setUserName] = useState('');
   const [ListViagem, setListViagem] = useState([]);
-  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     if (user && objectUser) {
       setUserName(objectUser.Name);
       listViagem();
-      selectRandomImage();
     } else {
       console.log('Erro ao passar dados');
     }
   }, [user, objectUser]);
+
+  const images = [
+    require('../assets/imgRandom/Viagem-01.png'),
+    require('../assets/imgRandom/Viagem-02.png')
+  ];
 
   const listViagem = async () => {
     
@@ -37,13 +40,10 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
       const querySnapshot = await getDocs(q);
 
       if (!querySnapshot.empty) {
-        console.log('A função foi chamada');
 
         const docSnap = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data()}));
-
+        
         setListViagem(docSnap);
-
-        console.log(ListViagem)
 
       } else {
         console.log('Sem viagens cadastradas');
@@ -54,18 +54,8 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
     }
   };
 
-  const images = [
-    require('../assets/imgRandom/Viagem-01.png'),
-    require('../assets/imgRandom/Viagem-02.png')
-  ];
-
-  const selectRandomImage = () => {
-    const randomIndex = Math.floor(Math.random() * images.length);
-    setSelectedImage(images[randomIndex]);
-  };
-
   const handlePressEdit = (viagemId) => {
-    navigation.navigate('Atualizar_viagem')
+    navigation.navigate('Atualizar_viagem', {viagemId})
   };
 
   const handlePressDelete = async (viagemId) => {
@@ -77,9 +67,7 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
       console.log('Ocorreu um erro ao tentar excluir viagem!', error)
     }
   };
-  
-
- 
+   
   return (
     <Container>
       <Header title={`Olá! ${UserName}`} />
@@ -94,10 +82,10 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
             {ListViagem.length > 0 ? (
               ListViagem.map((viagem, index) => (
                 <View key={index} style={styles.viagemContainer}>
-                  {selectedImage && (
+                  {viagem.img !== undefined && (
                     <Image
                       style={styles.viagem_01}
-                      source={selectedImage}
+                      source={images[viagem.img]} 
                     />
                   )}
                   <View style={styles.boxInfoViagem}>

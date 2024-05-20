@@ -3,13 +3,13 @@ import React from 'react'
 
 
 
-const ContainerInput = ({titleText, placeHolderText, subText, borderColor, borderWidth}) => {
+const ContainerInput = ({titleText, placeHolderText, subText, borderColor, borderWidth, value, onChangeText }) => {
   return (
     <View style={styles.mainContainer}>
 
         <Text style={styles.text}>{titleText}</Text>
 
-        <TextInput style={styles.input} placeholder={placeHolderText}/>
+        <TextInput style={styles.input} value={value} onChangeText={onChangeText} />
 
         <View style={styles.containerThree}>
 

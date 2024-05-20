@@ -52,6 +52,7 @@ const Viagem01 = ({ user, handleAuthentication, userId }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom:20,
     flexDirection: 'column', // Alterando a direção do flexbox para vertical
     padding: 10, // Adicionando um padding para criar uma margem
   },

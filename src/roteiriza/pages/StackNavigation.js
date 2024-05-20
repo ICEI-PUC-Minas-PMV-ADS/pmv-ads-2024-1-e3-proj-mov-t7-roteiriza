@@ -39,7 +39,7 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
             </Stack.Screen>
 
             <Stack.Screen name="Atualizar_viagem">
-                {(props) => <Atualizar_viagem {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser}/>} 
+                {(props) => <Atualizar_viagem {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
 
         </Stack.Navigator>

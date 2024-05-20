@@ -39,18 +39,18 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
 
   // Função para adicionar os dados da viagem
   const handleAdicionar = () => {
-
-    
     const userRef = collection(firestore, 'viagem'); 
 
-    console.log(userId)
-
     if (destino !== '' && dataInicio !== '' && dataFinal !== '') {
+      let indexImg = selectRandomImage();
+      console.log(indexImg)
+
       let viagem = {
         Destino_Viagem:destino,
         DataInicio_Viagem:dataInicio,
         DataFinal_Viagem:dataFinal,
-        userId: userId
+        userId: userId,
+        img: indexImg
   
       }
   
@@ -61,6 +61,16 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
     } else {
       setMensagem('Por favor, preencha todos os campos');
     }
+  };
+
+  const images = [
+    require('../assets/imgRandom/Viagem-01.png'),
+    require('../assets/imgRandom/Viagem-02.png')
+  ];
+
+  const selectRandomImage = () => {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return randomIndex;
   };
 
   return (
