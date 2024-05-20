@@ -10,6 +10,7 @@ import Roteiro from './Esq_Senha';
 import Usuario from './pagina2/Usuario';
 import Hospedagem from './Hospedagem';
 import Home from './HomeViagem';
+import SubMenu from './SubMenu';
 
 import StackNavigation from './StackNavigation';
 
@@ -27,7 +28,7 @@ const Navigation = ({ user, handleAuthentication, userId, objectUser}) => {
   const renderScene = BottomNavigation.SceneMap({
     home:   () => <StackNavigation type='home' user={user} handleAuthentication={handleAuthentication} userId = {userId} objectUser={objectUser} />,
     viagem: () => <StackNavigation type='viagem' user={user} handleAuthentication={handleAuthentication} objectUser={objectUser} userId = {userId} />,
-    bagagem: () => <MeusPasseios user={user} handleAuthentication={handleAuthentication} />,
+    bagagem: () => <StackNavigation type='menu' user={user} handleAuthentication={handleAuthentication} objectUser={objectUser} userId = {userId}/>,
     roteiro: () => <Roteiro user={user} handleAuthentication={handleAuthentication}/>,
     usuario: () => <Usuario user={user} handleAuthentication={handleAuthentication} objectUser = {objectUser}/>,
   });

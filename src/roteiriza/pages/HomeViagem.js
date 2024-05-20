@@ -67,6 +67,10 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
       console.log('Ocorreu um erro ao tentar excluir viagem!', error)
     }
   };
+
+  const handleApontador = (viagemId) => {
+    navigation.navigate('SubMenu', {viagemId})
+  }
    
   return (
     <Container>
@@ -81,13 +85,17 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
           <View style={styles.travelBoxes}>
             {ListViagem.length > 0 ? (
               ListViagem.map((viagem, index) => (
+                
                 <View key={index} style={styles.viagemContainer}>
                   {viagem.img !== undefined && (
+                  <TouchableOpacity onPress={() => {handleApontador(viagem.id)}}>
                     <Image
                       style={styles.viagem_01}
                       source={images[viagem.img]} 
                     />
+                  </TouchableOpacity>
                   )}
+                  
                   <View style={styles.boxInfoViagem}>
                     <View>
                       <Typography style={TypographyStyles.subHeaderTitle}>
