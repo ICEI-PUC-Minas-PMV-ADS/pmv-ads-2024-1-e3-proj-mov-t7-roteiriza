@@ -6,6 +6,11 @@ import ContainerEmergencia from '../components/ContainerEmergencia';
 
 
 const Emergencia = () => {
+
+    
+
+
+
   return (
     <Background style={styles.container} colors={['#ffff', '#ffff']}>
       <View style={styles.container_main}>

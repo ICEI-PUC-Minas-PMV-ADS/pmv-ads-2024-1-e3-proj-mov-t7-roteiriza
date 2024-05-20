@@ -45,10 +45,9 @@ const Passagem = () =>{
 
   };
 
-  const savePassagem = () => {
+  const savePassagem = async () => {
 
     const hospRef = collection(firestore, 'passagem');
-
 
     if(dataSaida && dataRetorno && qntdPessoas && transporte && valor && qntdMalas){
 
@@ -61,25 +60,15 @@ const Passagem = () =>{
         Valor: valor
       }
 
-      hospRef
-        .add(dadosPassagem)
-        .then((ref) =>{
-          
-          setDataSaida('');
-          setDataRetorno('');
-          setQntdPessoas('');
-          setTransporte('');
-          setQntdMalas('');
-          setValor('');
-
-
-          alert('Cadastro de passagem realizado com sucesso!');
-
-        })
-         .catch((error) => {
-            alert(error.message);
-          });
+      try{
+        await addDoc(hospRef, dadosPassagem)
+        console.log('Foi salvo')
+      }
+        catch(error){
+        alert(error.message);
+      };
     }
+
     else{
       alert('Preencha os campos corretamente!')
 

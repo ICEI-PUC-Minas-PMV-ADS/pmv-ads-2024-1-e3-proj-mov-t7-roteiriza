@@ -52,17 +52,14 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
 
  
   const handlePressHospedagem = () => {
-    console.log('Houve um erro')
     navigation.navigate('Hospedagem', {viagemId})
   };
   
   const handlePressPasseios = () => {
-    console.log('Houve um erro')
     navigation.navigate('MeusPasseios', {viagemId})
   };
 
   const handlePressEmergencia = () => {
-    console.log('Houve um erro')
     navigation.navigate('Emergencia', {viagemId})
   };
 

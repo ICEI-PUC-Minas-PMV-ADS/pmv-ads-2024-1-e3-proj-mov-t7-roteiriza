@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgrondColor: '#fff',
     paddingHorizontal: 40,
+    
   },
 });
 
