@@ -91,7 +91,7 @@ const Passagem = () =>{
 
   const cancelPassagem = () => {
 
-    alert('Cancel');
+    alert('Cadastro de Hospedagem cancelado com sucesso!');
   };
 
 
@@ -248,6 +248,7 @@ const Passagem = () =>{
             fontColor='#181818' 
             borderColor={'black'} 
             borderWidth={2}
+            onpress={cancelPassagem}
           />
         </View>
 
@@ -286,6 +287,7 @@ const styles = StyleSheet.create({
     },
   container: {
       alignItems: 'center',
+      backgroundColor: '#fff'
 
   },
   dropdownContainer: {
