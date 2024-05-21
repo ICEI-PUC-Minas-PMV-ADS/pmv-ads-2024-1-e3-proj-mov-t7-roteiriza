@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import Input from './Input';
 
-function DropdownTransport ({nome, valor, selected, setSelected}){
+function DropdownTransport ({nome, valor, selected, setSelected, value, onChangeText}){
   const [isActive, setIsActive] = useState(false)
   const options = ['Avião', 'Ônibus', 'Carro']
   
@@ -37,6 +37,8 @@ function DropdownTransport ({nome, valor, selected, setSelected}){
                           onPress={ e => {setSelected(option)
                           setIsActive(false)}
                           }
+                        value={value}
+                        onChangeText={onChangeText}
                         >
                         <Text>{option}</Text>
                       </TouchableOpacity>
