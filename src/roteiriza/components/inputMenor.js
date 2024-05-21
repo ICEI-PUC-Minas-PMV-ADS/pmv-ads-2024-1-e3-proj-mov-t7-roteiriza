@@ -3,15 +3,16 @@ import {Text, View, Image, StyleSheet, TextInput} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import Input from './Input';
 
-const InputMenor = ({nome, valor}) => {
+const InputMenor = ({nome, valor, value, onChangeText}) => {
     return(
         <View>
             <Text style={styles.textInput}>{nome}</Text>
             <TextInput
-                keyboardType='date'
                 style={styles.inputMenor}
                 placeholder={valor}
                 placeholderTextColor={'#B5B3B3'}
+                value={value}
+                onChangeText={onChangeText}
             />
         </View>
     )

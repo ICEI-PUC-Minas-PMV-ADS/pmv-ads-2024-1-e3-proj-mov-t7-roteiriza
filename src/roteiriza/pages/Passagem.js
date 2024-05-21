@@ -7,8 +7,9 @@ import InputCounter from '../components/inputCounter'
 import Button from '../components/buttonAdicionar';
 import DropdownTransport from '../components/dropdownTransport';
 
+import { collection, addDoc, query, where, getDocs, updateDoc, doc } from '@firebase/firestore';
+import { firestore } from '../firebase/config';
 
-import { firebase} from '../firebase/config';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 
@@ -21,6 +22,9 @@ const Passagem = () =>{
   const [transporte, setTransporte] = useState("")
   const [qntdMalas, setQntdMalas] = useState("")
   const [valor, setValor] = useState("")
+  const [dadoOnStore, setDadoOnStore ] = useState(false);
+
+  
 
   //firebase
   //Calendario
@@ -46,32 +50,35 @@ const Passagem = () =>{
   };
 
   const savePassagem = async () => {
+    console.log('Chamou')
+    console.log(qntdMalas)
+    console.log(valor)
 
     const hospRef = collection(firestore, 'passagem');
 
-    if(dataSaida && dataRetorno && qntdPessoas && transporte && valor && qntdMalas){
-
-      let dadosPassagem = {
-        Dt_saida: dataSaida,
-        Dt_retorno: dataRetorno,
-        Qntd_Pessoas: qntdPessoas,
-        Transporte: transporte,
-        Qntd_malas: qntdMalas,
-        Valor: valor
-      }
-
-      try{
-        await addDoc(hospRef, dadosPassagem)
-        console.log('Foi salvo')
-      }
-        catch(error){
-        alert(error.message);
+    if (qntdPessoas && qntdMalas && valor && dataRetorno && dataSaida) {
+      
+      const dadosHosp = {
+       Malas: qntdMalas,
+       Valor: valor,
+       Pessoas: qntdPessoas,
+       DataSaida: dataSaida,
+       DataRetorno: dataRetorno
       };
-    }
 
-    else{
-      alert('Preencha os campos corretamente!')
+   
 
+        if(dadoOnStore == false){
+          await addDoc(hospRef, dadosHosp);
+          alert('Cadastro de hospedagem realizado com sucesso!');
+        }
+        else{
+          console.log('Ocorreu um erro ao salvar dados')
+        }
+       
+     
+    } else {
+      alert('Preencha os campos corretamente!');
     }
   };
 
@@ -166,7 +173,7 @@ const Passagem = () =>{
             </View>
 
             <View style={styles.inputCost}>
-              <InputMenor
+              <InputCounter
                 nome={'Valor a ser gasto'} 
                 valor={'870,00'}
                 value={valor}
@@ -185,6 +192,7 @@ const Passagem = () =>{
             textButton={"SALVAR"} 
             color='#F5BD60' 
             fontColor='#FFFFFF'
+            onpress={savePassagem}
           />
 
          <Button 
