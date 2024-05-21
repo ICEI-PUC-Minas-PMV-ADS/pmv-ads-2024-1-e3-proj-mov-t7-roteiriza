@@ -1,9 +1,6 @@
 {
   "dependencies": {
-    "expo": "^49.0.23",
-    "react-native": "0.72.10"
-  },
-  "devDependencies": {
-    "metro": "^0.80.9"
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/stack": "^6.3.29"
   }
 }
