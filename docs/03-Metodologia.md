@@ -35,15 +35,16 @@ A equipe está organizada da seguinte maneira:
 
 Para organização e distribuição das tarefas do projeto, a equipe está utilizando o GitHub Projects. As etapas são classificadas em:
 
-- **To Do**: Esta lista representa o Sprint Backlog. Este é o Sprint atual que estamos trabalhando.
-- **In Progress**: Quando uma tarefa tiver sido iniciada, ela é movida para esta coluna.
-- **To Be Approved**: Quando uma tarefa está aguardando aprovação, ela é movida para esta coluna.
-- **Done**: Nesta lista são colocadas as tarefas que passaram pelos testes e controle de qualidade e estão prontos para ser entregues ao usuário. Não há mais edições ou revisões necessárias.
+- **Backlog do Produto**: Todos os artefatos que serão necessários para o desenvolvimento completo do projeto.
+- **A Fazer**: Todos os artefatos referentes à etapa atual do desenvolvimento do projeto.
+- **Em Desenvolvimento**: Todos os artefatos que estão sendo desenvolvidos no momento.
+- **Em Revisão**: Todos os artefatos que já foram desenvolvimentos mas estão em processo de testes.
+- **Finalizado**: Todos os artefatos que foram testados, aprovados e implementados no projeto.
 
-  ![Captura de tela 2024-03-07 154030](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107646150/d9ca8bf0-07ec-49f9-8276-1d5362961533)
+![GitHub-Projects](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/107009327/0879d3de-e332-4ada-b8ae-8fd5865c2b69)
+_Quadro Kanban - GitHub Projects_
 
-
-O quadro kanban do grupo desenvolvido na ferramenta de gerenciamento de projetos está disponível através em: [GitHub Projects - Roteiriza](https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/840/views/1)
+O quadro Kanban do grupo desenvolvido na ferramenta de gerenciamento de projetos está disponível através em: [GitHub Projects - Roteiriza](https://github.com/orgs/ICEI-PUC-Minas-PMV-ADS/projects/840/views/1)
 
 
 # Ferramentas
@@ -53,7 +54,7 @@ As ferramentas empregadas no projeto são:
 - Editor de código: **Visual Studio Code** e **EXPO**
 - Ferramentas de comunicação: **WhatsApp, Discord, Teams**
 - Ferramentas de desenho de tela (wireframing): **Figma**
-- Ferramenta de desenho de diagramas e fluxogramas: **Canva e Diagrams.net**
+- Ferramenta de desenho de diagramas e fluxogramas: **Canva, Lucidchart e Diagrams.net**
 - SGBD: **SQLite**
 
 O editor de código foi escolhido porque ele possui uma integração com o sistema de versão, além de se mostrar versátil.
