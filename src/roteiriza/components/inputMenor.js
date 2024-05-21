@@ -8,6 +8,7 @@ const InputMenor = ({nome, valor, value, onChangeText}) => {
         <View>
             <Text style={styles.textInput}>{nome}</Text>
             <TextInput
+                keyboardType='date'
                 style={styles.inputMenor}
                 placeholder={valor}
                 placeholderTextColor={'#B5B3B3'}

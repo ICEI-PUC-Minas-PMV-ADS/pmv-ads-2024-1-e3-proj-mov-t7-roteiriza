@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react'
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import  Header  from '../components/Header';
 import InputMenor from '../components/inputMenor';
 import InputCounter from '../components/inputCounter'
@@ -16,6 +16,11 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 const Passagem = () =>{
   const [selected, setSelected] = useState("")
 
+  //Dropdown
+  const [isActive, setIsActive] = useState(false)
+  const options = ['Avião', 'Ônibus', 'Carro']
+
+  //Dados
   const [dataSaida, setDataSaida] = useState("")
   const [dataRetorno, setDataRetorno] = useState("")
   const [qntdPessoas, setQntdPessoas] = useState("")
@@ -25,8 +30,6 @@ const Passagem = () =>{
   const [dadoOnStore, setDadoOnStore ] = useState(false);
 
   
-
-  //firebase
   //Calendario
   const [mostrarCalendarioDataSaida, setMostrarCalendarioDataSaida] = useState(false);
   const [mostrarCalendarioDataRetorno, setMostrarCalendarioDataRetorno] = useState(false);
@@ -53,6 +56,10 @@ const Passagem = () =>{
     console.log('Chamou')
     console.log(qntdMalas)
     console.log(valor)
+    console.log(qntdPessoas)
+    console.log(dataSaida)
+    console.log(dataRetorno)
+    
 
     const hospRef = collection(firestore, 'passagem');
 
@@ -102,7 +109,7 @@ const Passagem = () =>{
 
               <InputMenor
               nome={'Data de Saída'} 
-              valor={'15 de Janeiro'}
+              valor={'15/01/2024'}
               value={dataSaida}
               onChangeText={setDataSaida}
               onFocus={() => setMostrarCalendarioDataSaida(true) }
@@ -115,7 +122,7 @@ const Passagem = () =>{
 
               <InputMenor
               nome={'Data de Retorno'} 
-              valor={'22 de Janeiro'}
+              valor={'22/01/2024'}
               value={dataRetorno}
               onChangeText={setDataRetorno}
               onFocus={() => setMostrarCalendarioDataRetorno(true) }
@@ -142,16 +149,56 @@ const Passagem = () =>{
               </View>
             </View>
 
-            <View style={styles.dropdownContainer}>
-              <DropdownTransport 
-                selected={selected} 
-                setSelected={setSelected} 
-                valor={'Avião'} 
-                nome={'Transporte'}
-                value={transporte}
-                onChangeText={setTransporte}
-              /> 
-            </View>
+            {/* DROPDOWN TRANSPORTE */}           
+            <View style={styles.boxTransporte}>
+            <Text style={styles.textInput}>Transporte</Text>
+
+              <TouchableOpacity ClassName='dropdown' 
+                style={styles.inputMenor}
+                onPress= {e => setIsActive(!isActive)}
+              >
+
+              <TouchableOpacity ClassName='dropdown-btn'>
+                <Text 
+                  onPress= {e => setIsActive(!isActive)}
+                  style={[styles.placeholder, selected !== valor && styles.selectedValue]
+
+                  }
+                > 
+                  {selected ? selected : valor}
+
+                </Text>
+              </TouchableOpacity>
+
+              {isActive && (
+                  <View ClassName='dropdown-content' style={styles.dropdownContent}>
+                    {options.map(option => (
+                      <TouchableOpacity 
+                        key={option}
+                        ClassName='dropdown-item'
+                        style={styles.dropdownItem}
+                          onPress={ e => {setSelected(option)
+                          setIsActive(false)}
+                          }
+                        
+                        >
+                        <Text>{option}</Text>
+                      </TouchableOpacity>
+                    ))}
+
+                  </View>
+              )}
+              
+            </TouchableOpacity>
+            
+             <TouchableOpacity
+              onPress= {e => setIsActive(!isActive)}
+             >
+              <Image source={require('../assets/img/dropdown.png')} style={styles.iconRight} />
+             </TouchableOpacity>
+            
+          </View>
+            
 
           </View>
 
@@ -172,8 +219,8 @@ const Passagem = () =>{
               </View>
             </View>
 
-            <View style={styles.inputCost}>
-              <InputCounter
+            <View style={styles.inputCost} >
+              <InputMenor
                 nome={'Valor a ser gasto'} 
                 valor={'870,00'}
                 value={valor}
@@ -288,6 +335,69 @@ const styles = StyleSheet.create({
       flexDirection: 'row'
     },
   inputCost: {
-      zIndex: 0
-    }
+      zIndex: 0,
+      position:'relative'
+    },
+  boxTransporte:{
+    position: 'relative',
+    zIndex: 1
+    },
+  inputMenor: {
+      backgroundColor: '#fff',
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+      padding: 7,
+      paddingStart: 34,
+      borderWidth: 1,
+      borderColor: '#CACACA',
+      width: 130,
+      height: 35, 
+      fontSize: 14,
+      userSelect: 'none',
+       
+  },
+        
+  textInput: {
+      fontSize: 15,
+      fontWeight: 'bold',
+      color: '#063A7A',
+      paddingBottom: 2
+  },
+  iconRight: {
+      width: 21,
+      height: 21,
+      bottom: 30,
+      left: 9
+  },
+  dropdownContent :{
+      position: 'absolute',
+      top: 40,
+      paddingTop: 2,
+      paddingStart: 30,
+      paddingBottom: 2,
+      backgroundColor: '#ffff',
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+      borderBottomLeftRadius: 10,
+      borderBottomRightRadius: 10,
+      borderWidth: 1,
+      borderColor: '#CACACA',
+      width: 130,
+      height: 'auto', 
+      fontSize: 14,
+      zIndex: 1
+  },
+  dropdownItem: {
+      paddingBottom: 10,
+      paddingTop: 5,
+
+  },
+  placeholder: {
+      color: '#CACACA', 
+  },
+  selectedValue: {
+    color: '#181818'
+  },
 })
