@@ -129,6 +129,7 @@ const Passeios = () => {
                                 value={data}
                                 onChangeText={setData}
                                 onFocus={() => setMostrarCalendarioData(true) }
+                                
                             />
                             <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
                         </View>

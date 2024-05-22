@@ -14,7 +14,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 
 const Passagem = () =>{
-  const [selected, setSelected] = useState("")
+  const [selected, setSelected] = useState(null);
 
   //Dropdown
   const [isActive, setIsActive] = useState(false)
@@ -54,11 +54,12 @@ const Passagem = () =>{
 
   const savePassagem = async () => {
     console.log('Chamou')
-    console.log(qntdMalas)
-    console.log(valor)
-    console.log(qntdPessoas)
-    console.log(dataSaida)
-    console.log(dataRetorno)
+    console.log('Malas: ', qntdMalas)
+    console.log('Valor: ', valor)
+    console.log('Pessoas: ', qntdPessoas)
+    console.log('Data de Saída: ', dataSaida)
+    console.log('Data de Retorno: ', dataRetorno)
+    console.log('Transporte: ', transporte)
     
 
     const hospRef = collection(firestore, 'passagem');
@@ -177,9 +178,11 @@ const Passagem = () =>{
                         key={option}
                         ClassName='dropdown-item'
                         style={styles.dropdownItem}
-                          onPress={ e => {setSelected(option)
-                          setIsActive(false)}
-                          }
+                        onPress={() => {
+                          setSelected(option);
+                          setTransporte(option);  // Armazena o valor selecionado na variável 'transporte'
+                          setIsActive(false);
+                        }}
                         
                         >
                         <Text>{option}</Text>
