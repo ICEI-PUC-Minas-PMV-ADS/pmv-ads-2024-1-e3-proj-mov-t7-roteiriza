@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
-    "@react-navigation/stack": "^6.3.29"
+    "@react-navigation/stack": "^6.3.29",
+    "react-native-vector-icons": "^10.1.0"
   }
 }

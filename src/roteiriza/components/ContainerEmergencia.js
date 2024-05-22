@@ -3,7 +3,7 @@ import React from 'react'
 
 
 
-const ContainerEmergencia = ({titleText, placeHolderText, subText}) => {
+const ContainerEmergencia = ({titleText, placeHolderText, subText, value, onChangeText}) => {
   return (
     <View style={styles.container_content}>
 
@@ -16,7 +16,7 @@ const ContainerEmergencia = ({titleText, placeHolderText, subText}) => {
         </View>
 
         <View>
-          <TextInput style={styles.input} placeholder={placeHolderText}/>
+          <TextInput style={styles.input} placeholder={placeHolderText} value={value} onChangeText={onChangeText}/>
         </View>
     </View>
 
