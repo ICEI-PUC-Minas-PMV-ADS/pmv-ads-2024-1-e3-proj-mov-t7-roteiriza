@@ -13,6 +13,7 @@ import Hospedagem from './Hospedagem';
 import MeusPasseios from './MeusPasseios';
 import Emergencia from './Emergencia';
 import Passagem from './Passagem';
+import Passeios from './Passeios';
 
 const Stack = createStackNavigator();
 
@@ -57,6 +58,10 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
 
             <Stack.Screen name="Meus Passeios">
               {(props) => <MeusPasseios {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
+            </Stack.Screen>
+
+            <Stack.Screen name="Criar Passeio">
+              {(props) => <Passeios {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
 
             <Stack.Screen name="Emergencia">

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import {Text, View, Image, StyleSheet, TextInput, TouchableOpacity, Modal} from 'react-native';
 
 
-const ListaAdicionada = ({NomeLocal, Data, Horario })=> {
+const ListaAdicionada = ({NomeLocal, Data, Horario, onPress })=> {
     const [modalVisible, setModalVisible] = useState(false);
 
     const editar = ('click', () => {
@@ -13,7 +13,9 @@ const ListaAdicionada = ({NomeLocal, Data, Horario })=> {
     return(
         <View style={styles.boxLista}> 
             <View style={styles.container}>
-                <Text style={styles.titulo}>{NomeLocal}</Text>
+                <TouchableOpacity onPress={onPress}>
+                    <Text style={styles.titulo}>{NomeLocal}</Text>
+                </TouchableOpacity>
                 <View style={styles.acaoBox}>
                     <TouchableOpacity onPress={editar}>
                         <Image style={styles.icons}  source={require('../assets/img/editarIcon.png')}/>

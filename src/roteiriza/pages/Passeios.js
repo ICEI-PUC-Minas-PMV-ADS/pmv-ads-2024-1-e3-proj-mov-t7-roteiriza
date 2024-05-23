@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import {Text, View, Image, ScrollView, StyleSheet} from 'react-native';
+import { useRoute } from '@react-navigation/native';
+
 import  Header  from '../components/Header'
 import ContainerPasseios from '../components/containerPasseios'
 import Button from '../components/buttonAdicionar';
@@ -17,7 +19,11 @@ import { firestore } from '../firebase/config';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 
-const Passeios = () => {
+const Passeios = ({userId}) => {
+
+    const route = useRoute();
+    const { viagemId, passeioId } = route.params;
+
     const [selectedHour, setSelectedHour] = useState("");
     const [selectedTransport, setSelectedTransport] = useState("");
 
@@ -28,7 +34,10 @@ const Passeios = () => {
     const [horario, setHorario] = useState("")
     const [transporte, setTransporte] = useState("")
     const [valor, setValor] = useState("")
-    const [dadoOnStore, setDadoOnStore ] = useState(false);
+
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [dadoOnStore, setDadoOnStore ] = useState(false);
+  const [documentId, setDocumentId] = useState('');
 
     //calendario
     const [mostrarCalendarioData, setMostrarCalendarioData] = useState(false);
@@ -40,42 +49,104 @@ const Passeios = () => {
         setMostrarCalendarioDataSaida(false);
     };
 
+    useEffect(() => {
+        if (!isLoaded) {
+            loadPasseio();
+        }
+      }, [isLoaded, passeioId]);
 
-    const loadPasseio = () => {
 
+    const loadPasseio = async () => {
+        if (!isLoaded) {
+            try {
+              console.log('Chamou')
+
+              console.log(local);
+              console.log(endereco);
+              console.log(data);
+              console.log(horario);
+              console.log(valor);
+              console.log(transporte);
+
+
+              const passeiosCollectionRef = collection(firestore, 'passeio');
+              const q = query(passeiosCollectionRef, where('passeioId', '==', passeioId));
+              const querySnapshot = await getDocs(q);
+      
+              if (!querySnapshot.empty) {
+                const docSnapshot = querySnapshot.docs[0];
+                const doc = querySnapshot.docs[0].data();
+      
+                setLocal(doc.Local);
+                setEndereco(doc.Endereco);
+                setData(doc.Data);
+                setHorario(doc.Horario);
+                setValor(doc.Valor);
+      
+                setTransporte(doc.Transporte);
+                setSelected(doc.Transporte)
+      
+                setIsLoaded(true);
+                setDocumentId(docSnapshot.id);
+      
+                setDadoOnStore(true)
+      
+              } else {
+                console.log('Sem hospedagens cadastradas');
+              }
+            } catch (error) {
+              console.log('Ocorreu um erro: ', error);
+            }
+          } else {
+            console.log('Os dados já foram carregados');
+          }
     };
 
     const savePasseio = async () => {
-        console.log('Chamou')
-        console.log(local)
-        console.log(endereco)
-        console.log(data)
-        console.log(horario)
-        console.log(transporte)
-        
-    
-        const hospRef = collection(firestore, 'passeio');
-    
-        if (local && endereco && data && horario && transporte) {
+        console.log('chamada')
+        const passeioRef = collection(firestore, 'passeios');
+
+        if (qntdPessoas && qntdMalas && valorteste && dataRetorno && dataSaida) {
           
-          const dadosHosp = {
-           Local: local,
-           Endereco: endereco,
-           Data: data,
-           Horario: horario,
-           Transporte: transporte
+          const dadosPasseio = {
+            Local: local,
+            Endereco: endereco,
+            Data: data,
+            Horario: horario,          
+            Transporte: transporte,
+            Valor: valor,
+            userId: userId,
+            viagemId: viagemId,
           };
     
-       
+          
+          try {
+            console.log(dadoOnStore)
     
             if(dadoOnStore == false){
-              await addDoc(hospRef, dadosHosp);
+              await addDoc(passeioRef, dadosPasseio);
               alert('Cadastro de hospedagem realizado com sucesso!');
             }
-            else{
-              console.log('Ocorreu um erro ao salvar dados')
+    
+            if(dadoOnStore == true) {
+              const docRef = doc(firestore, 'passeios', documentId);
+    
+    
+              await updateDoc(docRef, {
+                Local: local,
+                Endereco: endereco,
+                Data: data,
+                Horario: horario,          
+                Transporte: transporte,
+                Valor: valor,                             
+              });
+    
+              alert('Documento salvo com sucesso!')
             }
-           
+          }
+          catch(error){
+            console.log('Ocorreu um erro! ', error)
+          }
          
         } else {
           alert('Preencha os campos corretamente!');
