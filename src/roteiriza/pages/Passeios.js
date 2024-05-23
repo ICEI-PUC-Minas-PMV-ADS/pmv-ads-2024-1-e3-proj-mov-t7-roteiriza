@@ -24,11 +24,12 @@ const Passeios = ({userId}) => {
     const route = useRoute();
     const { viagemId, passeioId } = route.params;
 
-    const [selected, setSelected] = useState('');
 
     //Dropdown
     const [isActive, setIsActive] = useState(false)
     const options = ['Avião', 'Ônibus', 'Carro']
+    const optionsHour = ['Manhã', 'Tarde', 'Noite']
+
 
     const [selectedHour, setSelectedHour] = useState("");
     const [selectedTransport, setSelectedTransport] = useState("");
@@ -41,9 +42,9 @@ const Passeios = ({userId}) => {
     const [transporte, setTransporte] = useState("")
     const [valor, setValor] = useState("")
 
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [dadoOnStore, setDadoOnStore ] = useState(false);
-  const [documentId, setDocumentId] = useState('');
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [dadoOnStore, setDadoOnStore ] = useState(false);
+    const [documentId, setDocumentId] = useState('');
 
     //calendario
     const [mostrarCalendarioData, setMostrarCalendarioData] = useState(false);
@@ -86,12 +87,14 @@ const Passeios = ({userId}) => {
                 setLocal(doc.Local);
                 setEndereco(doc.Endereco);
                 setData(doc.Data);
-                setHorario(doc.Horario);
                 setValor(doc.Valor);
       
                 setTransporte(doc.Transporte);
-                setSelected(doc.Transporte)
-      
+                setSelectedTransport(doc.Transporte)
+
+                setHorario(doc.Horario);
+                setSelectedHour(doc.Horario)
+    
                 setIsLoaded(true);
                 setDocumentId(docSnapshot.id);
       
@@ -208,17 +211,64 @@ const Passeios = ({userId}) => {
                                 <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
                             </View>
 
-                            <View style={styles.dropdownContainer}>
-                                <DropdownHour 
-                                    selected={selectedHour}
-                                    setSelected={setSelectedHour} 
-                                    valor={'Manhã'} 
-                                    nome={'Horário'}
-                                    value={horario}
-                                    onChangeText={setHorario}
-                                    
-                                /> 
+                            <View>
+
+
+
+
+
+                                <Text style={styles.textInput}>Horário</Text>
+
+                                <TouchableOpacity ClassName='dropdown' 
+                                    style={styles.inputMenor}
+                                    onPress= {e => setIsActive(!isActive)}
+                                >
+
+                                <TouchableOpacity ClassName='dropdown-btn'>
+                                    <Text 
+                                    onPress= {e => setIsActive(!isActive)}
+                                    style={[styles.placeholder, selectedHour !== valor && styles.selectedValue]}
+                                    > 
+                                    {selectedHour ? selectedHour : valor}
+
+                                    </Text>
+                                </TouchableOpacity>
+
+                                {isActive && (
+                                    <View ClassName='dropdown-content' style={styles.dropdownContent}>
+                                        {optionsHour.map(optionHour => (
+                                        <TouchableOpacity 
+                                            key={optionHour}
+                                            ClassName='dropdown-item'
+                                            style={styles.dropdownItem}
+                                            onPress={ () => {
+                                                setSelectedHour(optionHour)
+                                                setHorario(optionHour)
+                                                setIsActive(false)}
+                                            }
+                                            >
+                                            <Text>{optionsHour}</Text>
+                                        </TouchableOpacity>
+                                        ))}
+
+                                    </View>
+                                )}
+                                
+                                </TouchableOpacity>
+                                
+                                <TouchableOpacity
+                                onPress= {e => setIsActive(!isActive)}
+                                >
+                                <Image source={require('../assets/img/dropdown.png')} style={styles.iconRight} />
+                                </TouchableOpacity>
+                                
                             </View>
+
+
+
+
+
+
                         </View>
 
                         <View style={styles.inputbox}>
@@ -233,11 +283,11 @@ const Passeios = ({userId}) => {
                             <TouchableOpacity ClassName='dropdown-btn'>
                                 <Text 
                                     onPress= {e => setIsActive(!isActive)}
-                                    style={[styles.placeholder, selected !== valor && styles.selectedValue]
+                                    style={[styles.placeholder, selectedTransport !== valor && styles.selectedValue]
 
                                 }
                                 > 
-                                {selected ? selected : valor}
+                                {selectedTransport ? selectedTransport : valor}
 
                                 </Text>
                                 </TouchableOpacity>
@@ -250,7 +300,7 @@ const Passeios = ({userId}) => {
                                             ClassName='dropdown-item'
                                             style={styles.dropdownItem}
                                             onPress={() => {
-                                            setSelected(option);
+                                            setSelectedTransport(option);
                                             setTransporte(option);  // Armazena o valor selecionado na variável 'transporte'
                                             setIsActive(false);
                                             }}
@@ -376,10 +426,7 @@ const styles = StyleSheet.create({
    container: {
       alignItems: 'center',
       backgroundColor: '#fff',
-
-
-
-
+      height: '100%',
     },
     dropdownContainer: {
             position: 'relative',
@@ -493,7 +540,5 @@ const styles = StyleSheet.create({
     selectedValue: {
         color: '#181818'
     },
-    containerPai: {
-        backgroundColor: '#fff'
-    }
+    
 })
