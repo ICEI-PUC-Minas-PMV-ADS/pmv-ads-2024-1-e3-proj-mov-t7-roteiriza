@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BottomNavigation} from 'react-native-paper';
+import { BottomNavigation } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 
 import Viagem01 from './Viagem01';
