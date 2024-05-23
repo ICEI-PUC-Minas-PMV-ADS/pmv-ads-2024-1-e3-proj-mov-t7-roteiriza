@@ -83,6 +83,7 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
             </Typography>
           </View>
           <View style={styles.travelBoxes}>
+            
             {ListViagem.length > 0 ? (
               ListViagem.map((viagem, index) => (
                 

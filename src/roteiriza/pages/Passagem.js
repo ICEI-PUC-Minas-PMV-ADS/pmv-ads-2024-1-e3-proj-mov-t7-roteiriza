@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import  Header  from '../components/Header';
 import InputMenor from '../components/inputMenor';
@@ -7,14 +7,19 @@ import InputCounter from '../components/inputCounter'
 import Button from '../components/buttonAdicionar';
 import DropdownTransport from '../components/dropdownTransport';
 
+import { useRoute } from '@react-navigation/native';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from '@firebase/firestore';
 import { firestore } from '../firebase/config';
 
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 
-const Passagem = () =>{
-  const [selected, setSelected] = useState(null);
+const Passagem = ({ userId }) =>{
+
+  const route = useRoute();
+  const { viagemId } = route.params;
+
+  const [selected, setSelected] = useState('');
 
   //Dropdown
   const [isActive, setIsActive] = useState(false)
@@ -27,7 +32,13 @@ const Passagem = () =>{
   const [transporte, setTransporte] = useState("")
   const [qntdMalas, setQntdMalas] = useState("")
   const [valor, setValor] = useState("")
+
+  const [valorteste, setValorTeste] = useState('');
+
   const [dadoOnStore, setDadoOnStore ] = useState(false);
+  const [documentId, setDocumentId] = useState('');
+  const [isLoaded, setIsLoaded] = useState(false);
+
 
   
   //Calendario
@@ -48,42 +59,94 @@ const Passagem = () =>{
     setMostrarCalendarioDataRetorno(false);
   }; 
 
-  const loadPassagem = () => {
+  useEffect(() => {
+    if (!isLoaded) {
+      loadPassagem();
+    }
 
+  }, [isLoaded, viagemId]);
+
+  const loadPassagem = async () => {
+    if (!isLoaded) {
+      try {
+        const passagemCollectionRef = collection(firestore, 'passagem');
+        const q = query(passagemCollectionRef, where('viagemId', '==', viagemId));
+        const querySnapshot = await getDocs(q);
+
+        if (!querySnapshot.empty) {
+          const docSnapshot = querySnapshot.docs[0];
+          const doc = querySnapshot.docs[0].data();
+
+          setDataSaida(doc.DataSaida);
+          setDataRetorno(doc.DataRetorno);
+          setQntdPessoas(doc.Pessoas);
+          setQntdMalas(doc.Malas);
+          setValor(doc.Valor);
+
+          setTransporte(doc.Transporte);
+          setSelected(doc.Transporte)
+
+          setIsLoaded(true);
+          setDocumentId(docSnapshot.id);
+
+          setDadoOnStore(true)
+
+        } else {
+          console.log('Sem hospedagens cadastradas');
+        }
+      } catch (error) {
+        console.log('Ocorreu um erro: ', error);
+      }
+    } else {
+      console.log('Os dados já foram carregados');
+    }
   };
 
   const savePassagem = async () => {
-    console.log('Chamou')
-    console.log('Malas: ', qntdMalas)
-    console.log('Valor: ', valor)
-    console.log('Pessoas: ', qntdPessoas)
-    console.log('Data de Saída: ', dataSaida)
-    console.log('Data de Retorno: ', dataRetorno)
-    console.log('Transporte: ', transporte)
-    
-
     const hospRef = collection(firestore, 'passagem');
 
-    if (qntdPessoas && qntdMalas && valor && dataRetorno && dataSaida) {
+    if (qntdPessoas && qntdMalas && valorteste && dataRetorno && dataSaida) {
       
       const dadosHosp = {
        Malas: qntdMalas,
-       Valor: valor,
+       Valor: valorteste,
        Pessoas: qntdPessoas,
        DataSaida: dataSaida,
-       DataRetorno: dataRetorno
+       DataRetorno: dataRetorno,
+       Transporte: transporte,
+       userId: userId,
+       viagemId: viagemId
       };
 
-   
+      
+      try {
+        console.log(dadoOnStore)
 
         if(dadoOnStore == false){
           await addDoc(hospRef, dadosHosp);
           alert('Cadastro de hospedagem realizado com sucesso!');
         }
-        else{
-          console.log('Ocorreu um erro ao salvar dados')
+
+        if(dadoOnStore == true) {
+          const docRef = doc(firestore, 'passagem', documentId);
+
+
+          await updateDoc(docRef, {
+            Malas: qntdMalas,
+            Valor: valor,
+            Pessoas: qntdPessoas,
+            DataSaida: dataSaida,
+            DataRetorno: dataRetorno,
+            Transporte: transporte,                 
+          });
+
+          alert('Documento salvo com sucesso!')
+
         }
-       
+      }
+      catch(error){
+        console.log('Ocorreu um erro! ', error)
+      }
      
     } else {
       alert('Preencha os campos corretamente!');

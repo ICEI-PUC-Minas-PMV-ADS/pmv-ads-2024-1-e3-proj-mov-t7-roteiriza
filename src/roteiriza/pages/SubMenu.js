@@ -56,12 +56,19 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
   };
   
   const handlePressPasseios = () => {
-    navigation.navigate('MeusPasseios', {viagemId})
+    navigation.navigate('Meus Passeios', {viagemId})
   };
 
   const handlePressEmergencia = () => {
     navigation.navigate('Emergencia', {viagemId})
   };
+
+
+  const handlePressPassagem = () => {
+    navigation.navigate('Passagem', {viagemId})
+  }
+
+
 
   return (
     <Container>
@@ -102,7 +109,7 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
             </TouchableOpacity>
 
             <View style={styles.cardsContainer}>
-              <TouchableOpacity >
+              <TouchableOpacity onPress={handlePressPassagem}>
                 <Card style={styles.card}>
                   <ImageBackground
                     source={require('../assets/Passagem.png')}

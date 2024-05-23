@@ -12,6 +12,7 @@ import SubMenu from './SubMenu';
 import Hospedagem from './Hospedagem';
 import MeusPasseios from './MeusPasseios';
 import Emergencia from './Emergencia';
+import Passagem from './Passagem';
 
 const Stack = createStackNavigator();
 
@@ -54,7 +55,7 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
               {(props) => <Hospedagem {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
 
-            <Stack.Screen name="MeusPasseios">
+            <Stack.Screen name="Meus Passeios">
               {(props) => <MeusPasseios {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
 
@@ -62,6 +63,9 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
               {(props) => <Emergencia {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
 
+            <Stack.Screen name="Passagem">
+              {(props) => <Passagem {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
+            </Stack.Screen>
 
         </Stack.Navigator>
       </NavigationContainer>
