@@ -17,7 +17,7 @@ const Viagem01 = ({ user, handleAuthentication, userId }) => {
   const gap = 30; // Espaço entre os contêineres
 
   const handleRederect = () => {
-    navigation.navigate('Viagem02')
+    navigation.navigate('Adicionar Viagem')
   }
 
   return (

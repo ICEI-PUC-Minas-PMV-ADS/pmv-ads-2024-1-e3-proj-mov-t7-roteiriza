@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Image, View, Button } from 'react-native';
+import { StyleSheet, Image, View, Button, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+
 
 import Typography, { TypographyStyles } from '../../components/Typography';
 import Header from '../../components/Header';
@@ -8,6 +10,9 @@ import Container from '../../components/Container';
 import Body from '../../components/Body';
 
 const Usuario = ( {user, handleAuthentication, objectUser }) => {
+
+  const navigation = useNavigation(); 
+
   const [text, setText] = useState('');
   const [EmailUser, setEmailUser] = useState('');
   const [PasswordUser, setPasswordUser] = useState('');
@@ -19,7 +24,9 @@ const Usuario = ( {user, handleAuthentication, objectUser }) => {
     }
   }, [user]);
 
-
+  const handleApontamento = (user) => {
+      navigation.navigate('Esqueci minha senha', {user})
+  }
 
   return (
     <Container>
@@ -72,6 +79,7 @@ const Usuario = ( {user, handleAuthentication, objectUser }) => {
             onChangeText={setPasswordUser}
             mode="outlined"
             outlineColor="#CACACA"
+            secureTextEntry
             style={styles.input}
             theme={{
               colors: {
@@ -80,13 +88,15 @@ const Usuario = ( {user, handleAuthentication, objectUser }) => {
               },
             }}
           />
-
-          <Typography style={TypographyStyles.bodyText}>
-            Quer mudar de senha?{' '}
-            <Typography style={TypographyStyles.bodyTextHighlighted}>
-              Redefina agora
+          
+          <TouchableOpacity onPress={handleApontamento}>
+            <Typography style={TypographyStyles.bodyText}>
+              Quer mudar de senha?{' '}
+              <Typography style={TypographyStyles.bodyTextHighlighted}>
+                Redefina agora
+              </Typography>
             </Typography>
-          </Typography>
+          </TouchableOpacity>
           <View style={styles.logout}>
           <Button  title="Logout" onPress={handleAuthentication} color="#e74c3c" />
           </View>
