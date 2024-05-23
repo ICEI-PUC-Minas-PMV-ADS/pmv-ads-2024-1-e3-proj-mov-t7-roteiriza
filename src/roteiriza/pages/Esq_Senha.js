@@ -27,10 +27,6 @@ const ForgotPasswordScreen = ({ user }) => {
     }, [auth]);
 
     const handleResetPassword = () => {
-      console.log('a função foi chamada')
-      console.log(EmailRec)
-      console.log(user)
-      
       if(user){
         sendPasswordResetEmail( auth, EmailRec)
           .then(() => {
@@ -45,7 +41,7 @@ const ForgotPasswordScreen = ({ user }) => {
       else{
         
         sendPasswordResetEmail( auth, EmailRec)
-        console.log('Houve uma tentativa')
+        alert('Sucesso! Um e-mail de redefinição de senha foi enviado.');
       }
     }
   

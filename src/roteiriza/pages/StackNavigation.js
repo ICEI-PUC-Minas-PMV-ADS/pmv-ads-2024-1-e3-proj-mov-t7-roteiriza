@@ -14,6 +14,8 @@ import MeusPasseios from './MeusPasseios';
 import Emergencia from './Emergencia';
 import Passagem from './Passagem';
 import Passeios from './Passeios';
+import Usuario from './pagina2/Usuario';
+import ForgotPasswordScreen from './Esq_Senha';
 
 const Stack = createStackNavigator();
 
@@ -23,11 +25,11 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
     return (
       <NavigationContainer>
         <Stack.Navigator headerMode="none" screenOptions={{ headerShown: true }}>
-            <Stack.Screen name="Viagem01">
+            <Stack.Screen name="Home">
                 {(props) => <Viagem01 {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} />} 
             </Stack.Screen>
 
-            <Stack.Screen name="Viagem02">
+            <Stack.Screen name="Adicionar Viagem">
                 {(props) => <Viagem02 {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} />} 
             </Stack.Screen>
 
@@ -77,16 +79,16 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
     );
   }
 
-  else if (type === 'menu'){
+  else if (type === 'usuario'){
     return (
       <NavigationContainer>
       <Stack.Navigator headerMode="none" screenOptions={{ headerShown: true }}>
-          <Stack.Screen name="Home">
-              {(props) => <Home {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser}/>} 
+          <Stack.Screen name="Perfil do usuario">
+              {(props) => <Usuario {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser}/>} 
           </Stack.Screen>
 
-          <Stack.Screen name="SubMenu">
-              {(props) => <SubMenu {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
+          <Stack.Screen name="Esqueci minha senha">
+              {(props) => <ForgotPasswordScreen {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
           </Stack.Screen>
 
       </Stack.Navigator>

@@ -56,49 +56,60 @@ const App = () => {
         
         console.log('User logged out successfully!');
         await signOut(auth);
+        
       } else {
         if (isLogin) {
-          const login = await signInWithEmailAndPassword(auth, email, password);
-          console.log('User signed in successfully!');
-          
-          if(login){
-            let querySnapshot = await getDocs(query(collection(firestore, 'users'), where('Email', '==', email)));
+          try{
+            const login = await signInWithEmailAndPassword(auth, email, password);
+            console.log('User signed in successfully!');
+            
+            if(login){
+              let querySnapshot = await getDocs(query(collection(firestore, 'users'), where('Email', '==', email)));
 
-            if (!querySnapshot.empty) {
-              const docSnap = querySnapshot.docs[0];
-              
-              const userData = { id: docSnap.id, ...docSnap.data() };
+              if (!querySnapshot.empty) {
+                const docSnap = querySnapshot.docs[0];
+                
+                const userData = { id: docSnap.id, ...docSnap.data() };
 
-              setObjectUser(userData);
-              setUserId(docSnap.id);
+                setObjectUser(userData);
+                setUserId(docSnap.id);
 
+              }
             }
+            else{
+              alert('Email ou senha inválidos!')
+              console.log('Ocorreu um erro ao pegar o id do documento no login!')
+            } 
           }
-          else{
-            console.log('Ocorreu um erro ao pegar o id do documento no login!')
-          } 
-          
+          catch(error){
+            alert('Email ou senha inválidos!')
+          }
         } else {
-          // Sign up
-          let userRef = collection(firestore, 'users');
+       
+          try{
+            let userRef = collection(firestore, 'users');
 
-          await createUserWithEmailAndPassword(auth, email, password);
+            await createUserWithEmailAndPassword(auth, email, password);
 
-          const item = { 
-            Name: name,
-            Email: email,
-            Senha: password
-          };
+            const item = { 
+              Name: name,
+              Email: email,
+              Senha: password
+            };
 
-          const docRef = await addDoc(userRef, item);
+            const docRef = await addDoc(userRef, item);
 
-          const docId = docRef.id;
-          setUserId(docId);
+            const docId = docRef.id;
+            setUserId(docId);
 
-          const userData = {id: docId, Name: name, Email: email, Senha: password }
-          setObjectUser(userData);
+            const userData = {id: docId, Name: name, Email: email, Senha: password }
+            setObjectUser(userData);
 
-          console.log('User created successfully!');
+            console.log('User created successfully!');
+          }
+          catch(error){
+            alert('Preencha os campos corretamente!')
+          }
         }
       }
     } catch (error) {

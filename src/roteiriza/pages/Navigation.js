@@ -6,7 +6,6 @@ import Viagem01 from './Viagem01';
 import Viagem02 from './Viagem02';
 import Viagem from './pagina2/Viagem';
 import MeusPasseios from './MeusPasseios';
-import Roteiro from './Esq_Senha';
 import Usuario from './pagina2/Usuario';
 import Hospedagem from './Hospedagem';
 import Home from './HomeViagem';
@@ -21,17 +20,13 @@ const Navigation = ({ user, handleAuthentication, userId, objectUser}) => {
   const [routes] = useState([
     { key: 'home', icon: 'home'},
     { key: 'viagem', icon: 'dots-grid'},
-    { key: 'bagagem', icon: 'bag-suitcase-outline'},
-    { key: 'roteiro', icon: 'map-outline'},
     { key: 'usuario', icon: 'account'},
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
     home:   () => <StackNavigation type='home' user={user} handleAuthentication={handleAuthentication} userId = {userId} objectUser={objectUser} />,
     viagem: () => <StackNavigation type='viagem' user={user} handleAuthentication={handleAuthentication} objectUser={objectUser} userId = {userId} />,
-    bagagem: () => <Passagem user={user} handleAuthentication={handleAuthentication} objectUser={objectUser} userId = {userId}/>,
-    roteiro: () => <Roteiro user={user} handleAuthentication={handleAuthentication}/>,
-    usuario: () => <Usuario user={user} handleAuthentication={handleAuthentication} objectUser = {objectUser}/>,
+    usuario:() => <StackNavigation type='usuario' user={user} handleAuthentication={handleAuthentication} objectUser = {objectUser}/>,
   });
 
   return (
