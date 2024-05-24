@@ -11,6 +11,7 @@ import Atualizar_viagem from './Atualizar_viagem'
 import SubMenu from './SubMenu';
 import Hospedagem from './Hospedagem';
 import MeusPasseios from './MeusPasseios';
+import MinhaAlimentacao from './MinhaAlimentacao';
 import Emergencia from './Emergencia';
 import Passagem from './Passagem';
 import Passeios from './Passeios';
