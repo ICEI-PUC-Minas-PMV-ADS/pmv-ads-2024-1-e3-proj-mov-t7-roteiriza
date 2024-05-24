@@ -26,8 +26,10 @@ const Passeios = ({userId}) => {
 
 
     //Dropdown
-    const [isActive, setIsActive] = useState(false)
-    const options = ['Avião', 'Ônibus', 'Carro']
+    const [isActiveHour, setIsActiveHour] = useState(false);
+    const [isActiveTransport, setIsActiveTransport] = useState(false);
+
+    const options = ['Taxi', 'Ônibus', 'Carro']
     const optionsHour = ['Manhã', 'Tarde', 'Noite']
 
 
@@ -211,30 +213,25 @@ const Passeios = ({userId}) => {
                                 <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
                             </View>
 
-                            <View>
-
-
-
-
-
+                            <View style={styles.boxHour}>
                                 <Text style={styles.textInput}>Horário</Text>
 
                                 <TouchableOpacity ClassName='dropdown' 
                                     style={styles.inputMenor}
-                                    onPress= {e => setIsActive(!isActive)}
+                                    onPress= {e => setIsActiveHour(!isActiveHour)}
                                 >
 
                                 <TouchableOpacity ClassName='dropdown-btn'>
                                     <Text 
-                                    onPress= {e => setIsActive(!isActive)}
-                                    style={[styles.placeholder, selectedHour !== valor && styles.selectedValue]}
-                                    > 
-                                    {selectedHour ? selectedHour : valor}
+                                        onPress= {() => setIsActiveHour(!isActiveHour)}
+                                        style={[styles.placeholder, selectedHour !== valor && styles.selectedValue]}
+                                        > 
+                                        {selectedHour ? selectedHour : "Manhã"}
 
                                     </Text>
                                 </TouchableOpacity>
 
-                                {isActive && (
+                                {isActiveHour && (
                                     <View ClassName='dropdown-content' style={styles.dropdownContent}>
                                         {optionsHour.map(optionHour => (
                                         <TouchableOpacity 
@@ -244,10 +241,10 @@ const Passeios = ({userId}) => {
                                             onPress={ () => {
                                                 setSelectedHour(optionHour)
                                                 setHorario(optionHour)
-                                                setIsActive(false)}
+                                                setIsActiveHour(false)}
                                             }
                                             >
-                                            <Text>{optionsHour}</Text>
+                                            <Text>{optionHour}</Text>
                                         </TouchableOpacity>
                                         ))}
 
@@ -257,18 +254,12 @@ const Passeios = ({userId}) => {
                                 </TouchableOpacity>
                                 
                                 <TouchableOpacity
-                                onPress= {e => setIsActive(!isActive)}
+                                onPress= {() => setIsActiveHour(!isActiveHour)}
                                 >
                                 <Image source={require('../assets/img/dropdown.png')} style={styles.iconRight} />
                                 </TouchableOpacity>
                                 
                             </View>
-
-
-
-
-
-
                         </View>
 
                         <View style={styles.inputbox}>
@@ -277,22 +268,22 @@ const Passeios = ({userId}) => {
 
                             <TouchableOpacity ClassName='dropdown' 
                                 style={styles.inputMenor}
-                                onPress= {e => setIsActive(!isActive)}
+                                onPress= {e => setIsActiveTransport(!isActiveTransport)}
                             >
 
                             <TouchableOpacity ClassName='dropdown-btn'>
                                 <Text 
-                                    onPress= {e => setIsActive(!isActive)}
+                                    onPress= {e => setIsActiveTransport(!isActiveTransport)}
                                     style={[styles.placeholder, selectedTransport !== valor && styles.selectedValue]
 
                                 }
                                 > 
-                                {selectedTransport ? selectedTransport : valor}
+                                {selectedTransport ? selectedTransport : "Carro"}
 
                                 </Text>
                                 </TouchableOpacity>
 
-                                {isActive && (
+                                {isActiveTransport && (
                                     <View ClassName='dropdown-content' style={styles.dropdownContent}>
                                         {options.map(option => (
                                         <TouchableOpacity 
@@ -302,7 +293,7 @@ const Passeios = ({userId}) => {
                                             onPress={() => {
                                             setSelectedTransport(option);
                                             setTransporte(option);  // Armazena o valor selecionado na variável 'transporte'
-                                            setIsActive(false);
+                                            setIsActiveTransport(false);
                                             }}
                                             
                                             >
@@ -316,7 +307,7 @@ const Passeios = ({userId}) => {
                             </TouchableOpacity>
                                 
                             <TouchableOpacity
-                                onPress= {e => setIsActive(!isActive)}
+                                onPress= {e => setIsActiveTransport(!isActiveTransport)}
                                 >
                                 <Image source={require('../assets/img/dropdown.png')} style={styles.iconRight} />
                             </TouchableOpacity>
@@ -389,6 +380,10 @@ const styles = StyleSheet.create({
         marginTop: -12,
         marginBottom: -5,
         height: 'auto',
+    },
+    boxHour: {
+        position: 'relative',
+        zIndex: 1
     },
     icon: {
         width: 21,
@@ -540,5 +535,9 @@ const styles = StyleSheet.create({
     selectedValue: {
         color: '#181818'
     },
+    input: {
+        zIndex: 0,
+        position:'relative'
+    }
     
 })
