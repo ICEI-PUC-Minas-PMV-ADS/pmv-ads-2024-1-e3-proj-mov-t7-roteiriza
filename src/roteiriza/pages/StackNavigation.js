@@ -58,6 +58,10 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
               {(props) => <Hospedagem {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
 
+            <Stack.Screen name="Alimentação">
+              {(props) => <MinhaAlimentacao {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
+            </Stack.Screen>
+
             <Stack.Screen name="Meus Passeios">
               {(props) => <MeusPasseios {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
