@@ -32,7 +32,7 @@ const Viagem01 = () => {
 
         <TouchableOpacity style={styles.addButton} onPress={handleRederect}>    
           <View style={styles.iconCircle}>
-            <Image source={require('../assets/icons/icon.png')} />
+            <Image source={require('../assets/icons/plus_icon.png')} />
           </View>
         </TouchableOpacity>
       </View>
