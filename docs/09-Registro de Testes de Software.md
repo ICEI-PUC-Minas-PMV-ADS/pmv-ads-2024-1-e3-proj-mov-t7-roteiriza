@@ -1,6 +1,73 @@
 # Registro de Testes de Software
 A seguir é visualizado o registro de testes de Software realizado em seguida do desenvolvimento da tela:
 
+## Teste 01 - Realizar cadastro
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/3bd205df-ecd1-4a76-9a65-ecfe303233dc
+
+**Resultado esperado:** Realizar a conclusão do cadastro do usuário e redirecionamento para a página de criação de Viagens com dados salvos no firebase. <br>
+**Resultado obtido:** Realizou o cadastro do usuário e o redirecionou para a criação de Viagens e seus dados foram salvos no firebase. <br>
+**Status do Teste:** Aprovado <br>
+
+## Teste 02 - Realizar Login
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/5513a33c-c1ae-4ab1-8eb7-36a55a5afaf0
+
+**Resultado esperado:** Realizar o Login com sucesso pelo usuário, onde é validado se o usuário realmente existe na base de Dados. <br>
+**Resultado obtido:** Realizou o login do usuário e validou o usuário existente na base de dados. <br>
+**Status do Teste:** Aprovado <br>
+
+## Teste 03 - Recuperação de Senha
+
+_[ EM ANDAMENTO ]_
+
+## Teste 04 - Registrar uma Viagem
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/330d38b7-0904-45d7-844e-10aea3fb08df
+
+**Resultado esperado:** Realizar o Registro de uma nova viagem. <br>
+**Resultado obtido:** Realizou o resgistro da viagem corretamente. <br>
+**Status do Teste:** Aprovado <br>
+
+## Teste 05 - Editar uma Viagem
+
+_[ EM ANDAMENTO ]_
+
+## Teste 6 - Apagar uma viagem
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/1218137e-f458-4871-a99c-7f1ac20498c2
+
+**Resultado esperado:**  Usuário  conseguir apagar uma viagem corretamente. <br>
+**Resultado obtido:** O usuário conseguiu apagar as viagens corretamente. <br>
+**Status do Teste:** Aprovado <br>
+
+## Teste 7 - Visualizar Informações relacionadas a Viagem
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/0b32658a-d5c7-4ac6-a1e6-0351e37e8724
+
+**Resultado esperado:** Usuário acessar a viagem desejada e acessar a tela contendo bagagem, passagem, hospedagem, passeios, roteiro, emergência. <br>
+**Resultado obtido:** O usuário conseguiu acessar as informações da viagem corretamente. <br>
+**Status do Teste:** Aprovado <br>
+
+## Teste 8 - Registrar uma hospedagem
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/8750c122-709c-4eed-8e1a-63305cb299ba
+
+**Resultado esperado:** Usuario conseguir registrar uma hospedagem corretamente. <br>
+**Resultado obtido:** O usuario conseguiu registrar uma hospedagem corretamente. <br>
+**Status do Teste:** Aprovado <br>
+
+## Teste 9 - Registrar informações de emergência
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/ba7a5912-c82f-43fa-ada3-0005c80862bf
+
+**Resultado esperado:** Usuario conseguir registrar informaçoes de emergência corretamente. <br>
+**Resultado obtido:** O usuario conseguiu registrar informações de emergência corretamente. <br>
+**Status do Teste:** Aprovado <br>
+
+
+-------
+
 | ID | Descrição do Teste | Etapas do Teste | Resultado Esperado | Resultado Alcançado |
 | -- | ------------------ | --------------- | ------------------ | ------------------- |
 | 01 | Realizar cadastro  | 1. Acessar o aplicativo <br> 2. Acessar a página de cadastro <br> 3. Preencher o formulário de cadastro <br> 4. Clicar em "Cadastrar" | O resultado esperado é a conclusão do <br> cadastro do usuário e redirecionamento<br>para a página de criação de Viagens. | O resultado alcançado foi a efetiva realização do cadastro na base de dados no firebase. |
