@@ -65,6 +65,21 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriz
 **Resultado obtido:** O usuario conseguiu registrar informações de emergência corretamente. <br>
 **Status do Teste:** Aprovado <br>
 
+## Teste 10 - Registrar uma Mala de viagem
+_[ EM ANDAMENTO ]_
+
+## Teste 11 - Registrar uma Alimentação
+_[ EM ANDAMENTO ]_
+
+## Teste 12 -  Registrar uma Passagem
+_[ EM ANDAMENTO ]_
+
+## Teste 13 - Registrar um Passeio
+_[ EM ANDAMENTO ]_
+
+## Teste 14 - Visualização do roteiro de Viagem
+_[ EM ANDAMENTO ]_
+
 
 -------
 
