@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView  } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 
 import Typography, { TypographyStyles } from '../components/Typography';
@@ -20,6 +20,7 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
   const [ListViagem, setListViagem] = useState([]);
 
   useEffect(() => {
+   
     if (user && objectUser) {
       setUserName(objectUser.Name);
       listViagem();
@@ -28,6 +29,11 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
     }
   }, [user, objectUser]);
 
+  useFocusEffect(
+    React.useCallback(() => {
+      listViagem();
+    }, [])
+  );
   const images = [
     require('../assets/imgRandom/Viagem-01.png'),
     require('../assets/imgRandom/Viagem-02.png')
