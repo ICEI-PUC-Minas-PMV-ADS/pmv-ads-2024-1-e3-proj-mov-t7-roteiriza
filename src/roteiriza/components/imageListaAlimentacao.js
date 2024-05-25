@@ -6,8 +6,7 @@ const ImageLista = () => {
         <View style={styles.container}>
             <Image source={require('../assets/img/imgalimentacao1.png')} style={styles.img}/>
         </View>
-        
-        
+               
     )
 }
 

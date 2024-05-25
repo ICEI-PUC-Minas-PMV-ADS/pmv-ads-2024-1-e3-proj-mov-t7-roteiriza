@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { useRoute } from '@react-navigation/native';
 import ListaAdicionada from '../components/listaAdicionada';
-import imageListaAlimentacao from '../components/imageListaAlimentacao';
+import ImageLista from '../components/imageListaAlimentacao';
 
 
 const MinhaAlimentacao = ({userId}) => {
@@ -47,7 +47,7 @@ const MinhaAlimentacao = ({userId}) => {
     return(
         <View>
             <Header title={'Alimentação'}  />
-            <imageListaAlimentacao />
+            <ImageLista />
 
             <ScrollView>
 
