@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
 import  Header  from '../components/Header';
 import InputMenor from '../components/inputMenor';
 import InputCounter from '../components/inputCounter'
@@ -116,11 +116,12 @@ const Passagem = ({ userId }) =>{
     if (qntdPessoas && qntdMalas && valorteste && dataRetorno && dataSaida) {
       console.log('Passando pela verificação dos dados preenchidos');
 
-      console.log(qntdPessoas)
-      console.log(qntdMalas)
-      console.log(valorteste)
-      console.log(dataRetorno)
-      console.log(dataSaida)
+      console.log('Pessoas:' , qntdPessoas)
+      console.log('Malas:', qntdMalas)
+      console.log('valor:', valorteste)
+      console.log('Retorno: ', dataRetorno)
+      console.log('Saida: ', dataSaida)
+      console.log('Transporte', transporte)
       
       const dadosHosp = {
        Malas: qntdMalas,
@@ -183,27 +184,29 @@ const Passagem = ({ userId }) =>{
         <View style={styles.content}>
           <View style={styles.inputbox}>
             <View style={styles.input}>
-
-              <InputMenor
-              nome={'Data de Saída'} 
-              valor={'15/01/2024'}
-              value={dataSaida}
-              onChangeText={setDataSaida}
-              onPress={() => setMostrarCalendarioDataSaida(true) }
-              />
-
-              <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
+              <TouchableWithoutFeedback onPress={() => setMostrarCalendarioDataSaida(true)}>
+                  <InputMenor
+                  nome={'Data de Saída'} 
+                  valor={'15/01/2024'}
+                  value={dataSaida}
+                  onChangeText={setDataSaida}
+                  editable={false}
+                  />
+                </TouchableWithoutFeedback>
+                <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
             </View>
 
             <View>
 
-              <InputMenor
-              nome={'Data de Retorno'} 
-              valor={'22/01/2024'}
-              value={dataRetorno}
-              onChangeText={setDataRetorno}
-              onFocus={() => setMostrarCalendarioDataRetorno(true) }
-              />
+              <TouchableWithoutFeedback onPress={() => setMostrarCalendarioDataRetorno(true)}>
+                <InputMenor
+                nome={'Data de Retorno'} 
+                valor={'22/01/2024'}
+                value={dataRetorno}
+                onChangeText={setDataRetorno}
+                onFocus={() => setMostrarCalendarioDataRetorno(true) }
+                />
+              </TouchableWithoutFeedback>
 
               <Image source={require('../assets/img/calendar.png')} style={styles.iconRight}/>
             </View>

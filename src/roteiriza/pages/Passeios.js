@@ -116,9 +116,17 @@ const Passeios = ({userId}) => {
     const savePasseio = async () => {
         console.log('chamada')
         const passeioRef = collection(firestore, 'passeios');
+        console.log('Dados antes do salvamento:');
+        console.log('Local:', local);
+        console.log('Endereco:', endereco);
+        console.log('data:', data);
+        console.log('horario:', horario);
+        console.log('transporte:', transporte);
+        console.log('valor:', valor);
+  
 
-        if (qntdPessoas && qntdMalas && valorteste && dataRetorno && dataSaida) {
-          
+        if (local && endereco && data && horario && transporte && valor) {
+
           const dadosPasseio = {
             Local: local,
             Endereco: endereco,
@@ -136,12 +144,13 @@ const Passeios = ({userId}) => {
     
             if(dadoOnStore == false){
               await addDoc(passeioRef, dadosPasseio);
+             
               alert('Cadastro de hospedagem realizado com sucesso!');
             }
     
             if(dadoOnStore == true) {
               const docRef = doc(firestore, 'passeios', documentId);
-    
+                
     
               await updateDoc(docRef, {
                 Local: local,
@@ -173,13 +182,8 @@ const Passeios = ({userId}) => {
     return(
            
         <View style={styles.containerPai}>
-
             <View>               
                 <View style={styles.container}>
-                    {/*
-                        <ContainerPasseios />
-                     */}
-
                     <View style={styles.boxPasseios}>    
 
                     <Image source={require('../assets/img/imgpasseios2.png')} style={styles.img}/>

@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import Input from './Input';
 
 
-const InputNormal = ({nome, valor}) =>{
+const InputNormal = ({nome, valor, value, onChangeText}) =>{
     return(
         <View style={styles.containerPasseios}>
             <Text style={styles.textInput}>{nome}</Text>
@@ -13,6 +13,8 @@ const InputNormal = ({nome, valor}) =>{
                 style={styles.inputNormal}
                 placeholder={valor}
                 placeholderTextColor={'#B5B3B3'}
+                alue={value}
+                onChangeText={onChangeText}
             />
         </View>
     
