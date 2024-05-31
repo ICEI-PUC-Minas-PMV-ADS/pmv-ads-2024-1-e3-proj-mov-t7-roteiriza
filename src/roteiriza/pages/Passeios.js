@@ -145,7 +145,7 @@ const Passeios = ({userId}) => {
             if(dadoOnStore == false){
               await addDoc(passeioRef, dadosPasseio);
              
-              alert('Cadastro de hospedagem realizado com sucesso!');
+              alert('Cadastro de passeio realizado com sucesso!');
             }
     
             if(dadoOnStore == true) {

@@ -251,6 +251,7 @@ const Passagem = ({ userId }) =>{
                   <View ClassName='dropdown-content' style={styles.dropdownContent}>
                     {options.map(option => (
                       <TouchableOpacity 
+                      style={styles. dropdownItem}
                         key={option}
                         ClassName='dropdown-item'
                         onPress={() => {
