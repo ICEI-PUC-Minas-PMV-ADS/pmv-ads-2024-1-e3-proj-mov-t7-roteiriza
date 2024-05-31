@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import {View, Text, Image, StyleSheet, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, TextInput} from 'react-native';
 import  Header  from '../components/Header';
 import InputMenor from '../components/inputMenor';
 import InputCounter from '../components/inputCounter'
@@ -185,27 +185,39 @@ const Passagem = ({ userId }) =>{
           <View style={styles.inputbox}>
             <View style={styles.input}>
               <TouchableWithoutFeedback onPress={() => setMostrarCalendarioDataSaida(true)}>
-                  <InputMenor
-                  nome={'Data de Saída'} 
-                  valor={'15/01/2024'}
-                  value={dataSaida}
-                  onChangeText={setDataSaida}
-                  editable={false}
-                  />
-                </TouchableWithoutFeedback>
-                <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
-            </View>
+                <View>
+                    <Text style={styles.textInput}>Data saída</Text>
+                      <TextInput
+                          keyboardType='date'
+                          style={styles.inputMenor}
+                          placeholder={'10/05/2024'}
+                          placeholderTextColor={'#B5B3B3'}
+                          value={dataSaida}
+                          onChangeText={setDataSaida}
+                          onFocus={() => setMostrarCalendarioDataSaida(true)}
+                          
+                      />
+                  </View>
+                  </TouchableWithoutFeedback>
+                  <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
+              </View>
 
             <View>
 
               <TouchableWithoutFeedback onPress={() => setMostrarCalendarioDataRetorno(true)}>
-                <InputMenor
-                nome={'Data de Retorno'} 
-                valor={'22/01/2024'}
-                value={dataRetorno}
-                onChangeText={setDataRetorno}
-                onFocus={() => setMostrarCalendarioDataRetorno(true) }
-                />
+                <View>
+                  <Text style={styles.textInput}>Data saída</Text>
+                    <TextInput
+                        keyboardType='date'
+                        style={styles.inputMenor}
+                        placeholder={'10/05/2024'}
+                        placeholderTextColor={'#B5B3B3'}
+                        value={dataRetorno}
+                        onChangeText={setDataRetorno}
+                        onFocus={() => setMostrarCalendarioDataRetorno(true)}
+                        
+                    />
+                </View>
               </TouchableWithoutFeedback>
 
               <Image source={require('../assets/img/calendar.png')} style={styles.iconRight}/>
@@ -251,7 +263,7 @@ const Passagem = ({ userId }) =>{
                   <View ClassName='dropdown-content' style={styles.dropdownContent}>
                     {options.map(option => (
                       <TouchableOpacity 
-                      style={styles. dropdownItem}
+                      style={styles.dropdownItem}
                         key={option}
                         ClassName='dropdown-item'
                         onPress={() => {
@@ -261,7 +273,7 @@ const Passagem = ({ userId }) =>{
                         }}
                         
                         >
-                        <Text>{option}</Text>
+                        <Text style={styles.dropdownItemText}>{option}</Text>
                       </TouchableOpacity>
                     ))}
 
@@ -442,13 +454,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
     userSelect: 'none',
        
-  },
-        
+  },   
   textInput: {
     fontSize: 15,
     fontWeight: 'bold',
     color: '#063A7A',
-    paddingBottom: 2
+    paddingBottom: 0
   },
   iconRight: {
     width: 21,
@@ -461,7 +472,7 @@ const styles = StyleSheet.create({
     top: 40,
     paddingTop: 2,
     paddingStart: 30,
-    paddingBottom: 2,
+    paddingBottom: 4,
     backgroundColor: '#ffff',
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
@@ -485,4 +496,26 @@ const styles = StyleSheet.create({
   selectedValue: {
     color: '#181818'
   },
+  inputMenor: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    padding: 6,
+    paddingStart: 34,
+    borderWidth: 1,
+    borderColor: '#CACACA',
+    width: 130,
+    height: 35, 
+    fontSize: 14
+ 
+  },
+  
+  textInput: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#063A7A',
+    paddingBottom: 2
+  }
 })

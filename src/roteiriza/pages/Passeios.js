@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import {Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, Image, ScrollView, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, TextInput} from 'react-native';
 import { useRoute } from '@react-navigation/native';
 
 import  Header  from '../components/Header'
@@ -54,8 +54,8 @@ const Passeios = ({userId}) => {
 
     // Função para lidar com a seleção da data
     const handleSelecionarData = (data) => {
-        setDataSaida(data.toISOString().split('T')[0]);
-        setMostrarCalendarioDataSaida(false);
+        setData(data.toISOString().split('T')[0]);
+        setMostrarCalendarioData(false);
     };
 
     useEffect(() => {
@@ -309,14 +309,21 @@ const Passeios = ({userId}) => {
 
                         <View style={styles.inputbox}>
                             <View style={styles.input}>
-                                <InputMenor 
-                                    nome={'Data'} 
-                                    valor={'18 de janeiro'}
-                                    value={data}
-                                    onChangeText={setData}
-                                    onFocus={() => setMostrarCalendarioData(true) }
-                                    
-                                />
+                            <TouchableWithoutFeedback onPress={() => setMostrarCalendarioData(true)}>
+                                <View>
+                                    <Text style={styles.textInput}>Data saída</Text>
+                                    <TextInput
+                                        keyboardType='date'
+                                        style={styles.inputMenor}
+                                        placeholder={'10/05/2024'}
+                                        placeholderTextColor={'#B5B3B3'}
+                                        value={data}
+                                        onChangeText={setData}
+                                        onFocus={() => setMostrarCalendarioData(true)}
+                                        
+                                    />
+                                </View>
+                            </TouchableWithoutFeedback>
                                 <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
                             </View>
 
