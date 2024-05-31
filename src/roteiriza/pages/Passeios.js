@@ -205,17 +205,58 @@ const Passeios = ({userId}) => {
                         <Image source={require('../assets/img/adressIcon.png')} style={styles.icon}/>
 
                         <View style={styles.inputbox}>
-                            <View style={styles.input}>
-                                <InputMenor 
-                                    nome={'Data'} 
-                                    valor={'18 de janeiro'}
-                                    value={data}
-                                    onChangeText={setData}
-                                    onFocus={() => setMostrarCalendarioData(true) }
-                                    
-                                />
-                                <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
+                            {/* AQUI */}
+                            <View style={styles.boxTransporte}>
+                            <Text style={styles.textInput}>Transporte</Text>
+
+                            <TouchableOpacity ClassName='dropdown' 
+                                style={styles.inputMenor}
+                                onPress= {e => setIsActiveTransport(!isActiveTransport)}
+                            >
+
+                            <TouchableOpacity ClassName='dropdown-btn'>
+                                <Text 
+                                    onPress= {e => setIsActiveTransport(!isActiveTransport)}
+                                    style={[styles.placeholder, selectedTransport !== valor && styles.selectedValue]
+
+                                }
+                                > 
+                                {selectedTransport ? selectedTransport : "Carro"}
+
+                                </Text>
+                                </TouchableOpacity>
+
+                                {isActiveTransport && (
+                                    <View ClassName='dropdown-content' style={styles.dropdownContent}>
+                                        {options.map(option => (
+                                        <TouchableOpacity 
+                                            key={option}
+                                            ClassName='dropdown-item'
+                                            style={styles.dropdownItem}
+                                            onPress={() => {
+                                            setSelectedTransport(option);
+                                            setTransporte(option);  // Armazena o valor selecionado na variável 'transporte'
+                                            setIsActiveTransport(false);
+                                            }}
+                                            
+                                            >
+                                            <Text>{option}</Text>
+                                        </TouchableOpacity>
+                                        ))}
+
+                                    </View>
+                                )}
+                                
+                            </TouchableOpacity>
+                                
+                            <TouchableOpacity
+                                onPress= {e => setIsActiveTransport(!isActiveTransport)}
+                                >
+                                <Image source={require('../assets/img/dropdown.png')} style={styles.iconRight} />
+                            </TouchableOpacity>
+                                
                             </View>
+                            
 
                             <View style={styles.boxHour}>
                                 <Text style={styles.textInput}>Horário</Text>
@@ -267,55 +308,16 @@ const Passeios = ({userId}) => {
                         </View>
 
                         <View style={styles.inputbox}>
-                            <View style={styles.boxTransporte}>
-                            <Text style={styles.textInput}>Transporte</Text>
-
-                            <TouchableOpacity ClassName='dropdown' 
-                                style={styles.inputMenor}
-                                onPress= {e => setIsActiveTransport(!isActiveTransport)}
-                            >
-
-                            <TouchableOpacity ClassName='dropdown-btn'>
-                                <Text 
-                                    onPress= {e => setIsActiveTransport(!isActiveTransport)}
-                                    style={[styles.placeholder, selectedTransport !== valor && styles.selectedValue]
-
-                                }
-                                > 
-                                {selectedTransport ? selectedTransport : "Carro"}
-
-                                </Text>
-                                </TouchableOpacity>
-
-                                {isActiveTransport && (
-                                    <View ClassName='dropdown-content' style={styles.dropdownContent}>
-                                        {options.map(option => (
-                                        <TouchableOpacity 
-                                            key={option}
-                                            ClassName='dropdown-item'
-                                            style={styles.dropdownItem}
-                                            onPress={() => {
-                                            setSelectedTransport(option);
-                                            setTransporte(option);  // Armazena o valor selecionado na variável 'transporte'
-                                            setIsActiveTransport(false);
-                                            }}
-                                            
-                                            >
-                                            <Text>{option}</Text>
-                                        </TouchableOpacity>
-                                        ))}
-
-                                    </View>
-                                )}
-                                
-                            </TouchableOpacity>
-                                
-                            <TouchableOpacity
-                                onPress= {e => setIsActiveTransport(!isActiveTransport)}
-                                >
-                                <Image source={require('../assets/img/dropdown.png')} style={styles.iconRight} />
-                            </TouchableOpacity>
-                                
+                            <View style={styles.input}>
+                                <InputMenor 
+                                    nome={'Data'} 
+                                    valor={'18 de janeiro'}
+                                    value={data}
+                                    onChangeText={setData}
+                                    onFocus={() => setMostrarCalendarioData(true) }
+                                    
+                                />
+                                <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
                             </View>
 
                             <View style={styles.input}>
