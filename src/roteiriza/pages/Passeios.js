@@ -426,7 +426,6 @@ const styles = StyleSheet.create({
     },
    container: {
       alignItems: 'center',
-      backgroundColor: '#fff',
       height: '100%',
     },
     dropdownContainer: {

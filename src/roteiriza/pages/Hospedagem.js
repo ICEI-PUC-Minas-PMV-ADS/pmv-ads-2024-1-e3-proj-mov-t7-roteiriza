@@ -146,7 +146,7 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
         <View style={styles.subBox}>
           <View style={styles.line}>
             <View style={styles.inputHalf}>
-              <Text style={styles.text}>Data de Check-In:</Text>
+              <Text style={styles.text}>Data de Check-In</Text>
               <TextInput
                 value={checkIn}
                 onChangeText={setCheckIn}
@@ -158,7 +158,7 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
               <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
             </View>
             <View style={styles.inputHalf}>
-              <Text style={styles.text}>Data de Check-Out:</Text>
+              <Text style={styles.text}>Data de Check-Out</Text>
               <TextInput
                 value={checkOut}
                 onChangeText={setCheckOut}
@@ -173,7 +173,7 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
 
           <View style={styles.line}>
             <View style={styles.inputHalf}>
-              <Text style={styles.text}>Dias:</Text>
+              <Text style={styles.text}>Dias</Text>
               <TextInput
                 value={dias}
                 onChangeText={setDias}
@@ -184,7 +184,7 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
               <Image source={require('../assets/dia.png')} style={styles.iconLeft}/>
             </View>
             <View style={styles.inputHalf}>
-              <Text style={styles.text}>Valor a ser gasto:</Text>
+              <Text style={styles.text}>Valor a ser gasto</Text>
               <TextInput
                 value={valor}
                 onChangeText={setValor}

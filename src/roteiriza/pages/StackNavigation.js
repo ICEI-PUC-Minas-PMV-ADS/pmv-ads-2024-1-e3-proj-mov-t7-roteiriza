@@ -52,7 +52,7 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
             </Stack.Screen>
 
             <Stack.Screen name="SubMenu">
-              {(props) => <SubMenu {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
+              {(props) => <SubMenu {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser}/>} 
             </Stack.Screen>
 
             <Stack.Screen name="Hospedagem">

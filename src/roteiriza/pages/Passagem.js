@@ -215,7 +215,7 @@ const Passagem = ({ userId }) =>{
           <View style={styles.inputbox}>
             <View style={styles.input}>
 
-              <InputCounter 
+              <InputMenor 
                 style={styles.numberInput}
                 nome={'Pessoas'} 
                 valor={'2'}
@@ -223,10 +223,7 @@ const Passagem = ({ userId }) =>{
                 onChangeText={setQntdPessoas}
               />
 
-              <View styles={styles.count}>
-                <Image source={require('../assets/img/menos.png')} style={styles.iconLeft}/>
-                <Image source={require('../assets/img/adicao.png')} style={styles.iconDoubleRight}/>
-              </View>
+              <Image source={require('../assets/img/family.png')} style={styles.iconLeft}/>
             </View>
 
             {/* DROPDOWN TRANSPORTE */}           
@@ -286,7 +283,7 @@ const Passagem = ({ userId }) =>{
           <View style={styles.inputboxLast}>
             <View style={styles.input}>
 
-              <InputCounter 
+              <InputMenor 
                 style={styles.numberInput}
                 nome={'Malas'} 
                 valor={'2'}
@@ -294,10 +291,7 @@ const Passagem = ({ userId }) =>{
                 onChangeText={setQntdMalas}
               />
 
-              <View styles={styles.count}>
-                <Image source={require('../assets/img/menos.png')} style={styles.iconLeft}/>
-                <Image source={require('../assets/img/adicao.png')} style={styles.iconDoubleRight}/>
-              </View>
+              <Image source={require('../assets/img/baggages.png')} style={styles.iconLeft}/>
             </View>
 
             <View style={styles.inputCost} >
@@ -366,12 +360,10 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         marginTop: 10
     },
-  view: {
-    backgroundColor: '#ffff'
-  },
   container: {
       alignItems: 'center',
-      paddingBottom: 50
+      paddingBottom: 40,
+      paddingTop: 10
   },
   dropdownContainer: {
         position: 'relative',
@@ -383,104 +375,111 @@ const styles = StyleSheet.create({
         bottom: 28,
         left: 9
     },
+  iconLeftBag: {
+    width: 28,
+    height: 21,
+    bottom: 28,
+    left: 9
+  },
   iconRight: {
-        width: 21,
-        height: 21,
-        bottom: 30,
-        left: 9
-    },
+    width: 21,
+    height: 21,
+    bottom: 30,
+    left: 9
+},
   iconDoubleRight: {
-        width: 21,
-        height: 21,
-        bottom: 50,
-        left: 100,
+    width: 21,
+    height: 21,
+    bottom: 50,
+    left: 100,
     },
   inputbox: {
-        flexDirection: 'row',
-        gap: 25
-    },
+    flexDirection: 'row',
+    gap: 25,
+  },
   inputboxLast : {
-        flexDirection: 'row',
-        gap: 25,
-        bottom: 20
-    },
+    flexDirection: 'row',
+    gap: 25,
+    marginBottom: 10,
+    top: 1
+  },
   buttonBox: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 10,
-        bottom: 10,
-        top: 10
-    },
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    bottom: 10,
+    top: 10
+  },
   content: {
-      marginTop: 10
-    },
+    marginTop: 10
+  },
   count: {
-      flex: 1,
-      flexDirection: 'row'
-    },
+    flex: 1,
+    flexDirection: 'row'
+  },
   inputCost: {
-      zIndex: 0,
-      position:'relative'
-    },
+    zIndex: 0,
+    position:'relative'
+  },
   boxTransporte:{
     position: 'relative',
     zIndex: 1
-    },
+  },
   inputMenor: {
-      backgroundColor: '#fff',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
-      borderBottomLeftRadius: 10,
-      borderBottomRightRadius: 10,
-      padding: 7,
-      paddingStart: 34,
-      borderWidth: 1,
-      borderColor: '#CACACA',
-      width: 130,
-      height: 35, 
-      fontSize: 14,
-      userSelect: 'none',
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    padding: 7,
+    paddingStart: 34,
+    borderWidth: 1,
+    borderColor: '#CACACA',
+    width: 130,
+    height: 35, 
+    fontSize: 14,
+    userSelect: 'none',
        
   },
         
   textInput: {
-      fontSize: 15,
-      fontWeight: 'bold',
-      color: '#063A7A',
-      paddingBottom: 2
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: '#063A7A',
+    paddingBottom: 2
   },
   iconRight: {
-      width: 21,
-      height: 21,
-      bottom: 30,
-      left: 9
+    width: 21,
+    height: 21,
+    bottom: 30,
+    left: 9
   },
   dropdownContent :{
-      position: 'absolute',
-      top: 40,
-      paddingTop: 2,
-      paddingStart: 30,
-      paddingBottom: 2,
-      backgroundColor: '#ffff',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
-      borderBottomLeftRadius: 10,
-      borderBottomRightRadius: 10,
-      borderWidth: 1,
-      borderColor: '#CACACA',
-      width: 130,
-      height: 'auto', 
-      fontSize: 14,
-      zIndex: 1
+    position: 'absolute',
+    top: 40,
+    paddingTop: 2,
+    paddingStart: 30,
+    paddingBottom: 2,
+    backgroundColor: '#ffff',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    borderWidth: 1,
+    borderColor: '#CACACA',
+    width: 130,
+    height: 'auto', 
+    fontSize: 14,
+    zIndex: 1
   },
   dropdownItem: {
-      paddingBottom: 10,
-      paddingTop: 5,
+    paddingBottom: 10,
+    paddingTop: 5,
 
   },
   placeholder: {
-      color: '#CACACA', 
+    color: '#CACACA', 
   },
   selectedValue: {
     color: '#181818'
