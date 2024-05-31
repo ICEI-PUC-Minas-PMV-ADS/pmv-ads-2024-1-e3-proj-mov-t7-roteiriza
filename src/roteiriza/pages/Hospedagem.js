@@ -4,6 +4,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { useRoute } from '@react-navigation/native';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from '@firebase/firestore';
 import { firestore } from '../firebase/config';
+import Button from '../components/buttonAdicionar';
 
 import Typography from '../components/Typography';
 
@@ -128,89 +129,123 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
     <View style={styles.container}>
       <Image style={styles.logo} source={require('../assets/imgHospedagem.png')} />
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.text}>Endereço do local</Text>
-        <TextInput
-          value={local}
-          onChangeText={setLocal}
-          placeholder="Endereço"
-          autoCapitalize="none"
-          style={styles.input}
-        />
+      <View style={styles.box}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.text}>Endereço do local</Text>
+          <TextInput
+            value={local}
+            onChangeText={setLocal}
+            placeholder="Endereço"
+            autoCapitalize="none"
+            style={styles.inputMaior}
+          />
+          <Image source={require('../assets/img/adressIcon.png')} style={styles.icon}/>
+
+        </View>
+
+        <View style={styles.subBox}>
+          <View style={styles.line}>
+            <View style={styles.inputHalf}>
+              <Text style={styles.text}>Data de Check-In:</Text>
+              <TextInput
+                value={checkIn}
+                onChangeText={setCheckIn}
+                placeholder=""
+                autoCapitalize="none"
+                style={styles.inputMenor}
+                onFocus={() => setMostrarCalendarioDataInicio(true)}
+              />
+              <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
+            </View>
+            <View style={styles.inputHalf}>
+              <Text style={styles.text}>Data de Check-Out:</Text>
+              <TextInput
+                value={checkOut}
+                onChangeText={setCheckOut}
+                placeholder=""
+                autoCapitalize="none"
+                style={styles.inputMenor}
+                onFocus={() => setMostrarCalendarioDataFinal(true)}
+              />
+              <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
+            </View>
+          </View>
+
+          <View style={styles.line}>
+            <View style={styles.inputHalf}>
+              <Text style={styles.text}>Dias:</Text>
+              <TextInput
+                value={dias}
+                onChangeText={setDias}
+                placeholder=""
+                autoCapitalize="none"
+                style={styles.inputMenor}
+              />
+              <Image source={require('../assets/dia.png')} style={styles.iconLeft}/>
+            </View>
+            <View style={styles.inputHalf}>
+              <Text style={styles.text}>Valor a ser gasto:</Text>
+              <TextInput
+                value={valor}
+                onChangeText={setValor}
+                placeholder=""
+                autoCapitalize="none"
+                style={styles.inputMenor}
+              />
+              <Image source={require('../assets/img/moneyIcon.png')} style={styles.iconLeftMoney}/>
+            </View>
+          </View>
+
+          <View style={styles.buttonBox}>
+            <Button 
+              textButton={"ADICIONAR"} 
+              color='#F5BD60' 
+              fontColor='#FFFFFF'
+              onpress={saveHospedagem}
+            />
+
+            <Button 
+              textButton={"CANCELAR"} 
+              color='#FFFFFF' 
+              fontColor='#181818' 
+              borderColor={'black'} 
+              borderWidth={2}
+              onpress={cancelHospedagem}
+            />
+          </View>
+
+          {/*
+            <View style={styles.botaoContainer}>
+            <TouchableOpacity style={styles.btn1} onPress={saveHospedagem}>
+              <Text style={[styles.text, { color: '#FFFFFF' }]}>SALVAR</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.btn2} onPress={cancelHospedagem}>
+              <Text style={styles.text}>CANCELAR</Text>
+            </TouchableOpacity>
+          </View>
+           */}
+          
+
+          <DateTimePickerModal
+            isVisible={mostrarCalendarioDataInicio}
+            mode="date"
+            locale="pt_BR"
+            onConfirm={handleSelecionarDataInicio}
+            onCancel={() => setMostrarCalendarioDataInicio(false)}
+          />
+          <DateTimePickerModal
+            isVisible={mostrarCalendarioDataFinal}
+            mode="date"
+            locale="pt_BR"
+            onConfirm={handleSelecionarDataFinal}
+            onCancel={() => setMostrarCalendarioDataFinal(false)}
+          />
+          </View>
+        </View>
+        
       </View>
 
-      <View style={styles.line}>
-        <View style={styles.inputHalf}>
-          <Text style={styles.text}>Data de Check-In:</Text>
-          <TextInput
-            value={checkIn}
-            onChangeText={setCheckIn}
-            placeholder=""
-            autoCapitalize="none"
-            style={styles.input}
-            onFocus={() => setMostrarCalendarioDataInicio(true)}
-          />
-        </View>
-        <View style={styles.inputHalf}>
-          <Text style={styles.text}>Data de Check-Out:</Text>
-          <TextInput
-            value={checkOut}
-            onChangeText={setCheckOut}
-            placeholder=""
-            autoCapitalize="none"
-            style={styles.input}
-            onFocus={() => setMostrarCalendarioDataFinal(true)}
-          />
-        </View>
-      </View>
-
-      <View style={styles.line}>
-        <View style={styles.inputHalf}>
-          <Text style={styles.text}>Dias:</Text>
-          <TextInput
-            value={dias}
-            onChangeText={setDias}
-            placeholder=""
-            autoCapitalize="none"
-            style={styles.input}
-          />
-        </View>
-        <View style={styles.inputHalf}>
-          <Text style={styles.text}>Valor a ser gasto:</Text>
-          <TextInput
-            value={valor}
-            onChangeText={setValor}
-            placeholder=""
-            autoCapitalize="none"
-            style={styles.input}
-          />
-        </View>
-      </View>
-
-      <View style={styles.botaoContainer}>
-        <TouchableOpacity style={styles.btn1} onPress={saveHospedagem}>
-          <Text style={[styles.text, { color: '#FFFFFF' }]}>Salvar</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btn2} onPress={cancelHospedagem}>
-          <Text style={styles.text}>Cancelar</Text>
-        </TouchableOpacity>
-      </View>
-
-      <DateTimePickerModal
-        isVisible={mostrarCalendarioDataInicio}
-        mode="date"
-        locale="pt_BR"
-        onConfirm={handleSelecionarDataInicio}
-        onCancel={() => setMostrarCalendarioDataInicio(false)}
-      />
-      <DateTimePickerModal
-        isVisible={mostrarCalendarioDataFinal}
-        mode="date"
-        locale="pt_BR"
-        onConfirm={handleSelecionarDataFinal}
-        onCancel={() => setMostrarCalendarioDataFinal(false)}
-      />
-    </View>
+      
   );
 };
 
@@ -219,28 +254,57 @@ export default Hospedagem;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingTop: 20
+    paddingTop: 0
+  },
+  box : {
+    alignItems: 'center',
+
+  },
+  icon: {
+    width: 21,
+    height: 21,
+    bottom: 28,
+    right: -6
+  },
+  buttonBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+},
+  subBox: {
+    alignItems: 'center',
   },
   inputContainer: {
-    width: '90%',
+    width: '100%',
     height: 65,
     marginBottom: 10,
   },
+  iconLeft: {
+    width: 21,
+    height: 21,
+    bottom: 28,
+    left: 9
+  },
+  iconLeftMoney : {
+    width: 21,
+    height: 21,
+    bottom: 28,
+    left: 9
+},
   line: {
     flexDirection: 'row',
-    width: '90%',
     height: 75,
-    justifyContent: 'space-between',
+    gap: 25,
     marginBottom: 10,
   },
   inputHalf: {
-    width: '45%',
-    marginTop: 15
+    marginTop: 0,
   },
   logo: {
     height: 300,
     width: 280,
-    marginBottom: 40,
+    marginBottom: 20,
     marginTop: 30,
     borderRadius: 7,
   },
@@ -281,9 +345,38 @@ const styles = StyleSheet.create({
     padding: 4,
     borderRadius: 10,
   },
+  inputMaior: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    padding: 10,
+    paddingStart: 30,
+    borderWidth: 1,
+    borderColor: '#CACACA',
+    width: 283,
+    height: 35, 
+    fontSize: 14
+  },
+  inputMenor: {
+    backgroundColor: '#fff',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    padding: 10,
+    paddingStart: 35,
+    borderWidth: 1,
+    borderColor: '#CACACA',
+    width: 130,
+    height: 35, 
+    fontSize: 14
+  },
 
   text: {
     color: '#063A7A',
     fontWeight: 'bold',
+    fontSize: 15
   },
 });

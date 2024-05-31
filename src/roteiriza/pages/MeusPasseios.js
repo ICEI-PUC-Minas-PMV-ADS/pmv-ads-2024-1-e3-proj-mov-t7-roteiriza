@@ -48,7 +48,6 @@ const MeusPasseios = ({userId}) => {
 
     return(
         <View>
-            <Header title={'Passeios'}  />
             <ImageLista />
 
             <ScrollView>
