@@ -30,8 +30,6 @@ const Usuario = ( {user, handleAuthentication, objectUser }) => {
 
   return (
     <Container>
-      <Header title={'Perfil do usuário'} />
-
       <Body>
         <Image
             style={styles.logo}
