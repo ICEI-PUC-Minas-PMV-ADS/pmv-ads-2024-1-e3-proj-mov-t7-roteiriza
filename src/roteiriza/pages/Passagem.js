@@ -81,7 +81,7 @@ const Passagem = ({ userId }) =>{
           setDataRetorno(doc.DataRetorno);
           setQntdPessoas(doc.Pessoas);
           setQntdMalas(doc.Malas);
-          setValor(doc.Valor);
+          setValorTeste(doc.Valor);
 
           setTransporte(doc.Transporte);
           setSelected(doc.Transporte)
@@ -105,7 +105,22 @@ const Passagem = ({ userId }) =>{
   const savePassagem = async () => {
     const hospRef = collection(firestore, 'passagem');
 
+    console.log('Dados antes do salvamento:');
+    console.log('qntdPessoas:', qntdPessoas);
+    console.log('qntdMalas:', qntdMalas);
+    console.log('valorteste:', valorteste);
+    console.log('dataRetorno:', dataRetorno);
+    console.log('dataSaida:', dataSaida);
+    console.log('transporte:', transporte);
+  
     if (qntdPessoas && qntdMalas && valorteste && dataRetorno && dataSaida) {
+      console.log('Passando pela verificação dos dados preenchidos');
+
+      console.log(qntdPessoas)
+      console.log(qntdMalas)
+      console.log(valorteste)
+      console.log(dataRetorno)
+      console.log(dataSaida)
       
       const dadosHosp = {
        Malas: qntdMalas,
@@ -133,14 +148,14 @@ const Passagem = ({ userId }) =>{
 
           await updateDoc(docRef, {
             Malas: qntdMalas,
-            Valor: valor,
+            Valor: valorteste,
             Pessoas: qntdPessoas,
             DataSaida: dataSaida,
             DataRetorno: dataRetorno,
             Transporte: transporte,                 
           });
 
-          alert('Documento salvo com sucesso!')
+          alert('Passagem salva com sucesso!')
 
         }
       }
@@ -161,9 +176,7 @@ const Passagem = ({ userId }) =>{
 
   return(
 
-    <View>
-      <Header title="Passagem"/>
-
+    <View style={styles.view}>
       <View style={styles.container}>
         <Image source={require('../assets/img/passagemImg.png')} style={styles.img}/>
 
@@ -176,7 +189,7 @@ const Passagem = ({ userId }) =>{
               valor={'15/01/2024'}
               value={dataSaida}
               onChangeText={setDataSaida}
-              onFocus={() => setMostrarCalendarioDataSaida(true) }
+              onPress={() => setMostrarCalendarioDataSaida(true) }
               />
 
               <Image source={require('../assets/img/calendar.png')} style={styles.iconLeft}/>
@@ -240,7 +253,6 @@ const Passagem = ({ userId }) =>{
                       <TouchableOpacity 
                         key={option}
                         ClassName='dropdown-item'
-                        style={styles.dropdownItem}
                         onPress={() => {
                           setSelected(option);
                           setTransporte(option);  // Armazena o valor selecionado na variável 'transporte'
@@ -289,8 +301,8 @@ const Passagem = ({ userId }) =>{
               <InputMenor
                 nome={'Valor a ser gasto'} 
                 valor={'870,00'}
-                value={valor}
-                onChangeText={setValor}
+                value={valorteste}
+                onChangeText={setValorTeste}
               />
 
               <Image source={require('../assets/img/moneyIcon.png')} style={styles.iconRight}/>
@@ -349,12 +361,14 @@ export default Passagem;
 const styles = StyleSheet.create({
   img: {
         marginBottom: 10,
-        marginTop: 10,
+        marginTop: 10
     },
+  view: {
+    backgroundColor: '#ffff'
+  },
   container: {
       alignItems: 'center',
-      backgroundColor: '#fff'
-
+      paddingBottom: 50
   },
   dropdownContainer: {
         position: 'relative',
