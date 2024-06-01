@@ -52,6 +52,8 @@ import StackNavigation from './StackNavigation';
         renderScene={renderScene}
         renderIcon={({ route }) => route.icon()}
         barStyle={styles.background}
+        theme={{colors: {secondaryContainer: '#F5BD60'}}}
+        shifting={false}
       />
   );
 };
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
   background: {
     height: 60,
     backgroundColor: '#063A7A',
-    paddingTop: 10,
+    paddingTop: 5,
     borderRadius: 15,
     shadowOffset: { width: 2, height: -10 },
     shadowOpacity: 0.3,

@@ -171,7 +171,7 @@ const Passagem = ({ userId }) =>{
 
   const cancelPassagem = () => {
 
-    alert('Cadastro de Hospedagem cancelado com sucesso!');
+    alert('Cadastro de passagem cancelada com sucesso!');
   };
 
 
