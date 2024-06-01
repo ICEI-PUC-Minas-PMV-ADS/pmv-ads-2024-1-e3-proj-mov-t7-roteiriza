@@ -59,7 +59,17 @@ const MeusPasseios = ({ userId }) => {
                                 onPress={handleAdicionar(passeio.id)}
                                 Data={passeio.Data}
                                 Horario={passeio.Horario}
-                            />                          
+                            />  
+                            <View style={styles.acaoBox}>
+                                <TouchableOpacity>
+                                    <Image style={styles.icons}  source={require('../assets/img/editarIcon.png')}/>
+                                </TouchableOpacity>
+
+                                <TouchableOpacity>
+                                    <Image style={styles.icons} source={require('../assets/img/deleteIcon.png')}/>
+                                </TouchableOpacity>    
+                            </View>
+                                                
                         </View>
                         
                     ))
@@ -94,8 +104,20 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         alignSelf: 'center'
       },
-      text: {
+    text: {
         color: '#063A7A',
         fontWeight: 'bold',
       },
+    acaoBox: {
+        flexDirection: 'row',
+        gap: 10,  
+        left: 277,
+        top: 15,
+        position: 'absolute'
+    },
+    icons:{
+        width: 24,
+        height: 24,
+        
+    },
 })

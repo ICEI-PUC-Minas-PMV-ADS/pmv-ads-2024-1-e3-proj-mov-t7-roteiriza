@@ -1,6 +1,11 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect  } from 'react';
 import {Text, View, Image, StyleSheet, TextInput, TouchableOpacity, Modal} from 'react-native';
+
+import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
+import { app, firestore } from '../firebase/config';
+import { useNavigation } from '@react-navigation/native';
+
 
 
 const ListaAdicionada = ({NomeLocal, Data, Horario, onPress })=> {
@@ -10,6 +15,8 @@ const ListaAdicionada = ({NomeLocal, Data, Horario, onPress })=> {
         setModalVisible(true);
     });
 
+    
+
     return(
         <View style={styles.boxLista}> 
             <View style={styles.container}>
@@ -17,48 +24,14 @@ const ListaAdicionada = ({NomeLocal, Data, Horario, onPress })=> {
                     <Text style={styles.titulo}>{NomeLocal}</Text>
                 </TouchableOpacity>
                 <View style={styles.acaoBox}>
-                    <TouchableOpacity onPress={editar}>
-                        <Image style={styles.icons}  source={require('../assets/img/editarIcon.png')}/>
-                    </TouchableOpacity>
                     
-                    <Image style={styles.icons} source={require('../assets/img/deleteIcon.png')}/>
+                    
                 </View>
             </View>
             
             <Text style={styles.informacoes}>{`${Data} | ${Horario}`}</Text>
-
-             {/* Modal */}
-            <Modal
-                animationType="slide"
-                transparent={true}
-                visible={modalVisible}
-                onRequestClose={() => {
-                    // Deixa o modal como invisivel
-                    setModalVisible(false);
-                }}
-            >
-                <View style={styles.modalContainer}>
-                    <View style={styles.modalContent}>
-                        {/* Conteúdo */}
-                        <Text style={styles.modalTitulo}>Você realmente deseja editar esse passeio?</Text>
-
-                        <View style={styles.buttonBox}>
-                            <TouchableOpacity>
-                                <Text style={styles.modalButtonEditar}>EDITAR</Text>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity onPress={() => setModalVisible(false)}>
-                                <Text style={styles.modalButtonCancelar}>CANCELAR</Text>   
-                            </TouchableOpacity>
-                        </View>
-                        
-                    </View>
-                </View>
-            </Modal>
             
         </View>
-
-        
 
     )
 }
