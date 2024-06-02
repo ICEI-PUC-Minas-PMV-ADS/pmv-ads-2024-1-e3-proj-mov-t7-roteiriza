@@ -82,7 +82,7 @@ export default function App() {
                 buttonStyle={styles.checkboxBase}
                 activeButtonStyle={styles.checkboxChecked}
               />
-              {/* Adicionando margem à esquerda do texto e condicionando o estilo para negrito */}
+
               <Typography style={TypographyStyles.bodyText}>
                 <Text style={[styles.checkboxLabel, TypographyStyles.checkboxLabel, checkbox.checked && styles.checkedText]}>
                   {' ' + checkbox.text}
