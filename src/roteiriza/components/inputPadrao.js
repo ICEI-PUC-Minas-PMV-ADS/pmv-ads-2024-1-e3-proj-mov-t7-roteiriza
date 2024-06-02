@@ -13,7 +13,7 @@ const InputNormal = ({nome, valor, value, onChangeText}) =>{
                 style={styles.inputNormal}
                 placeholder={valor}
                 placeholderTextColor={'#B5B3B3'}
-                alue={value}
+                value={value}
                 onChangeText={onChangeText}
             />
         </View>

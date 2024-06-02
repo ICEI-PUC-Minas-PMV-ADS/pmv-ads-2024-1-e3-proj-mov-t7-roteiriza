@@ -53,7 +53,7 @@ const Emergencia = ({userId}) => {
           setDadoOnStore(true)
 
         } else {
-          console.log('Sem hospedagens cadastradas');
+          console.log('Sem emergência cadastradas');
         }
       } catch (error) {
         console.log('Ocorreu um erro: ', error);

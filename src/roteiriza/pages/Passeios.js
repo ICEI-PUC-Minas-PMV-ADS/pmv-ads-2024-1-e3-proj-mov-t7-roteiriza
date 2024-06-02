@@ -12,7 +12,7 @@ import InputMenor from '../components/inputMenor';
 import InputNormal from '../components/inputPadrao';
 
 //firebase
-import { collection, addDoc, query, where, getDocs, updateDoc, doc } from '@firebase/firestore';
+import { collection, addDoc, query, where, getDoc, getDocs, updateDoc, doc } from '@firebase/firestore';
 import { firestore } from '../firebase/config';
 
 //Calendario
@@ -46,7 +46,7 @@ const Passeios = ({userId}) => {
 
     const [isLoaded, setIsLoaded] = useState(false);
     const [dadoOnStore, setDadoOnStore ] = useState(false);
-    const [documentId, setDocumentId] = useState('');
+    const [documentId, setDocumentId] = useState(passeioId);
 
     //calendario
     const [mostrarCalendarioData, setMostrarCalendarioData] = useState(false);
@@ -61,49 +61,37 @@ const Passeios = ({userId}) => {
     useEffect(() => {
         if (!isLoaded) {
             loadPasseio();
-        }
+        }                    
       }, [isLoaded, passeioId]);
 
-
+    //Função para carregar os dados ao entrar na tela
     const loadPasseio = async () => {
         if (!isLoaded) {
             try {
-              console.log('Chamou')
-
-              console.log(local);
-              console.log(endereco);
-              console.log(data);
-              console.log(horario);
-              console.log(valor);
-              console.log(transporte);
-
-
-              const passeiosCollectionRef = collection(firestore, 'passeio');
-              const q = query(passeiosCollectionRef, where('passeioId', '==', passeioId));
-              const querySnapshot = await getDocs(q);
-      
-              if (!querySnapshot.empty) {
-                const docSnapshot = querySnapshot.docs[0];
-                const doc = querySnapshot.docs[0].data();
-      
-                setLocal(doc.Local);
-                setEndereco(doc.Endereco);
-                setData(doc.Data);
-                setValor(doc.Valor);
-      
-                setTransporte(doc.Transporte);
-                setSelectedTransport(doc.Transporte)
-
-                setHorario(doc.Horario);
-                setSelectedHour(doc.Horario)
     
-                setIsLoaded(true);
-                setDocumentId(docSnapshot.id);
-      
-                setDadoOnStore(true)
-      
+              const docRef = doc(firestore, 'passeios', passeioId);
+              const docSnap = await getDoc(docRef);
+
+              if (docSnap.exists()) {
+                  const docData = docSnap.data();
+
+                  setData(docData.Data);
+                  setEndereco(docData.Endereco);
+                  setLocal(docData.Local);
+                  setValor(docData.Valor);
+
+                  setTransporte(docData.Transporte);
+                  setSelectedTransport(docData.Transporte);
+
+                  setHorario(docData.Horario);
+                  setSelectedHour(docData.Horario);
+
+                  setIsLoaded(true);
+                  setDadoOnStore(true);
+
+                  
               } else {
-                console.log('Sem hospedagens cadastradas');
+                console.log('Sem passeios cadastradas');
               }
             } catch (error) {
               console.log('Ocorreu um erro: ', error);
@@ -113,17 +101,9 @@ const Passeios = ({userId}) => {
           }
     };
 
+    //Função para criar um passeio ou editar um passeio já existente
     const savePasseio = async () => {
-        console.log('chamada')
         const passeioRef = collection(firestore, 'passeios');
-        console.log('Dados antes do salvamento:');
-        console.log('Local:', local);
-        console.log('Endereco:', endereco);
-        console.log('data:', data);
-        console.log('horario:', horario);
-        console.log('transporte:', transporte);
-        console.log('valor:', valor);
-  
 
         if (local && endereco && data && horario && transporte && valor) {
 
@@ -140,7 +120,6 @@ const Passeios = ({userId}) => {
     
           
           try {
-            console.log(dadoOnStore)
     
             if(dadoOnStore == false){
               await addDoc(passeioRef, dadosPasseio);
@@ -161,7 +140,7 @@ const Passeios = ({userId}) => {
                 Valor: valor,                             
               });
     
-              alert('Documento salvo com sucesso!')
+              alert('Edições salvas com sucesso!')
             }
           }
           catch(error){
@@ -344,7 +323,7 @@ const Passeios = ({userId}) => {
                     
                     <View style={styles.buttonBox}>
                         <Button 
-                            textButton={"ADICIONAR"} 
+                            textButton={"SALVAR"} 
                             color='#F5BD60' 
                             fontColor='#FFFFFF'
                             onpress={savePasseio}

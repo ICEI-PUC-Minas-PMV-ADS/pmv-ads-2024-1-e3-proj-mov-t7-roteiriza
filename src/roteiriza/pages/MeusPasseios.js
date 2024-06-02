@@ -3,7 +3,7 @@ import { Text, View, Image, ScrollView, StyleSheet, TouchableOpacity } from 'rea
 import Header from '../components/Header';
 import ContainerPasseios from '../components/containerPasseios';
 import Button from '../components/buttonAdicionar';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { collection, query, where, getDocs, deleteDoc, doc } from '@firebase/firestore'; // Adicione deleteDoc e doc
 import { app, firestore } from '../firebase/config';
 import { useRoute } from '@react-navigation/native';
@@ -20,6 +20,12 @@ const MeusPasseios = ({ userId }) => {
     useEffect(() => {
         loadPasseios();
     }, []);
+
+    useFocusEffect(
+        React.useCallback(() => {
+        loadPasseios();
+        }, [])
+      );
 
     const loadPasseios = async () => {
         try {
@@ -38,8 +44,8 @@ const MeusPasseios = ({ userId }) => {
         }
     };
 
-    const handleAdicionar = () => {
-        navigation.navigate('Criar Passeio', { viagemId });
+    const handleAdicionar = (passeioId) => {
+        navigation.navigate('Criar Passeio', { viagemId, passeioId });
     };
 
     const handlePressEdit = (passeioId) => {

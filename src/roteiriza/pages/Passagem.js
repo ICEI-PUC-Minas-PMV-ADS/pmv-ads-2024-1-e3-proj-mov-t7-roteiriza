@@ -92,7 +92,7 @@ const Passagem = ({ userId }) =>{
           setDadoOnStore(true)
 
         } else {
-          console.log('Sem hospedagens cadastradas');
+          console.log('Sem passagens cadastradas');
         }
       } catch (error) {
         console.log('Ocorreu um erro: ', error);
