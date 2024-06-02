@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import typographyStyles from './Typography'; // Importe os estilos de tipografia
+import Typography, { TypographyStyles } from './Typography.js';
 
 function MyCheckbox({
   checked,
@@ -17,9 +17,7 @@ function MyCheckbox({
     <Pressable
       style={[
         buttonStyle,
-        checked
-          ? activeButtonStyle
-          : inactiveButtonStyle,
+        checked ? activeButtonStyle : inactiveButtonStyle,
       ]}
       onPress={onPress}>
       {checked && (
@@ -73,34 +71,39 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
-      
-      <View style={styles.checkboxContainer}>
-        {checkboxes.map((checkbox) => (
-          <View key={checkbox.id} style={styles.checkboxItem}>
-            <MyCheckbox
-              checked={checkbox.checked}
-              onPress={() => handleCheckboxPress(checkbox.id)}
-              buttonStyle={styles.checkboxBase}
-              activeButtonStyle={styles.checkboxChecked}
-            />
-            {/* Aplicando os estilos de tipografia ao rótulo do checkbox */}
-            <Text style={[styles.checkboxLabel, typographyStyles.checkboxLabel]}>{checkbox.text}</Text>
-          </View>
-        ))}
+    <ScrollView>
+      <View style={styles.appContainer}>
+        <View style={styles.checkboxContainer}>
+          {checkboxes.map((checkbox) => (
+            <View key={checkbox.id} style={styles.checkboxItem}>
+              <MyCheckbox
+                checked={checkbox.checked}
+                onPress={() => handleCheckboxPress(checkbox.id)}
+                buttonStyle={styles.checkboxBase}
+                activeButtonStyle={styles.checkboxChecked}
+              />
+              {/* Adicionando margem à esquerda do texto e condicionando o estilo para negrito */}
+              <Typography style={TypographyStyles.bodyText}>
+                <Text style={[styles.checkboxLabel, TypographyStyles.checkboxLabel, checkbox.checked && styles.checkedText]}>
+                  {' ' + checkbox.text}
+                </Text>
+              </Typography>
+            </View>
+          ))}
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            value={inputValue}
+            onChangeText={setInputValue}
+            placeholder="Adicionar um novo item..."
+          />
+          <Pressable style={styles.addButton} onPress={handleAddItem}>
+            <Text style={styles.addButtonText}>+</Text>
+          </Pressable>
+        </View>
       </View>
-            <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          value={inputValue}
-          onChangeText={setInputValue}
-          placeholder="Remédios"
-        />
-        <Pressable style={styles.addButton} onPress={handleAddItem}>
-          <Text style={styles.addButtonText}>Adicionar</Text>
-        </Pressable>
-      </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -108,6 +111,7 @@ const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     justifyContent: 'center',
+    marginTop: 10,
   },
   inputContainer: {
     flexDirection: 'row',
@@ -136,7 +140,6 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: 'column',
     alignItems: 'flex-start',
-
   },
   checkboxItem: {
     flexDirection: 'row',
@@ -158,7 +161,9 @@ const styles = StyleSheet.create({
   },
   checkboxLabel: {
     marginLeft: 8,
-    fontWeight: '500',
-    fontSize: 16,
+    fontSize: 14,
+  },
+  checkedText: {
+    fontWeight: 'bold',
   },
 });
