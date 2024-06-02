@@ -104,25 +104,9 @@ const Passagem = ({ userId }) =>{
 
   const savePassagem = async () => {
     const hospRef = collection(firestore, 'passagem');
-
-    console.log('Dados antes do salvamento:');
-    console.log('qntdPessoas:', qntdPessoas);
-    console.log('qntdMalas:', qntdMalas);
-    console.log('valorteste:', valorteste);
-    console.log('dataRetorno:', dataRetorno);
-    console.log('dataSaida:', dataSaida);
-    console.log('transporte:', transporte);
   
     if (qntdPessoas && qntdMalas && valorteste && dataRetorno && dataSaida) {
-      console.log('Passando pela verificação dos dados preenchidos');
-
-      console.log('Pessoas:' , qntdPessoas)
-      console.log('Malas:', qntdMalas)
-      console.log('valor:', valorteste)
-      console.log('Retorno: ', dataRetorno)
-      console.log('Saida: ', dataSaida)
-      console.log('Transporte', transporte)
-      
+    
       const dadosHosp = {
        Malas: qntdMalas,
        Valor: valorteste,
@@ -140,7 +124,7 @@ const Passagem = ({ userId }) =>{
 
         if(dadoOnStore == false){
           await addDoc(hospRef, dadosHosp);
-          alert('Cadastro de hospedagem realizado com sucesso!');
+          alert('Cadastro de Passagem realizado com sucesso!');
         }
 
         if(dadoOnStore == true) {
