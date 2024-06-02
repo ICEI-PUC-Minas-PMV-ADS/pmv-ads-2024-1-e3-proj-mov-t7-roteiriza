@@ -11,6 +11,7 @@ const Roteiro = () => {
 
     const route = useRoute();
     const { viagemId } = route.params;
+
     const [listDados, setListDados] = useState([]);
     const [listaManha, setListaManha] = useState([]);
     const [listaTarde, setListaTarde] = useState([]);
@@ -20,10 +21,8 @@ const Roteiro = () => {
 
     const loadDados = async (viagemId) => {
 
-        console.log('Função')
-
         try {
-            const passeioCollectionRef = collection(firestore, 'passeio');
+            const passeioCollectionRef = collection(firestore, 'passeios');
             const alimentacaoCollectionRef = collection(firestore, 'alimentacao');
 
             const passeioQuery = query(passeioCollectionRef, where('viagemId', '==', viagemId));
@@ -33,11 +32,18 @@ const Roteiro = () => {
                 getDocs(passeioQuery),
                 getDocs(alimentacaoQuery)
             ]);
+            
+    
+            const passeioList = passeioSnapshot.docs.map(doc => {
+                return { id: doc.id, ...doc.data() };
+            });
 
-            const passeioList = passeioSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            const alimentacaoList = alimentacaoSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            const alimentacaoList = alimentacaoSnapshot.docs.map(doc => {
+                return { id: doc.id, ...doc.data() };
+            });
 
             setListDados([...passeioList, ...alimentacaoList]);
+
 
         } catch (error) {
             console.log('Ocorreu um erro: ', error);
@@ -49,31 +55,25 @@ const Roteiro = () => {
             loadDados(viagemId);
         }
 
-        console.log(viagemId)
-
         if(selectedDate){
             filtro(selectedDate)
         }
-
-        console.log('Chamou')
-        console.log(valor)
 
     }, [viagemId, selectedDate]);
 
 
     const filtro = (selectedDate) => {
-        const filteredListDados = listDados.filter(item => item.data === selectedDate);
+        const filteredListDados = listDados.filter(item => item.Data === selectedDate);
 
-        const ListManha = filteredListDados.filter(item => item.Horario === 'Manha');
+        const ListManha = filteredListDados.filter(item => item.Horario === 'Manhã');
         const ListTarde = filteredListDados.filter(item => item.Horario === 'Tarde');
         const ListNoite = filteredListDados.filter(item => item.Horario === 'Noite');
 
         let valorAux = 0;
         
         for (let i = 0; i < filteredListDados.length; i++) {
-            valorAux += filteredListDados[i].valor || 0;
+            valorAux += filteredListDados[i].Valor || 0;
         }
-
         setValor(valorAux);
         setListaManha(ListManha);
         setListaTarde(ListTarde);
@@ -113,7 +113,7 @@ const Roteiro = () => {
                             <View key={index} style={styles.boxLista}>
                                 <TextInput
                                     label="Nome do Local"
-                                    value={list.titulo}
+                                    value={list.Local}
                                     editable={false}
                                     style={styles.input}
                                     theme={{ colors: { text: "#063A7A", primary: "#063A7A" } }}
@@ -134,7 +134,7 @@ const Roteiro = () => {
                             <View key={index} style={styles.boxLista}>
                                 <TextInput
                                     label="Nome do Local"
-                                    value={list.titulo}
+                                    value={list.Local}
                                     editable={false}
                                     style={styles.input}
                                     theme={{ colors: { text: "#063A7A", primary: "#063A7A" } }}
@@ -155,7 +155,7 @@ const Roteiro = () => {
                             <View key={index} style={styles.boxLista}>
                                 <TextInput
                                     label="Nome do Local"
-                                    value={list.titulo}
+                                    value={list.Local}
                                     editable={false}
                                     style={styles.input}
                                     theme={{ colors: { text: "#063A7A", primary: "#063A7A" } }}

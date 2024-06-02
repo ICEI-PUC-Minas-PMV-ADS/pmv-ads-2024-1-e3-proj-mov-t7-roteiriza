@@ -107,13 +107,20 @@ const Passeios = ({userId}) => {
 
         if (local && endereco && data && horario && transporte && valor) {
 
+          const valorNumerico = parseFloat(valor.replace(',', '.')); 
+
+          if (isNaN(valorNumerico)) {
+            alert('Erro!', ' O valor informado não é um número válido');
+            return;
+          }
+
           const dadosPasseio = {
             Local: local,
             Endereco: endereco,
             Data: data,
             Horario: horario,          
             Transporte: transporte,
-            Valor: valor,
+            Valor: valorNumerico,
             userId: userId,
             viagemId: viagemId,
           };
