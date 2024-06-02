@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView, Text, StyleSheet } from "react-native";
 import { collection, query, where, getDocs } from '@firebase/firestore';
 import { firestore } from '../firebase/config'; 
 import { TextInput } from "react-native-paper";
+import { Calendar } from "react-native-calendars";
+import "moment/locale/pt-br";
 
 const Roteiro = ({ viagemId }) => {
 
@@ -10,7 +12,6 @@ const Roteiro = ({ viagemId }) => {
     const [listaManha, setListaManha] = useState([]);
     const [listaTarde, setListaTarde] = useState([]);
     const [listaNoite, setListaNoite] = useState([]);
-
     const [selectedDate, setSelectedDate] = useState('');
     const [valor, setValor] = useState('');
 
@@ -74,70 +75,160 @@ const Roteiro = ({ viagemId }) => {
         setListaNoite(ListNoite);
     }
 
+        const today = new Date().toISOString().split("T")[0];
 
     return (
-        <View>
-            <ScrollView>
-
-                <Text>Manha</Text>                   
-                {listaManha.length > 0 ? (
-                    listaManha.map((list, index) => (
-                     
-                        <View key={index} style={styles.boxLista}>
-                            <TextInput
-                                label="Nome do Local"
-                                value={list.titulo}                                                             
-                            />                       
-                        </View>
-                    ))
-                ) : (
-                    <View style={styles.boxLista}>
-                        <Text>Nenhum roteiro para essa data e hora</Text>                   
-                    </View>
-                )}
-
-                <Text>Tarde</Text>                   
-                {listaTarde.length > 0 ? (
-                    listaTarde.map((list, index) => (
-                     
-                        <View key={index} style={styles.boxLista}>
-                            <TextInput
-                                label="Nome do Local"
-                                value={list.titulo}                                                             
-                            />                       
-                        </View>
-                    ))
-                ) : (
-                    <View style={styles.boxLista}>
-                        <Text>Nenhum roteiro para essa data e hora</Text>                   
-                    </View>
-                )}
-
-                <Text>Noite</Text>                   
-                {listaNoite.length > 0 ? (
-                    listaNoite.map((list, index) => (
-                     
-                        <View key={index} style={styles.boxLista}>
-                            <TextInput
-                                label="Nome do Local"
-                                value={list.titulo}                                                             
-                            />                       
-                        </View>
-                    ))
-                ) : (
-                    <View style={styles.boxLista}>
-                        <Text>Nenhum roteiro para essa data e hora</Text>                   
-                    </View>
-                )}
-
+        <View style={styles.container}>
+            <Calendar
+        onDayPress={(day) => setSelectedDate(day.dateString)}
+        markedDates={{
+          [selectedDate]: {
+            selected: true,
+            marked: true,
+            selectedColor: "#063A7A",
+          },
+          [today]: { selected: true, marked: true, selectedColor: "#F5BD60" },
+        }}
+        theme={{
+          todayTextColor: "#F5BD60",
+          arrowColor: "#063A7A",
+          textSectionTitleColor: "#063A7A",
+          selectedDayBackgroundColor: "#063A7A",
+          dotColor: "#063A7A",
+        }}
+        monthFormat={"MMMM yyyy"}
+        locale={"pt-br"}
+        firstDay={1}
+      />
+      <View style={styles.contentContainer}>
+      <ScrollView>
+          <Text style={styles.header}>Manhã</Text>
+          {listaManha.length > 0 ? (
+            listaManha.map((list, index) => (
+              <View key={index} style={styles.boxLista}>
                 <TextInput
-                    placeholder="Não existe custo nesse dia"
-                    value={valor}                                                             
-                />     
+                  label="Nome do Local"
+                  value={list.titulo}
+                  editable={false}
+                  style={styles.input}
+                  theme={{ colors: { text: "#063A7A", primary: "#063A7A" } }}
+                />
+              </View>
+            ))
+          ) : (
+            <View style={styles.noDataBox}>
+              <Text style={styles.noDataText}>
+                Nenhum roteiro para essa data e hora...
+              </Text>
+            </View>
+          )}
 
-            </ScrollView>
+          <Text style={styles.header}>Tarde</Text>
+          {listaTarde.length > 0 ? (
+            listaTarde.map((list, index) => (
+              <View key={index} style={styles.boxLista}>
+                <TextInput
+                  label="Nome do Local"
+                  value={list.titulo}
+                  editable={false}
+                  style={styles.input}
+                  theme={{ colors: { text: "#063A7A", primary: "#063A7A" } }}
+                />
+              </View>
+            ))
+          ) : (
+            <View style={styles.noDataBox}>
+              <Text style={styles.noDataText}>
+                Nenhum roteiro para essa data e hora...
+              </Text>
+            </View>
+          )}
+
+          <Text style={styles.header}>Noite</Text>
+          {listaNoite.length > 0 ? (
+            listaNoite.map((list, index) => (
+              <View key={index} style={styles.boxLista}>
+                <TextInput
+                  label="Nome do Local"
+                  value={list.titulo}
+                  editable={false}
+                  style={styles.input}
+                  theme={{ colors: { text: "#063A7A", primary: "#063A7A" } }}
+                />
+              </View>
+            ))
+          ) : (
+            <View style={styles.noDataBox}>
+              <Text style={styles.noDataText}>
+                Nenhum roteiro para essa data e hora...
+              </Text>
+            </View>
+          )}
+
+          <Text style={styles.header}>
+            Valor a ser gasto no dia (expectativa)
+          </Text>
+          <View style={styles.valueBox}>
+            <TextInput
+              value={String(valor)}
+              editable={false}
+              label="Valor a ser gasto no dia..."
+              style={styles.input} 
+              theme={{ colors: { text: "#063A7A", primary: "#063A7A" } }}
+            />
+          </View>
+        </ScrollView>
+            </View>
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: "white",
+      padding: 10,
+    },
+    contentContainer: {
+      marginTop: 20,
+    },
+    header: {
+      fontSize: 20,
+      color: "#063A7A",
+      marginVertical: 10,
+      marginLeft: 10,
+      fontWeight: "bold",
+    },
+    boxLista: {
+      marginBottom: 20,
+      marginHorizontal: 10,
+      borderRadius: 15,
+      backgroundColor: "#f5f5f5",
+      padding: 10,
+    },
+    noDataBox: {
+      marginBottom: 20,
+      marginHorizontal: 10,
+      borderRadius: 15,
+      backgroundColor: "#f5f5f5",
+      padding: 10,
+    },
+    input: {
+      fontSize: 16,
+    },
+    valueBox: {
+      marginBottom: 20,
+      marginHorizontal: 10,
+      padding: 10,
+    },
+    valueInput: {
+      fontSize: 16,
+    },
+    noDataText: {
+      fontSize: 16,
+      color: "gray",
+      textAlign: "center",
+    },
+  });
 
 export default Roteiro;
