@@ -5,9 +5,12 @@ import { firestore } from '../firebase/config';
 import { TextInput } from "react-native-paper";
 import { Calendar } from "react-native-calendars";
 import "moment/locale/pt-br";
+import { useRoute } from '@react-navigation/native';
 
-const Roteiro = ({ viagemId }) => {
+const Roteiro = () => {
 
+    const route = useRoute();
+    const { viagemId } = route.params;
     const [listDados, setListDados] = useState([]);
     const [listaManha, setListaManha] = useState([]);
     const [listaTarde, setListaTarde] = useState([]);
@@ -16,6 +19,9 @@ const Roteiro = ({ viagemId }) => {
     const [valor, setValor] = useState('');
 
     const loadDados = async (viagemId) => {
+
+        console.log('Função')
+
         try {
             const passeioCollectionRef = collection(firestore, 'passeio');
             const alimentacaoCollectionRef = collection(firestore, 'alimentacao');
@@ -43,9 +49,14 @@ const Roteiro = ({ viagemId }) => {
             loadDados(viagemId);
         }
 
+        console.log(viagemId)
+
         if(selectedDate){
             filtro(selectedDate)
         }
+
+        console.log('Chamou')
+        console.log(valor)
 
     }, [viagemId, selectedDate]);
 
