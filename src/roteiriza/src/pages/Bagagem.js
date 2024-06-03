@@ -38,7 +38,7 @@ const Bagagem = () => {
       <Header title="Mala de viagem" />
       <Body>
         <View style={styles.card}>
-          <Image style={styles.cardImage} source={require('../components/assets/Maladeviagem.png')} />
+          <Image style={styles.cardImage} source={require('../assets/Mala-de-viagem.png')} />
           <Typography style={styles.bodyText}>
             Adicione abaixo os itens que você deseja levar para sua viagem e monte um checklist!
           </Typography>
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   btn1: {
-    flex: 1, // Ocupa espaço igual dentro do contêiner flex
+    flex: 1, 
     height: 50,
     backgroundColor: '#F5BD60',
     borderRadius: 10,
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   btn2: {
-    flex: 1, // Ocupa espaço igual dentro do contêiner flex
+    flex: 1, 
     height: 50,
     backgroundColor: '#FCFCFE',
     borderRadius: 10,
