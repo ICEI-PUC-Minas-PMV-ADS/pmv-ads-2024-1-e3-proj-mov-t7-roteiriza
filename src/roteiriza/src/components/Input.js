@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet } from 'react-native';
 import { Appbar, TextInput} from 'react-native-paper';
 
+
 const Input = (props) => {
   return (
      <TextInput
@@ -14,9 +15,16 @@ const Input = (props) => {
 
 const styles = StyleSheet.create({
   input: {
-    backgroundColor: '#FFF',
-    marginBottom: 8,
-    borderRadius: 8
+    backgroundColor: '#fff',
+    marginBottom: -6,
+    borderTopLeftRadius: 15,
+    borderTopRightRadius: 15,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    borderWidth: 1,
+    borderColor: '#063A7A',
+
+    
   },
 });
 
