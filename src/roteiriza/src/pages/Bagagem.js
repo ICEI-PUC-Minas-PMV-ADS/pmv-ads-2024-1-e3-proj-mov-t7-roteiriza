@@ -21,11 +21,12 @@ const Bagagem = () => {
     }
   };
 
-  // Função para salvar a lista de itens selecionados
+  // Função para salvar a lista de itens selecionados em um arquivo JSON
   const saveLista = () => {
-    // Aqui você pode usar os itens armazenados em selectedItems
-    // por exemplo, você pode enviar esses itens para o backend
-    console.log('Itens selecionados:', selectedItems);
+    // Converte a lista de itens selecionados para JSON
+    const jsonItems = JSON.stringify(selectedItems);
+    // Aqui você pode salvar jsonItems em um arquivo ou enviá-lo para um serviço de backend
+    console.log('Itens salvos:', jsonItems);
   };
 
   // Função para limpar a lista de itens selecionados
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   bodyText: {
     color: '#063A7A',
     fontSize: 14,
-    fontWeight: 500,
+    fontWeight: '500',
     marginBottom: 20,
   },
   card: {
