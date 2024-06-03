@@ -137,7 +137,7 @@ const Alimentacao = ({ userId }) => {
                 <View style={styles.container}>
                     <View style={styles.boxAlimentacoes}>
 
-                        <Image source={require('../assets/img/imgalimentacoes.png')} style={styles.img} />
+                        <Image source={require('../assets/img/alimentacao.png')} style={styles.img} />
 
                         <TextInput
                             style={styles.input}
