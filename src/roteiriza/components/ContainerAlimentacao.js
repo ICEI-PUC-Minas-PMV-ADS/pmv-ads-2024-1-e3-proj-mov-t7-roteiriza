@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import {View, Image, StyleSheet} from 'react-native';
-import InputNormal from './inputPadrao'
-import InputMenor from './inputMenor'
-import DropdownTransport from './dropdownTransport';
-import DropdownHour from './dropdownHour'
+import InputNormal from '../components/inputPadrao'
+import InputMenor from '../components/inputMenor'
+import DropdownHour from '../components/dropdownHour'
 
 
 const ContainerAlimentacao = () =>{

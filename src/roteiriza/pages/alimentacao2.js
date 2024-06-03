@@ -150,7 +150,7 @@ const Alimentacao = ({ userId }) => {
                 <View style={styles.container}>
                     <View style={styles.boxAlimentacao}>
 
-                        <Image source={require('../assets/img/imgalimentacao.png')} style={styles.img} />
+                        <Image source={require('../assets/img/imgalimentacao2.png')} style={styles.img} />
 
                         <InputNormal
                             nome={'Nome do Local'}
