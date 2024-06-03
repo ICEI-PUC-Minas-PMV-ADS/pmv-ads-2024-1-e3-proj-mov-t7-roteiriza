@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Pressable, StyleSheet, Text, TextInput, View, ScrollView, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'; 
 import Typography, { TypographyStyles } from './Typography.js';
 
 function MyCheckbox({
@@ -34,6 +34,7 @@ function MyCheckbox({
 
 export default function App() {
   const [inputValue, setInputValue] = useState('');
+  const [editingItemId, setEditingItemId] = useState(null);
   const [checkboxes, setCheckboxes] = useState([
     { id: 1, text: 'Camiseta', checked: false },
     { id: 2, text: 'Calça', checked: false },
@@ -67,6 +68,38 @@ export default function App() {
       };
       setCheckboxes([...checkboxes, newItem]);
       setInputValue('');
+    } else {
+      console.log('Digite algo para adicionar!');
+    }
+  };
+
+  const handleDeleteItem = (id) => {
+    const updatedCheckboxes = checkboxes.filter((checkbox) => checkbox.id !== id);
+    setCheckboxes(updatedCheckboxes);
+  };
+
+  const handleEditItem = (id) => {
+    const itemToEdit = checkboxes.find((checkbox) => checkbox.id === id);
+    if (itemToEdit) {
+      setInputValue(itemToEdit.text);
+      setEditingItemId(id);
+    }
+  };
+
+  const handleSaveEdit = () => {
+    if (inputValue.trim() !== '') {
+      const updatedCheckboxes = checkboxes.map((checkbox) => {
+        if (checkbox.id === editingItemId) {
+          return {
+            ...checkbox,
+            text: inputValue,
+          };
+        }
+        return checkbox;
+      });
+      setCheckboxes(updatedCheckboxes);
+      setInputValue('');
+      setEditingItemId(null);
     }
   };
 
@@ -82,12 +115,39 @@ export default function App() {
                 buttonStyle={styles.checkboxBase}
                 activeButtonStyle={styles.checkboxChecked}
               />
-
-              <Typography style={TypographyStyles.bodyText}>
-                <Text style={[styles.checkboxLabel, TypographyStyles.checkboxLabel, checkbox.checked && styles.checkedText]}>
-                  {' ' + checkbox.text}
-                </Text>
-              </Typography>
+              <View style={styles.textAndIconsContainer}>
+                <Typography style={TypographyStyles.bodyText}>
+                  <Text style={[styles.checkboxLabel, TypographyStyles.checkboxLabel, checkbox.checked && styles.checkedText]}>
+                    {editingItemId === checkbox.id ? (
+                      <TextInput
+                        style={styles.input}
+                        value={inputValue}
+                        onChangeText={setInputValue}
+                        onBlur={handleSaveEdit}
+                        autoFocus
+                      />
+                    ) : (
+                      <Text>{checkbox.text}</Text>
+                    )}
+                  </Text>
+                </Typography>
+                <View style={styles.iconsContainer}>
+                  {editingItemId === checkbox.id ? (
+                    <Pressable onPress={handleSaveEdit} style={styles.iconButton}>
+                      <Ionicons name="checkmark" size={24} color="#F5BD60" />
+                    </Pressable>
+                  ) : (
+                    <>
+                      <Pressable onPress={() => handleEditItem(checkbox.id)} style={styles.iconButton}>
+                        <Image style={styles.icons} source={require('./assets/edit.png')} />
+                      </Pressable>
+                      <Pressable onPress={() => handleDeleteItem(checkbox.id)} style={styles.iconButton}>
+                        <Image style={styles.icons} source={require('./assets/delete.png')} />
+                      </Pressable>
+                    </>
+                  )}
+                </View>
+              </View>
             </View>
           ))}
         </View>
@@ -107,6 +167,8 @@ export default function App() {
   );
 }
 
+
+
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
@@ -116,19 +178,19 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 16,
+    marginBottom: 16,    
+    marginTop: 20,
   },
   input: {
     flex: 1,
-    borderWidth: 1,
-    borderColor: 'gray',
     borderRadius: 10,
     paddingHorizontal: 12,
     paddingVertical: 8,
     marginRight: 8,
+    color: 'gray',
   },
   addButton: {
-    backgroundColor: '#063A7A',
+    backgroundColor: '#F5BD60',
     borderRadius: 4,
     paddingVertical: 10,
     paddingHorizontal: 16,
@@ -145,6 +207,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 8,
+    width: '100%',
   },
   checkboxBase: {
     width: 24,
@@ -159,11 +222,28 @@ const styles = StyleSheet.create({
   checkboxChecked: {
     backgroundColor: '#063A7A',
   },
+  textAndIconsContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginLeft: 10, 
+  },
   checkboxLabel: {
-    marginLeft: 8,
     fontSize: 14,
   },
   checkedText: {
     fontWeight: 'bold',
+  },
+  iconsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  iconButton: {
+    marginLeft: 10,
+  },
+  icons: {
+    width: 24,
+    height: 24,
   },
 });
