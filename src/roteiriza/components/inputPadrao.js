@@ -1,54 +1,37 @@
+// InputNormal.js
 import React from 'react';
-import {Text, View, Image, StyleSheet, TextInput} from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
-import Input from './Input';
+import { View, Text, TextInput, StyleSheet } from 'react-native';
 
-
-const InputNormal = ({nome, valor, value, onChangeText}) =>{
-    return(
-        <View style={styles.containerPasseios}>
-            <Text style={styles.textInput}>{nome}</Text>
-            <TextInput
-                keyboardType='text'
-                style={styles.inputNormal}
-                placeholder={valor}
-                placeholderTextColor={'#B5B3B3'}
-                value={value}
-                onChangeText={onChangeText}
-            />
-        </View>
-    
-    )
-  }
-
-export default InputNormal;
+const InputNormal = ({ nome, valor, onChangeText }) => {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.label}>{nome}</Text>
+      <TextInput
+        style={styles.input}
+        value={valor}
+        onChangeText={onChangeText}
+      />
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
-    inputNormal: {
-            backgroundColor: '#fff',
-            borderTopLeftRadius: 10,
-            borderTopRightRadius: 10,
-            borderBottomLeftRadius: 10,
-            borderBottomRightRadius: 10,
-            padding: 10,
-            paddingStart: 37,
-            borderWidth: 1,
-            borderColor: '#CACACA',
-            width: 283,
-            height: 35, 
-            fontSize: 14
-         
-          },
-          
-    containerPasseios: {
-        marginTop: 0
-    },
+  container: {
+    marginBottom: 20,
+  },
+  label: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    marginBottom: 5,
+    color: '#063A7A', // Cor azul
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#CACACA',
+    borderRadius: 5,
+    padding: 10,
+    fontSize: 16,
+  },
+});
 
-    textInput: {
-        fontSize: 15,
-        fontWeight: 'bold',
-        color: '#063A7A',
-        paddingBottom: 2
-    }
-})
-
+export default InputNormal;

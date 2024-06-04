@@ -1,34 +1,32 @@
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
-import React from 'react'
+// Button.js
+import React from 'react';
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-
-
-const Button = ({textButton, onpress, color, borderColor, borderWidth, fontColor}) => {
+const Button = ({ textButton, onPress, color, fontColor }) => {
   return (
-    <TouchableOpacity onPress={onpress} 
-    style={[styles.button,
-    {backgroundColor: color},
-    {borderColor: borderColor},
-    {borderWidth: borderWidth},
-    
-    ]}>
-        <Text style={[styles.text, { color: fontColor }]} >{textButton}</Text>
+    <TouchableOpacity onPress={onPress} style={[styles.button, { backgroundColor: color }]}>
+      <Text style={[styles.text, { color: fontColor }]}>
+        {textButton}
+      </Text>
     </TouchableOpacity>
-  )
+  );
 }
 
-export default Button
-
 const styles = StyleSheet.create({
-    button: {
-        width: 140,
-        height: 45,
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5,
-    },
-    text: {
-        fontWeight: 'bold',
-        fontSize: 15,
-    }
-})
+  button: {
+    width: 140,
+    height: 45,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#000',
+  },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: '#063A7A', // Cor azul
+  },
+});
+
+export default Button;
