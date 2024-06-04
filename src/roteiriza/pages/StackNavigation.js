@@ -19,6 +19,7 @@ import Passeios from './Passeios';
 import Usuario from './pagina2/Usuario';
 import ForgotPasswordScreen from './Esq_Senha';
 import Roteiro from './roteiro';
+import Bagagem from './Bagagem';
 
 const Stack = createStackNavigator();
 
@@ -83,6 +84,10 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
 
             <Stack.Screen name="Roteiro" options={{headerTintColor: '#063A7A'}}>
               {(props) => <Roteiro {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
+            </Stack.Screen>
+
+            <Stack.Screen name="Bagagem" options={{headerTintColor: '#063A7A'}}>
+              {(props) => <Bagagem {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
 
         </Stack.Navigator>

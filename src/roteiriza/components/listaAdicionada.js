@@ -2,9 +2,6 @@ import React from 'react';
 import { useState, useEffect  } from 'react';
 import {Text, View, Image, StyleSheet, TextInput, TouchableOpacity, Modal} from 'react-native';
 
-import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
-import { app, firestore } from '../firebase/config';
-import { useNavigation } from '@react-navigation/native';
 
 
 

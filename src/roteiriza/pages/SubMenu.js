@@ -76,6 +76,9 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
     navigation.navigate('Roteiro', {viagemId})
   }
 
+  const handlePressBagagem = () => {
+    navigation.navigate('Bagagem', {viagemId})
+  }
 
 
   return (
@@ -100,7 +103,7 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
         <View style={styles.container}>
           <ScrollView showsVerticalScrollIndicator={false}>
             <Container />
-            <TouchableOpacity onPress={this._onPressButton}>
+            <TouchableOpacity onPress={handlePressBagagem}>
               <Card style={styles.cardMala}>
 
 
