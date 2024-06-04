@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Viagem01 from '../roteiriza/pages/Viagem01';
 import Viagem02 from '../roteiriza/pages/Viagem02';
 import roteiro from  '../roteiriza/pages/roteiro';
-import Alimentacao from '../roteiriza/pages/alimentacao2';
+import Alimentacao from '../roteiriza/pages/alimentacaopage2';
 
 const Stack = createStackNavigator()
 
@@ -13,7 +13,7 @@ export default function App(){
       <Stack.Navigator screenOptions={{headerShown: true}}>
       <Stack.Screen
         name = 'Alimentacao'
-        component={Alimentacao}
+        component={alimentacaopage2}
       />
       <Stack.Screen
         name = 'Roteiro'
