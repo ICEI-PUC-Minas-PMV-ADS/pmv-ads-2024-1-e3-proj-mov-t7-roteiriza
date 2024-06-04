@@ -1,25 +1,36 @@
 import React, { useState } from 'react';
 import { ScrollView, View, Text, TextInput, Image, StyleSheet, TouchableOpacity, Modal, Button } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 const Alimentacao = () => {
   const [modalVisible, setModalVisible] = useState(false);
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
+  const [selectedTime, setSelectedTime] = useState('');
 
-  const handleDateSelection = (date) => {
-    setSelectedDate(date);
-    setModalVisible(false);
+  const handleConfirmDate = (date) => {
+    setSelectedDate(date.toISOString().split('T')[0]);
+    setDatePickerVisibility(false);
+  };
+
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
   };
 
   const handleTimeSelection = (time) => {
-    // Aqui você pode fazer o que desejar com a opção de horário selecionada
-    console.log('Horário selecionado:', time);
+    setSelectedTime(time);
+    setModalVisible(false);
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.header}>
         <Image
-          source={require('./caminho/para/sua/imagem')}
+          source={require('../assets/alimentacaotela.jpeg')}
           style={styles.image}
           resizeMode="contain"
         />
@@ -35,24 +46,18 @@ const Alimentacao = () => {
           style={styles.input}
           placeholder="Digite o endereço do local"
         />
-        <TouchableOpacity onPress={() => setModalVisible(true)}>
+        <TouchableOpacity onPress={showDatePicker}>
           <View style={styles.dateContainer}>
             <Text style={styles.label}>Data</Text>
             <Text>{selectedDate || 'Selecionar Data'}</Text>
           </View>
         </TouchableOpacity>
-        <View style={styles.timeContainer}>
-          <Text style={styles.label}>Horário</Text>
-          <TouchableOpacity onPress={() => handleTimeSelection('Dia')}>
-            <Text>Dia</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleTimeSelection('Tarde')}>
-            <Text>Tarde</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => handleTimeSelection('Noite')}>
-            <Text>Noite</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity onPress={() => setModalVisible(true)}>
+          <View style={styles.timeContainer}>
+            <Text style={styles.label}>Horário</Text>
+            <Text>{selectedTime || 'Selecionar Horário'}</Text>
+          </View>
+        </TouchableOpacity>
         <Text style={styles.label}>Valor a ser gasto</Text>
         <TextInput
           style={styles.input}
@@ -60,6 +65,12 @@ const Alimentacao = () => {
           keyboardType="numeric"
         />
       </View>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirmDate}
+        onCancel={hideDatePicker}
+      />
       <Modal
         animationType="slide"
         transparent={false}
@@ -69,12 +80,15 @@ const Alimentacao = () => {
         }}
       >
         <View style={styles.modalContainer}>
-          {/* Aqui você pode adicionar o componente de seleção de data */}
-          <Text>Selecione a data</Text>
-          <Button
-            title="Fechar"
-            onPress={() => setModalVisible(false)}
-          />
+          <TouchableOpacity onPress={() => handleTimeSelection('Dia')}>
+            <Text>Dia</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleTimeSelection('Tarde')}>
+            <Text>Tarde</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handleTimeSelection('Noite')}>
+            <Text>Noite</Text>
+          </TouchableOpacity>
         </View>
       </Modal>
     </ScrollView>
@@ -120,6 +134,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   timeContainer: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
     marginBottom: 10,
   },
   modalContainer: {

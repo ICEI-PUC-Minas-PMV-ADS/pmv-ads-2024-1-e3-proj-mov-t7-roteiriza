@@ -13,7 +13,7 @@ export default function App(){
       <Stack.Navigator screenOptions={{headerShown: true}}>
       <Stack.Screen
         name = 'Alimentacao'
-        component={alimentacaopage2}
+        component={Alimentacao}
       />
       <Stack.Screen
         name = 'Roteiro'
