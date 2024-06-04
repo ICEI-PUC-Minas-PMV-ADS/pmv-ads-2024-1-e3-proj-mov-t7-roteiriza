@@ -30,32 +30,39 @@ const Alimentacao = () => {
           }}
         />
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-        <Image
-          source={require('../assets/localIcon.png')}
-          style={{ width: 24, height: 24, marginRight: 10 }}
-        />
-        <TextInput
-          style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
-          placeholder="Nome do local"
-          value={localName}
-          onChangeText={setLocalName}
-        />
+      <View style={{ marginTop: 10 }}>
+        <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Nome do Local</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Image
+            source={require('../assets/localIcon.png')}
+            style={{ width: 24, height: 24, marginRight: 10 }}
+          />
+          <TextInput
+            style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
+            placeholder="Nome do local"
+            value={localName}
+            onChangeText={setLocalName}
+          />
+        </View>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-        <Image
-          source={require('../assets/adressIcon.png')}
-          style={{ width: 24, height: 24, marginRight: 10 }}
-        />
-        <TextInput
-          style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
-          placeholder="Endereço"
-          value={address}
-          onChangeText={setAddress}
-        />
+      <View style={{ marginTop: 10 }}>
+        <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Endereço</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Image
+            source={require('../assets/adressIcon.png')}
+            style={{ width: 24, height: 24, marginRight: 10 }}
+          />
+          <TextInput
+            style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
+            placeholder="Endereço"
+            value={address}
+            onChangeText={setAddress}
+          />
+        </View>
       </View>
       <View style={{ flexDirection: 'row', marginTop: 10 }}>
         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={{ color: '#063A7A', fontSize: 16, marginRight: 10 }}>Data</Text>
           <Image
             source={require('../assets/calendar.png')}
             style={{ width: 24, height: 24, marginRight: 10 }}
@@ -68,6 +75,7 @@ const Alimentacao = () => {
           />
         </View>
         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
+          <Text style={{ color: '#063A7A', fontSize: 16, marginRight: 10 }}>Hora</Text>
           <Image
             source={require('../assets/dropdown.png')}
             style={{ width: 24, height: 24, marginRight: 10 }}
@@ -80,18 +88,21 @@ const Alimentacao = () => {
           />
         </View>
       </View>
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-        <Image
-          source={require('../assets/moneyIcon.png')}
-          style={{ width: 24, height: 24, marginRight: 10 }}
-        />
-        <TextInput
-          style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
-          placeholder="Valor a ser gasto"
-          keyboardType="numeric"
-          value={expense}
-          onChangeText={setExpense}
-        />
+      <View style={{ marginTop: 10 }}>
+        <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Valor a ser gasto</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Image
+            source={require('../assets/moneyIcon.png')}
+            style={{ width: 24, height: 24, marginRight: 10 }}
+          />
+          <TextInput
+            style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
+            placeholder="Valor a ser gasto"
+            keyboardType="numeric"
+            value={expense}
+            onChangeText={setExpense}
+          />
+        </View>
       </View>
       <View style={{ flexDirection: 'row', marginTop: 20 }}>
         <TouchableOpacity
