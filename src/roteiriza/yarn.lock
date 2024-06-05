@@ -2311,10 +2311,10 @@
     prompts "^2.4.2"
     semver "^7.5.2"
 
-"@react-native-community/datetimepicker@>=6.7.0":
-  version "7.6.4"
-  resolved "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-7.6.4.tgz"
-  integrity sha512-mbnZ5xYl4d2dkWPumQD2mTbLrvMunxUQdbmu0CriOLn48Hy1dQLilQcFg3SfVynND0ydJXo5CRPyXWvUaVkrLQ==
+"@react-native-community/datetimepicker@^8.1.0", "@react-native-community/datetimepicker@>=6.7.0":
+  version "8.1.0"
+  resolved "https://registry.npmjs.org/@react-native-community/datetimepicker/-/datetimepicker-8.1.0.tgz"
+  integrity sha512-7WCP4U+cOiTFOxGRb7+w2kzIDDqI0xb2D62dbF1qt8C06KmWIKcNgmzx7gfeCjzJMIDK8v+PoUECU2YZz5PvCQ==
   dependencies:
     invariant "^2.2.4"
 
@@ -2335,6 +2335,11 @@
   version "19.2.2"
   resolved "https://registry.npmjs.org/@react-native-firebase/firestore/-/firestore-19.2.2.tgz"
   integrity sha512-SaW/f8vDwvP24KdCBo7uaBmE+5Y8JMKfWpOzJtY1XXuA7wlua3IjIilEXNVGrFk8az6N3n9RhCIpWbn4mOml9g==
+
+"@react-native-picker/picker@^2.4.0":
+  version "2.7.6"
+  resolved "https://registry.npmjs.org/@react-native-picker/picker/-/picker-2.7.6.tgz"
+  integrity sha512-Cs3PxRmE2vu6TofM9vt9TV8ZYFOtEPSupNxwoorH9lpkKM9HGG8QwK2i29KOEoODpUbtudKHUTtqhMZSuX9pgA==
 
 "@react-native/assets-registry@~0.74.83", "@react-native/assets-registry@0.74.83":
   version "0.74.83"
@@ -5297,6 +5302,11 @@ lodash.isequal@^4.5.0:
   resolved "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz"
   integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
 
+lodash.isobject@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.npmjs.org/lodash.isobject/-/lodash.isobject-3.0.2.tgz"
+  integrity sha512-3/Qptq2vr7WeJbB4KHUSKlq8Pl7ASXi3UG6CMbBm8WRtXi8+GHm7mKaU3urfpSEzWe2wCIChs6/sdocUsTKJiA==
+
 lodash.throttle@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
@@ -6312,7 +6322,7 @@ prompts@^2.3.2, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.7.2, prop-types@15.8.1:
+prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.7.2, prop-types@15.8.1:
   version "15.8.1"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -6460,6 +6470,18 @@ react-native-calendars@^1.1305.0:
   optionalDependencies:
     moment "^2.29.4"
 
+react-native-dropdown-menu@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.npmjs.org/react-native-dropdown-menu/-/react-native-dropdown-menu-2.0.0.tgz"
+  integrity sha512-FTPlwCChAIfBuyM2oEXZcL+ppYPUZ7rIHsMk+t2joQrdHRPXDSxCo6ttF+LXn+WKlcm44QNbYkH575sX8R0/lg==
+  dependencies:
+    prop-types "^15.6.1"
+
+react-native-dropdown-picker@^5.4.6:
+  version "5.4.6"
+  resolved "https://registry.npmjs.org/react-native-dropdown-picker/-/react-native-dropdown-picker-5.4.6.tgz"
+  integrity sha512-T1XBHbE++M6aRU3wFYw3MvcOuabhWZ29RK/Ivdls2r1ZkZ62iEBZknLUPeVLMX3x6iUxj4Zgr3X2DGlEGXeHsA==
+
 react-native-elements@^3.4.3:
   version "3.4.3"
   resolved "https://registry.npmjs.org/react-native-elements/-/react-native-elements-3.4.3.tgz"
@@ -6497,6 +6519,13 @@ react-native-modal-datetime-picker@^17.1.0:
   dependencies:
     prop-types "^15.7.2"
 
+react-native-modal-dropdown@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/react-native-modal-dropdown/-/react-native-modal-dropdown-1.0.2.tgz"
+  integrity sha512-X13RbwoQdaOb9Ffi7fjRVwh9OXauXIJhum0uXGzYZLMyoCQ5yt5cxf27P/YZbdh80Fb7bdPx6vTA4PTpUK2WDQ==
+  dependencies:
+    prop-types "^15.6.0"
+
 react-native-paper@^4.9.2:
   version "4.9.2"
   resolved "https://registry.npmjs.org/react-native-paper/-/react-native-paper-4.9.2.tgz"
@@ -6505,6 +6534,14 @@ react-native-paper@^4.9.2:
     "@callstack/react-theme-provider" "^3.0.6"
     color "^3.1.2"
     react-native-iphone-x-helper "^1.3.1"
+
+react-native-picker-select@^9.1.3:
+  version "9.1.3"
+  resolved "https://registry.npmjs.org/react-native-picker-select/-/react-native-picker-select-9.1.3.tgz"
+  integrity sha512-O2EmlY4Mg5fZWxECTQJBDhO61as6RDbPYYiNoryaa0gmIkWxhANLsZI+ElEVru1h0Fp9UlCFtBDI5MwhHR9AxA==
+  dependencies:
+    lodash.isequal "^4.5.0"
+    lodash.isobject "^3.0.2"
 
 react-native-ratings@8.0.4:
   version "8.0.4"

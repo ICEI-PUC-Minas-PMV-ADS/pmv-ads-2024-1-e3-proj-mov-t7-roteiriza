@@ -1,5 +1,8 @@
+
 import React, { useState } from 'react';
-import { View, Image, TextInput, TouchableOpacity, Text } from 'react-native';
+import { View, Image, TextInput, TouchableOpacity, Text, ScrollView, Platform } from 'react-native';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import RNPickerSelect from 'react-native-picker-select';
 
 const Alimentacao = () => {
   const [localName, setLocalName] = useState('');
@@ -7,6 +10,15 @@ const Alimentacao = () => {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [expense, setExpense] = useState('');
+  const [isDatePickerVisible, setDatePickerVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState(null); // Alterado para null
+
+  const timeOptions = [
+    { label: 'Dia', value: 'Dia' },
+    { label: 'Tarde', value: 'Tarde' },
+    { label: 'Noite', value: 'Noite' }
+  ];
 
   const saveData = () => {
     // Lógica para salvar os dados
@@ -16,8 +28,22 @@ const Alimentacao = () => {
     // Lógica para cancelar
   };
 
+  const showDatePicker = () => {
+    setDatePickerVisible(true);
+  };
+
+  const hideDatePicker = () => {
+    setDatePickerVisible(false);
+  };
+
+  const handleDateConfirm = (selectedDate) => {
+    const formattedDate = selectedDate.toLocaleDateString('pt-BR');
+    setDate(formattedDate);
+    hideDatePicker();
+  };
+
   return (
-    <View style={{ flex: 1, paddingHorizontal: 40 }}>
+    <ScrollView style={{ flex: 1, paddingHorizontal: 40 }}>
       <View style={{ marginTop: 80 }}>
         <Image
           source={require('../assets/alimentacaotela.jpeg')}
@@ -60,33 +86,31 @@ const Alimentacao = () => {
           />
         </View>
       </View>
-      <View style={{ flexDirection: 'row', marginTop: 10 }}>
-        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={{ color: '#063A7A', fontSize: 16, marginRight: 10 }}>Data</Text>
+      <View style={{ marginTop: 10 }}>
+        <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Data</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Image
             source={require('../assets/calendar.png')}
             style={{ width: 24, height: 24, marginRight: 10 }}
           />
-          <TextInput
-            style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
-            placeholder="Data"
-            value={date}
-            onChangeText={setDate}
-          />
+          <TouchableOpacity onPress={showDatePicker} style={{ flex: 1 }}>
+            <TextInput
+              style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
+              placeholder="Data"
+              value={date}
+              editable={false}
+            />
+          </TouchableOpacity>
         </View>
-        <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', marginLeft: 10 }}>
-          <Text style={{ color: '#063A7A', fontSize: 16, marginRight: 10 }}>Hora</Text>
-          <Image
-            source={require('../assets/dropdown.png')}
-            style={{ width: 24, height: 24, marginRight: 10 }}
-          />
-          <TextInput
-            style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
-            placeholder="Horário"
-            value={time}
-            onChangeText={setTime}
-          />
-        </View>
+      </View>
+      <View style={{ marginTop: 10 }}>
+        <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Horário</Text>
+        <RNPickerSelect
+          placeholder={{ label: 'Selecione o horário', value: null }}
+          onValueChange={(value) => setSelectedTime(value)}
+          items={timeOptions}
+          style={{ inputIOS: { backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10, marginTop: 5 }, inputAndroid: { backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10, marginTop: 5 } }}
+        />
       </View>
       <View style={{ marginTop: 10 }}>
         <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Valor a ser gasto</Text>
@@ -118,7 +142,13 @@ const Alimentacao = () => {
           <Text style={{ color: 'black' }}>Cancelar</Text>
         </TouchableOpacity>
       </View>
-    </View>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleDateConfirm}
+        onCancel={hideDatePicker}
+      />
+    </ScrollView>
   );
 };
 

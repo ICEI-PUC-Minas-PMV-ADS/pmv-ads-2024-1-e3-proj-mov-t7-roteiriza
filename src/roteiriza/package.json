@@ -11,6 +11,7 @@
   "dependencies": {
     "@expo/metro-runtime": "~3.2.1",
     "@expo/vector-icons": "^14.0.0",
+    "@react-native-community/datetimepicker": "^8.1.0",
     "@react-native-firebase/database": "^19.2.2",
     "@react-native-firebase/firestore": "^19.2.2",
     "@react-navigation/native": "^6.1.17",
@@ -24,10 +25,14 @@
     "react-dom": "18.2.0",
     "react-native": "^0.74.1",
     "react-native-calendars": "^1.1305.0",
+    "react-native-dropdown-menu": "^2.0.0",
+    "react-native-dropdown-picker": "^5.4.6",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "^2.16.1",
     "react-native-modal-datetime-picker": "^17.1.0",
+    "react-native-modal-dropdown": "^1.0.2",
     "react-native-paper": "^4.9.2",
+    "react-native-picker-select": "^9.1.3",
     "react-native-web": "~0.19.6"
   },
   "devDependencies": {
