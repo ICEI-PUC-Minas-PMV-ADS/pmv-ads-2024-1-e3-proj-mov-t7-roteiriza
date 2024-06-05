@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { View, Image, TextInput, TouchableOpacity, Text, ScrollView, Platform, KeyboardAvoidingView } from 'react-native';
+import { View, Image, TextInput, StyleSheet, TouchableOpacity, Text, ScrollView, Platform, KeyboardAvoidingView } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
-import RNPickerSelect from 'react-native-picker-select';
-import Input from '../components/Input';
 import DropdownHour from '../components/dropdownHour'; 
 
 const Alimentacao = () => {
@@ -16,11 +14,24 @@ const Alimentacao = () => {
   const [selectedTime, setSelectedTime] = useState(null); 
 
   const saveData = () => {
-    // Lógica para salvar os dados
+    // Lógica para salvar os dados de alimentação
+    const dataAlimentacao = {
+      localName: localName,
+      address: address,
+      date: date,
+      time: time,
+      expense: expense
+    };
+    console.log('Dados de alimentação:', dataAlimentacao);
   };
 
   const cancel = () => {
-    // Lógica para cancelar
+    // Lógica para cancelar o registro de alimentação
+    setLocalName('');
+    setAddress('');
+    setDate('');
+    setTime('');
+    setExpense('');
   };
 
   const showDatePicker = () => {
@@ -110,22 +121,6 @@ const Alimentacao = () => {
             selected={selectedTime}
             setSelected={setSelectedTime}
           />
-        </View>
-        <View style={{ marginTop: 10 }}>
-          <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Valor a ser gasto</Text>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <Image
-              source={require('../assets/moneyIcon.png')}
-              style={{ width: 24, height: 24, marginRight: 10 }}
-            />
-            <TextInput
-              style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
-              placeholder="Valor a ser gasto"
-              keyboardType="numeric"
-              value={expense}
-              onChangeText={setExpense}
-            />
-          </View>
         </View>
         <View style={{ flexDirection: 'row', marginTop: 20 }}>
           <TouchableOpacity

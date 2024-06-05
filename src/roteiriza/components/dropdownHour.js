@@ -1,123 +1,109 @@
-import React from 'react';
-import {Text, View, Image, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import { useState } from 'react'
-import { AntDesign } from '@expo/vector-icons';
-import Input from './Input';
+import React, { useState, useRef } from 'react';
+import { Text, View, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 
-function DropdownHour ({nome, valor, selected, setSelected}){
-  const [isActive, setIsActive] = useState(false)
-  const options = ['Manhã', 'Tarde', 'Noite']
-  
-    return(
-        <View>
-            <Text style={styles.textInput}>{nome}</Text>
+function DropdownHour({ nome, valor, selected, setSelected }) {
+  const [isActive, setIsActive] = useState(false);
+  const options = ['Manhã', 'Tarde', 'Noite'];
+  const dropdownRef = useRef(null);
 
-              <TouchableOpacity ClassName='dropdown' 
-                style={styles.inputMenor}
-                onPress= {e => setIsActive(!isActive)}
-              >
+  const handlePress = () => {
+    setIsActive(!isActive);
 
-              <TouchableOpacity ClassName='dropdown-btn'>
-                <Text 
-                  onPress= {e => setIsActive(!isActive)}
-                  style={[styles.placeholder, selected !== valor && styles.selectedValue]}
-                > 
-                  {selected ? selected : valor}
+    if (dropdownRef.current) {
+      dropdownRef.current.measureInWindow((x, y, width, height) => {
+        if (y + height > window.innerHeight) {
+          setIsActive(false);
+        }
+      });
+    }
+  };
 
-                </Text>
-              </TouchableOpacity>
+  return (
+    <View style={styles.container}>
+      <Text style={styles.label}>{nome}</Text>
 
-              {isActive && (
-                  <View ClassName='dropdown-content' style={styles.dropdownContent}>
-                    {options.map(option => (
-                      <TouchableOpacity 
-                        key={option}
-                        ClassName='dropdown-item'
-                        style={styles.dropdownItem}
-                          onPress={ e => {setSelected(option)
-                          setIsActive(false)}
-                          }
-                        >
-                        <Text>{option}</Text>
-                      </TouchableOpacity>
-                    ))}
-
-                  </View>
-              )}
-              
-            </TouchableOpacity>
-            
-             <TouchableOpacity
-              onPress= {e => setIsActive(!isActive)}
-             >
-              <Image source={require('../assets/dropdown.png')} style={styles.iconRight} />
-             </TouchableOpacity>
-            
+      <TouchableOpacity
+        ref={dropdownRef}
+        style={styles.dropdownContainer}
+        onPress={handlePress}
+      >
+        <View style={styles.input}>
+          <Text style={styles.inputText}>
+            {selected ? selected : valor}
+          </Text>
+          <Image source={require('../assets/dropdown.png')} style={styles.iconRight} />
         </View>
-    )
-}
 
+        {isActive && (
+          <View style={styles.dropdownContent}>
+            <ScrollView style={styles.dropdownScroll}>
+              {options.map(option => (
+                <TouchableOpacity
+                  key={option}
+                  style={styles.dropdownItem}
+                  onPress={() => {
+                    setSelected(option);
+                    setIsActive(false);
+                  }}
+                >
+                  <Text>{option}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )}
+      </TouchableOpacity>
+    </View>
+  );
+}
 
 export default DropdownHour;
 
 const styles = StyleSheet.create({
-    inputMenor: {
-        backgroundColor: '#fff',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
-        padding: 7,
-        paddingStart: 34,
-        borderWidth: 1,
-        borderColor: '#CACACA',
-        width: 130,
-        height: 35, 
-        fontSize: 14,
-        position: 'relative',
-        userSelect: 'none'
-         
-    },
-          
-    textInput: {
-        fontSize: 15,
-        fontWeight: 'bold',
-        color: '#063A7A',
-        paddingBottom: 2
-    },
-    iconRight: {
-        width: 21,
-        height: 21,
-        bottom: 30,
-        left: 9
-    },
-    dropdownContent :{
-        position: 'absolute',
-        top: 40,
-        paddingTop: 2,
-        paddingStart: 30,
-        paddingBottom: 2,
-        backgroundColor: '#ffff',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10,
-        borderBottomLeftRadius: 10,
-        borderBottomRightRadius: 10,
-        borderWidth: 1,
-        borderColor: '#CACACA',
-        width: 130,
-        height: 'auto', 
-        fontSize: 14,
-        zIndex: 1
-    },
-    dropdownItem: {
-        paddingBottom: 10,
-        paddingTop: 5,
-
-    },
-    placeholder: {
-        color: '#CACACA', 
-    },
-    selectedValue: {
-      color: '#181818'
-    }
-})
+  container: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    color: '#063A7A',
+    marginBottom: 5,
+  },
+  dropdownContainer: {
+    position: 'relative',
+    zIndex: 1,
+  },
+  input: {
+    backgroundColor: '#EFEFEF',
+    borderRadius: 5,
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  inputText: {
+    flex: 1,
+    color: '#063A7A',
+  },
+  dropdownContent: {
+    position: 'absolute',
+    top: '100%',
+    left: 0,
+    backgroundColor: '#ffffff',
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: '#063A7A',
+    width: '100%',
+    zIndex: 2,
+  },
+  dropdownScroll: {
+    maxHeight: 150,
+  },
+  dropdownItem: {
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+  },
+  iconRight: {
+    width: 20,
+    height: 20,
+    marginLeft: 10,
+  },
+});
