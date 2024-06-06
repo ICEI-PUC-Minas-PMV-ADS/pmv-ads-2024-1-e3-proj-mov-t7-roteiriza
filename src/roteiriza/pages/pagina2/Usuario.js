@@ -44,11 +44,11 @@ const Usuario = ( {user, handleAuthentication, objectUser }) => {
           </Typography>
 
           <TextInput
-            label="Insira seu e-mail"
             value={EmailUser}
             onChangeText={setEmailUser}
             mode="outlined"
             outlineColor="#CACACA"
+            readOnly
             style={styles.input}
             theme={{
               colors: {
@@ -57,13 +57,6 @@ const Usuario = ( {user, handleAuthentication, objectUser }) => {
               },
             }}
           />
-
-          <Typography style={TypographyStyles.bodyText}>
-            Quer mudar de e-mail?{' '}
-            <Typography style={TypographyStyles.bodyTextHighlighted}>
-              Redefina agora
-            </Typography>
-          </Typography>
         </View>
 
         <View style={styles.inputBox}>
@@ -72,11 +65,11 @@ const Usuario = ( {user, handleAuthentication, objectUser }) => {
           </Typography>
 
           <TextInput
-            label="Insira sua senha"
             value={PasswordUser}
             onChangeText={setPasswordUser}
             mode="outlined"
             outlineColor="#CACACA"
+            readOnly
             secureTextEntry
             style={styles.input}
             theme={{

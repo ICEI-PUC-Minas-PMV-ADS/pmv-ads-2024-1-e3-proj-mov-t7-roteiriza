@@ -3,13 +3,8 @@ import { ScrollView, StyleSheet, SafeAreaView, LogBox } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-
-
-
-
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail  } from 'firebase/auth';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
-
 import { app, firestore } from './firebase/config';
 import Autenticador from './pages/Autenticador';
 import AuthenticatedScreen from './pages/authenticatedScreen';
@@ -21,10 +16,7 @@ import Hospedagem from './pages/Hospedagem';
 import Navigation  from './pages/Navigation';
 import Usuario from './pages/pagina2/Usuario';
 import Home from './pages/HomeViagem';
-
 import Container from './components/Container';
-
-
 
 const App = () => {
   LogBox.ignoreAllLogs(true);
@@ -51,9 +43,7 @@ const App = () => {
   
   const handleAuthentication = async () => {
     try {
-
       if (user) {
-        
         console.log('User logged out successfully!');
         await signOut(auth);
         
@@ -68,12 +58,11 @@ const App = () => {
 
               if (!querySnapshot.empty) {
                 const docSnap = querySnapshot.docs[0];
-                
+
                 const userData = { id: docSnap.id, ...docSnap.data() };
 
                 setObjectUser(userData);
                 setUserId(docSnap.id);
-
               }
             }
             else{
@@ -118,8 +107,6 @@ const App = () => {
   };
 
   return (
-    
-
     <SafeAreaProvider style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         {user ? (
@@ -143,7 +130,6 @@ const App = () => {
                   />
                 )}
               </Stack.Screen>
-        
 
               <Stack.Screen name="recSenha">
                 {props =>(
@@ -151,8 +137,7 @@ const App = () => {
                       {...props}         
                       user={null}
                     />
-                )}
-                  
+                )} 
               </Stack.Screen>             
             </Stack.Navigator>
           </NavigationContainer>
@@ -160,10 +145,6 @@ const App = () => {
       </ScrollView>
     </SafeAreaProvider>
   );
- 
-  
 }
-
-
 
 export default App;

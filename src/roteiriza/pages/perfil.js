@@ -32,7 +32,6 @@ const Perfil = ({ userId }) => {
     readUserDetails();
   }, [userId]); 
 
-  // Log dos dados do usuário
   console.log(username, useremail, userpassword);
 
   return (

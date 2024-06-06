@@ -7,37 +7,46 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
 
 const Viagem02 = ({ user, handleAuthentication, userId }) => {
-  // Estados para os campos de entrada e controle da exibição do seletor de data
+
   const [destino, setDestino] = useState('');
   const [dataInicio, setDataInicio] = useState('');
   const [dataFinal, setDataFinal] = useState('');
   const [mostrarCalendarioDataInicio, setMostrarCalendarioDataInicio] = useState(false);
   const [mostrarCalendarioDataFinal, setMostrarCalendarioDataFinal] = useState(false);
   const [idDoUsuario, setidDoUsuario] = useState('');
-  // Estado para exibir mensagens na tela
   const [mensagem, setMensagem] = useState('');
 
-  // Função para lidar com a seleção da data de início
+  function convertDate(date) {
+    var datePart = date.match(/\d+/g),
+
+    year = datePart[0],
+    month = datePart[1],
+    day = datePart[2];
+  
+    date = day+'/'+month+'/'+year;
+
+    return date;
+  }
+
   const handleSelecionarDataInicio = (data) => {
-    setDataInicio(data.toISOString().split('T')[0]);
+    var date = data.toISOString().split('T')[0]
+    setDataInicio(convertDate(date));
     setMostrarCalendarioDataInicio(false);
   };
 
-  // Função para lidar com a seleção da data final
   const handleSelecionarDataFinal = (data) => {
-    setDataFinal(data.toISOString().split('T')[0]);
+    var date = data.toISOString().split('T')[0]
+    setDataFinal(convertDate(date));
     setMostrarCalendarioDataFinal(false);
   };
 
-  // Função para limpar todos os campos ao cancelar
   const handleCancelar = () => {
     setDestino('');
     setDataInicio('');
     setDataFinal('');
-    setMensagem(''); // Limpa a mensagem
+    setMensagem('');
   };
 
-  // Função para adicionar os dados da viagem
   const handleAdicionar = () => {
     const userRef = collection(firestore, 'viagem'); 
 
@@ -53,10 +62,9 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
         img: indexImg
   
       }
-  
+
         addDoc(userRef,viagem) 
           setMensagem('Parabéns! Viagem roteirizada com sucesso!');
-        
 
     } else {
       setMensagem('Por favor, preencha todos os campos');
@@ -81,14 +89,10 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
       style={styles.container}
     >
       <View style={styles.content}>
-        {/* Título da tela */}
         <Text style={styles.titulo}>Roteirize sua viagem</Text>
-        {/* Subtítulo da tela */}
         <Text style={styles.subTitulo}>Adicione informações sobre o seu roteiro, hospedagem, alimentação, organização da mala e muito mais.</Text>
 
-        {/* Container dos campos de entrada */}
         <View style={styles.infoContainer}>
-          {/* Campo de entrada para o destino da viagem */}
           <View style={styles.inputContainer}>
             <Text style={[styles.infoTitulo, styles.inputTitulo]}>Destino da Viagem:</Text>
             <View style={styles.inputWithIcon}>
@@ -102,7 +106,7 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
               />
             </View>
           </View>
-          {/* Campo de entrada para a data de início da viagem */}
+
           <View style={styles.inputContainer}>
             <Text style={[styles.infoTitulo, styles.inputTitulo]}>Data de Início da Viagem:</Text>
             <TouchableWithoutFeedback onPress={() => setMostrarCalendarioDataInicio(true)}>
@@ -111,7 +115,7 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
                 <TextInput
                   style={styles.input}
                   placeholder="Selecione a data de início..."
-                  placeholderTextColor="#D3D3D3" 
+                  placeholderTextColor="#D3D3D3"
                   value={dataInicio}
                   onFocus={() => setMostrarCalendarioDataInicio(true)}
                   editable={false}
@@ -119,7 +123,7 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
               </View>
             </TouchableWithoutFeedback>
           </View>
-          {/* Campo de entrada para a data final da viagem */}
+
           <View style={styles.inputContainer}>
             <Text style={[styles.infoTitulo, styles.inputTitulo]}>Data Final da Viagem:</Text>
             <TouchableWithoutFeedback onPress={() => setMostrarCalendarioDataFinal(true)}>
@@ -136,16 +140,15 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
               </View>
             </TouchableWithoutFeedback>
           </View>
-          {/* Botões Adicionar e Cancelar */}
+
           <View style={styles.botoesContainer}>
-            {/* Botão para adicionar os dados da viagem */}
             <TouchableOpacity
               style={styles.botaoAdicionar}
               onPress={handleAdicionar}
             >
               <Text style={styles.botaoTexto}>Adicionar</Text>
             </TouchableOpacity>
-            {/* Botão para cancelar e limpar os campos */}
+
             <TouchableOpacity
               style={styles.botaoCancelar}
               onPress={handleCancelar}
@@ -153,12 +156,11 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
               <Text style={styles.botaoTexto}>Cancelar</Text>
             </TouchableOpacity>
           </View>
-          {/* Exibição da mensagem */}
+
           {mensagem !== '' && <Text style={styles.mensagem}>{mensagem}</Text>}
         </View>
       </View>
-      
-      {/* Componentes para selecionar a data de início e final */}
+
       <DateTimePickerModal
         isVisible={mostrarCalendarioDataInicio}
         mode="date"
@@ -187,7 +189,7 @@ const styles = StyleSheet.create({
   },
   content: {
     width: '90%',
-    maxWidth: 600, // Definindo a largura máxima para 600 pixels para evitar que o layout fique muito esticado em telas maiores
+    maxWidth: 600,
   },
   titulo: {
     fontSize: 24,
@@ -248,18 +250,18 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     alignItems: 'center',
     marginHorizontal: 5,
-    alignSelf: 'center', // Centraliza horizontalmente os botões
+    alignSelf: 'center',
   },
   botaoAdicionar: {
-    backgroundColor: '#F5BD60', // Alteração da cor para #F5BD60
+    backgroundColor: '#F5BD60',
     borderWidth: 1,
-    borderColor: '#F5BD60', // Bordas com a mesma cor do fundo
+    borderColor: '#F5BD60',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
     alignItems: 'center',
     marginHorizontal: 5,
-    alignSelf: 'center', // Centraliza horizontalmente os botões
+    alignSelf: 'center',
   },
   botaoTexto: {
     color: 'white',
