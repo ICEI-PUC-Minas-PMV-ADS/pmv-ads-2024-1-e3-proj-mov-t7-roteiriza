@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, Image, TextInput, StyleSheet, TouchableOpacity, Text, ScrollView, Platform, KeyboardAvoidingView } from 'react-native';
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DropdownHour from '../components/dropdownHour'; 
+import { collection, query, where, getDocs } from "@firebase/firestore";
+import { firestore } from "../firebase/config";
 
 const Alimentacao = () => {
   const [localName, setLocalName] = useState('');
@@ -14,7 +16,6 @@ const Alimentacao = () => {
   const [selectedTime, setSelectedTime] = useState(null); 
 
   const saveData = () => {
-    // Lógica para salvar os dados de alimentação
     const dataAlimentacao = {
       localName: localName,
       address: address,
@@ -26,7 +27,6 @@ const Alimentacao = () => {
   };
 
   const cancel = () => {
-    // Lógica para cancelar o registro de alimentação
     setLocalName('');
     setAddress('');
     setDate('');
@@ -51,62 +51,56 @@ const Alimentacao = () => {
   return (
     <KeyboardAvoidingView
       style={{ flex: 1 }}
-      behavior={Platform.OS === 'ios' ? 'padding' : null}
-      keyboardVerticalOffset={Platform.select({ ios: 0, android: 500 })}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={Platform.select({ ios: 0, android: 0 })}
     >
-      <ScrollView style={{ flex: 1, paddingHorizontal: 40 }}>
-        <View style={{ marginTop: 80 }}>
+      <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+        <View style={styles.imageContainer}>
           <Image
             source={require('../assets/alimentacaotela.jpeg')}
-            style={{
-              width: 340,
-              height: 300,
-              borderRadius: 10,
-              marginLeft: 0,
-              marginRight: 40,
-            }}
+            style={styles.image}
           />
         </View>
-        <View style={{ marginTop: 10 }}>
-          <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Nome do Local</Text>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Nome do Local</Text>
+          <View style={styles.inputRow}>
             <Image
               source={require('../assets/localIcon.png')}
-              style={{ width: 24, height: 24, marginRight: 10 }}
+              style={styles.icon}
             />
             <TextInput
-              style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
+              style={styles.textInput}
               placeholder="Nome do local"
               value={localName}
               onChangeText={setLocalName}
             />
           </View>
         </View>
-        <View style={{ marginTop: 10 }}>
-          <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Endereço</Text>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Endereço</Text>
+          <View style={styles.inputRow}>
             <Image
               source={require('../assets/adressIcon.png')}
-              style={{ width: 24, height: 24, marginRight: 10 }}
+              style={styles.icon}
             />
             <TextInput
-              style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
+              style={styles.textInput}
               placeholder="Endereço"
               value={address}
               onChangeText={setAddress}
             />
           </View>
         </View>
-        <View style={{ marginTop: 10 }}>
-          <Text style={{ color: '#063A7A', fontSize: 16, marginBottom: 5 }}>Data</Text>
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Data</Text>
+          <View style={styles.inputRow}>
             <Image
               source={require('../assets/calendar.png')}
-              style={{ width: 24, height: 24, marginRight: 10 }}
+              style={styles.icon}
             />
             <TouchableOpacity onPress={showDatePicker} style={{ flex: 1 }}>
               <TextInput
-                style={{ flex: 1, backgroundColor: '#EFEFEF', borderRadius: 5, padding: 10 }}
+                style={styles.textInput}
                 placeholder="Data"
                 value={date}
                 editable={false}
@@ -114,7 +108,7 @@ const Alimentacao = () => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={{ marginTop: 10 }}>
+        <View style={styles.inputContainer}>
           <DropdownHour
             nome="Horário"
             valor="Selecione o horário"
@@ -122,29 +116,97 @@ const Alimentacao = () => {
             setSelected={setSelectedTime}
           />
         </View>
-        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+        <View style={styles.buttonContainer}>
           <TouchableOpacity
-            style={{ flex: 1, marginRight: 5, backgroundColor: '#F5BD60', padding: 10, borderRadius: 5, alignItems: 'center' }}
+            style={styles.saveButton}
             onPress={saveData}
           >
-            <Text style={{ color: 'white' }}>Salvar</Text>
+            <Text style={styles.saveButtonText}>Salvar</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={{ flex: 1, marginLeft: 5, backgroundColor: 'white', borderColor: 'black', borderWidth: 1, padding: 10, borderRadius: 5, alignItems: 'center' }}
+            style={styles.cancelButton}
             onPress={cancel}
           >
-            <Text style={{ color: 'black' }}>Cancelar</Text>
+            <Text style={styles.cancelButtonText}>Cancelar</Text>
           </TouchableOpacity>
         </View>
-        <DateTimePickerModal
-          isVisible={isDatePickerVisible}
-          mode="date"
-          onConfirm={handleDateConfirm}
-          onCancel={hideDatePicker}
-        />
       </ScrollView>
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleDateConfirm}
+        onCancel={hideDatePicker}
+      />
     </KeyboardAvoidingView>
   );
 };
+
+const styles = StyleSheet.create({
+  scrollViewContainer: {
+    flexGrow: 1,
+    paddingHorizontal: 40,
+    paddingBottom: 20,
+  },
+  imageContainer: {
+    marginTop: 60, // Diminuir a margem superior para subir a imagem
+    alignItems: 'center',
+  },
+  image: {
+    width: 300, // Diminuir a largura da imagem
+    height: 200, // Diminuir a altura da imagem
+    borderRadius: 10,
+  },
+  inputContainer: {
+    marginTop: 10,
+  },
+  label: {
+    color: '#063A7A',
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    marginRight: 10,
+  },
+  textInput: {
+    flex: 1,
+    backgroundColor: '#EFEFEF',
+    borderRadius: 5,
+    padding: 10,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+  },
+  saveButton: {
+    flex: 1,
+    marginRight: 5,
+    backgroundColor: '#F5BD60',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  saveButtonText: {
+    color: 'white',
+  },
+  cancelButton: {
+    flex: 1,
+    marginLeft: 5,
+    backgroundColor: 'white',
+    borderColor: 'black',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  cancelButtonText: {
+    color: 'black',
+  },
+});
 
 export default Alimentacao;
