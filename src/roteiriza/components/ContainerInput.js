@@ -3,21 +3,17 @@ import React from 'react'
 
 
 
-const ContainerInput = ({titleText, placeHolderText, subText, borderColor, borderWidth, value, onChangeText }) => {
+const ContainerInput = ({titleText, onFocus, placeHolderText, subText, borderColor, borderWidth, value, onChangeText }) => {
   return (
     <View style={styles.mainContainer}>
 
         <Text style={styles.text}>{titleText}</Text>
 
-        <TextInput style={styles.input} value={value} onChangeText={onChangeText} />
+        <TextInput style={styles.input} value={value} onChangeText={onChangeText} onFocus={onFocus}/>
 
         <View style={styles.containerThree}>
 
             <Text style={styles.subtext}> {subText} </Text>
-
-            <TouchableOpacity>
-                <Text style={styles.linktext}>Edite agora</Text>
-            </TouchableOpacity>
 
         </View>
 

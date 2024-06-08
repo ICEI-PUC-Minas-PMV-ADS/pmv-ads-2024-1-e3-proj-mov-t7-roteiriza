@@ -3,9 +3,6 @@ import React from 'react'
 import styled from 'styled-components';
 import { LinearGradient } from 'expo-linear-gradient';
 
-
-
-
 const ContainerTitle = () => {
   return (
     <View style={styles.mainContainer} >
@@ -31,30 +28,30 @@ export const Background = styled(LinearGradient)
 export default ContainerTitle
 
 const styles = StyleSheet.create({
-    containerOne: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-    containerTwo: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        bottom: 5,
-      },
-      text: {
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 33,
+  containerOne: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
-      subtext: {
-        color: 'white',
-        fontWeight:'200',
-        fontSize: 15,
+  containerTwo: {
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      bottom: 5,
     },
-      mainContainer: {
-        height:80,
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
+    text: {
+      color: 'white',
+      fontWeight: 'bold',
+      fontSize: 33,
+  },
+    subtext: {
+      color: 'white',
+      fontWeight:'200',
+      fontSize: 15,
+  },
+    mainContainer: {
+      height:80,
+      justifyContent: 'space-between',
+      alignItems: 'center',
+  },
 })

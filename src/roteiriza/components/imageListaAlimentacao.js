@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 
 const ImageLista = () => {
     return(
@@ -15,9 +15,12 @@ export default ImageLista;
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        margin: 25
+        margin: 25,
+        maxHeight: 200,
     },
     img: {
-        marginBottom: 0
+        marginBottom: 0,
+        maxWidth: "100%",
+        maxHeight: 200,
     }
 })

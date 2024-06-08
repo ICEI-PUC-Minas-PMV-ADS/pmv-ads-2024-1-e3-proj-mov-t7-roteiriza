@@ -9,7 +9,7 @@ import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
-const Viagem02 = ({ user, handleAuthentication, userId }) => {
+const Viagem02 = ({ userId }) => {
 
   const [destino, setDestino] = useState('');
   const [dataInicio, setDataInicio] = useState('');

@@ -29,7 +29,7 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
     return (
       <NavigationContainer>
         <Stack.Navigator headerMode="none" screenOptions={{ headerShown: true }}>
-            <Stack.Screen name="Home" options={{headerTintColor: '#063A7A'}}>
+            <Stack.Screen name=" " options={{headerTintColor: '#063A7A'}}>
                 {(props) => <Viagem01 {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} />} 
             </Stack.Screen>
 
@@ -46,7 +46,7 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
     return (
       <NavigationContainer>
         <Stack.Navigator headerMode="none" screenOptions={{ headerShown: true }}>
-            <Stack.Screen name="Home" options={{headerTintColor: '#063A7A'}}>
+            <Stack.Screen name=" " options={{headerTintColor: '#063A7A'}}>
                 {(props) => <Home {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser}/>} 
             </Stack.Screen>
 

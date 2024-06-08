@@ -3,6 +3,11 @@
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.29",
-    "react-native-vector-icons": "^10.1.0"
+    "expo": "^51.0.11",
+    "react-native": "^0.74.2",
+    "react-native-vector-icons": "^10.1.0",
+    "react-native-web": "~0.19.10",
+    "react-dom": "18.2.0",
+    "@expo/metro-runtime": "~3.2.1"
   }
 }
