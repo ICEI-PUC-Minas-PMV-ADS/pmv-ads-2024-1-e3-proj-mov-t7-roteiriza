@@ -126,7 +126,7 @@ const App = () => {
         ) : (
           <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: true }}>
-              <Stack.Screen name="Autenticador">
+              <Stack.Screen name=" ">
                 {props => (
                   <Autenticador
                     {...props}

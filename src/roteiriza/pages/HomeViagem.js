@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView  } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity, Linking, Text, ScrollView  } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 
@@ -79,15 +79,13 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
   }
    
   return (
-    <Container>
-      <Header title={`Olá! ${UserName}`} />
+    <Container style={styles.container}>
+        <View style={styles.header}>
+          <Text style={TypographyStyles.headerTitle}>Olá, {UserName}!</Text>
+          <Text style={TypographyStyles.bodyText}>Qual viagem você quer organizar agora?</Text>
+        </View>
       <Body>
         <ScrollView>
-          <View style={styles.introducao}>
-            <Typography style={TypographyStyles.bodyText}>
-              Qual viagem você quer organizar agora?
-            </Typography>
-          </View>
           <View style={styles.travelBoxes}>
             
             {ListViagem.length > 0 ? (
@@ -142,37 +140,40 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
 };
 
 const styles = StyleSheet.create({
-  introducao: {
-    marginBottom: 40,
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-
+  header: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 80,
+    gap: 5,
+    paddingLeft: 40,
+  },
   travelBoxes: {
     gap: 50,
   },
-
   viagem_01: {
     width: '100%',
     height: 150,
     marginBottom: 20,
   },
-
   viagem_02: {
     width: '100%',
     height: 150,
     marginBottom: 20,
   },
-
   boxInfoViagem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-
   alignIcons: {
     flexDirection: 'row',
     gap: 10,
   },
-
   icons: {
     width: 30,
     height: 30,

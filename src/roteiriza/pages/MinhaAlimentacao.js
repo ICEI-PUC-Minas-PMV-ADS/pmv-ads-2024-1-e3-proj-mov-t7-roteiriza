@@ -1,40 +1,43 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {Text, View, Image, ScrollView, StyleSheet, TouchableOpacity} from 'react-native';
-import  Header  from '../components/Header'
-import { useNavigation } from '@react-navigation/native';
-
-
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { collection, query, where, getDocs, deleteDoc, doc } from '@firebase/firestore'; // Adicione deleteDoc e doc
+import { firestore } from '../firebase/config';
 import { useRoute } from '@react-navigation/native';
 import ListaAdicionada from '../components/listaAdicionada';
 import ImageLista from '../components/imageListaAlimentacao';
 
 
 const MinhaAlimentacao = ({userId}) => {
-    
     const navigation = useNavigation(); 
-
     const route = useRoute();
     const { viagemId } = route.params;
     
     const [ListAlimentacao, setListAlimentacao] = useState([]);
 
-    const loadAlimentacao = async () => {
+    useEffect(() => {
+        loadAlimentacao();
+    }, []);
 
+    useFocusEffect(
+        React.useCallback(() => {
+        loadAlimentacao();
+        }, [])
+      );
+
+    const loadAlimentacao = async () => {
         try {
             const q = query(collection(firestore, 'restaurantes'), where('viagemId', '==', viagemId));
             const querySnapshot = await getDocs(q);
       
             if (!querySnapshot.empty) {
-      
               const docSnap = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data()}));
-              
               setListAlimentacao(docSnap);
-      
             } else {
               console.log('Sem restaurantes cadastrados');
               setListAlimentacao([]);
             }
-          } catch (error) {
+        } catch (error) {
             console.log('Ocorreu um erro: ', error);
         }
     };
@@ -42,39 +45,53 @@ const MinhaAlimentacao = ({userId}) => {
     const handleAdicionar = (alimentacaoId) => {
         navigation.navigate('Adicionar restaurante', {viagemId, alimentacaoId})
     }
-    
+
+    const handlePressEdit = (alimentacaoId) => {
+        navigation.navigate('Editar Alimentação', { viagemId, alimentacaoId });
+    };
+
+    const handlePressDelete = async (alimentacaoId) => {
+        try {
+            await deleteDoc(doc(firestore, 'alimentacao', alimentacaoId)); // Certifique-se que a coleção seja 'alimentacao'
+            loadAlimentacao(); // Atualiza a lista de restaurantes após a exclusão
+        } catch (error) {
+            console.log('Ocorreu um erro ao tentar excluir o restaurante!', error);
+        }
+    };
 
     return(
         <View>
-            <Header title={'Alimentação'}  />
             <ImageLista />
 
             <ScrollView>
-
                 {ListAlimentacao.length > 0 ? (
                     ListAlimentacao.map((alimentacao, index) => (
                         <View key={index} style={styles.boxLista}>
                             <ListaAdicionada
                                 NomeLocal={alimentacao.Local}
-                                onPress={handleAdicionar(alimentacao.id)}
+                                onPress={() => handleAdicionar(alimentacao.id)} // Corrigido para função anônima
                                 Data={alimentacao.Data}
                                 Horario={alimentacao.Horario}
                             />
-                            <TouchableOpacity style={styles.btn1} onPress={handleAdicionar}>
-                                <Text style={[styles.text, { color: '#FFFFFF' }]}>Adicionar</Text>
-                            </TouchableOpacity>
-                        </View>
-                        
+                            <View style={styles.acaoBox}>
+                                <TouchableOpacity onPress={() => handlePressEdit(alimentacao.id)}>
+                                    <Image style={styles.icons} source={require('../assets/img/editarIcon.png')} />
+                                </TouchableOpacity>
+
+                                <TouchableOpacity onPress={() => handlePressDelete(alimentacao.id)}>
+                                    <Image style={styles.icons} source={require('../assets/img/deleteIcon.png')} />
+                                </TouchableOpacity>
+                            </View>
+                        </View>       
                     ))
                 ) : (
                     <View style={styles.boxLista}>
                         <Text>Nenhum restaurante cadastrado</Text>
-
-                        <TouchableOpacity style={styles.btn1} onPress={handleAdicionar}>
-                            <Text style={[styles.text, { color: '#FFFFFF' }]}>Adicionar</Text>
-                        </TouchableOpacity>
                     </View>
                 )}
+                <TouchableOpacity style={styles.btn1} onPress={handleAdicionar}>
+                    <Text style={[styles.text, { color: '#FFFFFF' }]}>ADICIONAR NOVO RESTAURANTE</Text>
+                </TouchableOpacity>
             </ScrollView>
         </View>
     )
@@ -88,16 +105,29 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     btn1: {
-        width: 160,
+        width: 282,
         height: 50,
         backgroundColor: '#F5BD60',
         borderRadius: 10,
-        marginTop: 10,
+        marginTop: 25,
         justifyContent: 'center',
         alignItems: 'center',
+        alignSelf: 'center'
       },
-      text: {
+    text: {
         color: '#063A7A',
         fontWeight: 'bold',
-      },
+    },
+    acaoBox: {
+        flexDirection: 'row',
+        gap: 10,  
+        left: 277,
+        top: 15,
+        position: 'absolute'
+    },
+    icons:{
+        width: 24,
+        height: 24,
+        
+    },
 })

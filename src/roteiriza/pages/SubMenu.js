@@ -83,8 +83,8 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
     <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
-          <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black'}}>Olá, {UserName}!</Text>
-          <Text>Tudo sobre sua viagem para {DestinoUser}</Text>
+          <Text style={TypographyStyles.headerTitle}>Olá, {UserName}!</Text>
+          <Text style={TypographyStyles.bodyText}>Tudo sobre sua viagem para {DestinoUser}</Text>
         </View>
 
         <TouchableOpacity style={styles.malaViagemContainer} onPress={handlePressBagagem}>
@@ -107,8 +107,7 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
               <ImageBackground
                 source={require('../assets/Passagem.png')}
                 resizeMode="cover"
-                style={[styles.cardImage, styles.cardImagemPassagem]}
-                overlayColor="rgba(0, 0, 0, 0.7)"
+                style={styles.cardImage}
               >
                 <View style={styles.cardContent}>
                   <Text style={styles.cardText}>Passagem</Text>
@@ -211,24 +210,20 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
-  cardImagemPassagem: {
-    width: '100%',
-    height: '103%',
-  },
   card: {
-    marginHorizontal: 10,
+    marginHorizontal: 5,
+    marginVertical: 5,
     marginTop: 10,
-    marginBottom: 20,
-    width: 140,
+    width: 170,
     height: 140,
     borderRadius: 10,
     overflow: 'hidden',
     shadowColor: 'black',
   },
   cardMala: {
-    width: 300,
-    height: 130,
-    marginTop: 15,
+    width: 345,
+    height: 155,
+    marginTop: 10,
   },
   mala: {
     width: '100%',
@@ -252,9 +247,9 @@ const styles = StyleSheet.create({
   header: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 80,
+    paddingLeft: 40,
+    height: 60,
+    marginTop: 20,
     gap: 5,
   },
 });
