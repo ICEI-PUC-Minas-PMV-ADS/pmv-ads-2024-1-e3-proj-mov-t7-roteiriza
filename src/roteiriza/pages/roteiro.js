@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { View, ScrollView, Text, StyleSheet } from "react-native";
-import { collection, query, where, getDocs } from '@firebase/firestore';
+
+import { collection, query, where, getDoc, getDocs, doc } from '@firebase/firestore';
+
+import {eachDayOfInterval, format} from 'date-fns';
+
+
 import { firestore } from '../firebase/config'; 
 import { TextInput } from "react-native-paper";
 import { Calendar } from "react-native-calendars";
@@ -19,9 +24,23 @@ const Roteiro = () => {
     const [selectedDate, setSelectedDate] = useState('');
     const [valor, setValor] = useState('');
 
+    const [dtInicio, setDtInicio] = useState('');
+    const [dtFinal, setDtFinal] = useState('');
+
+
     const loadDados = async (viagemId) => {
 
         try {
+            const refDateViagem = await getDoc(doc(firestore, 'viagem', viagemId));
+            const snap = refDateViagem.data()
+
+            setDtInicio(snap.DataInicio_Viagem)
+            console.log(snap.DataInicio_Viagem)
+
+            setDtFinal(snap.DataFinal_Viagem)
+            console.log(snap.DataFinal_Viagem)
+
+
             const passeioCollectionRef = collection(firestore, 'passeios');
             const alimentacaoCollectionRef = collection(firestore, 'alimentacao');
 
@@ -80,7 +99,31 @@ const Roteiro = () => {
         setListaNoite(ListNoite);
     }
 
+    const intervaloDeDatas = (valorInicio, valorFinal) => {
+        if (!valorInicio||!valorFinal) return {};
+
+        const startDate = new Date(valorInicio);
+        const finalDate = new Date(valorFinal)
+
+        if (valorInicio > valorFinal) return {};
+
+        const intervalo = eachDayOfInterval({start: startDate, end: finalDate});
+
+        const markedDates = intervalo.reduce((acc, date) => {
+            const formattedDate = format(date, "yyyy-MM-dd");
+            acc[formattedDate] = {
+                selected: true,
+                marked: false,
+                selectedColor: "#063A7A",
+            };
+            return acc;
+        }, {});
+
+        return markedDates;
+    }
+
     const today = new Date().toISOString().split("T")[0];
+    const intervalDates = intervaloDeDatas(dtInicio, dtFinal);
 
     return (
         <View style={styles.container}>
@@ -89,10 +132,11 @@ const Roteiro = () => {
                 markedDates={{
                     [selectedDate]: {
                         selected: true,
-                        marked: true,
+                        marked: false,
                         selectedColor: "#063A7A",
                     },
-                    [today]: { selected: true, marked: true, selectedColor: "#F5BD60" },
+                    [today]: { selected: true, marked: false, selectedColor: "#F5BD60" },
+                    ...intervalDates
                 }}
                 theme={{
                     todayTextColor: "#F5BD60",
