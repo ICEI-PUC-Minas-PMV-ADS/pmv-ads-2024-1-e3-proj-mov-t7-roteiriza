@@ -5,6 +5,8 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 const Viagem02 = ({ user, handleAuthentication, userId }) => {
 
@@ -16,27 +18,17 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
   const [idDoUsuario, setidDoUsuario] = useState('');
   const [mensagem, setMensagem] = useState('');
 
-  function convertDate(date) {
-    var datePart = date.match(/\d+/g),
-
-    year = datePart[0],
-    month = datePart[1],
-    day = datePart[2];
-  
-    date = day+'/'+month+'/'+year;
-
-    return date;
-  }
+  moment.locale('pt-br');
 
   const handleSelecionarDataInicio = (data) => {
     var date = data.toISOString().split('T')[0]
-    setDataInicio(convertDate(date));
+    setDataInicio(moment(date).format('LL'));
     setMostrarCalendarioDataInicio(false);
   };
 
   const handleSelecionarDataFinal = (data) => {
     var date = data.toISOString().split('T')[0]
-    setDataFinal(convertDate(date));
+    setDataFinal(moment(date).format('LL'));
     setMostrarCalendarioDataFinal(false);
   };
 
