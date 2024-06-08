@@ -49,7 +49,6 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
         console.log('Ocorreu um erro: ', error);
       }
   }
-
  
   const handlePressHospedagem = () => {
     navigation.navigate('Hospedagem', {viagemId})
@@ -80,148 +79,130 @@ const SubMenu = ({ user, handleAuthentication, userId, objectUser, type }) => {
     navigation.navigate('Bagagem', {viagemId})
   }
 
-
   return (
-    <Container>
-      <Header title={`Olá! ${UserName}`} />
-
-      <Body>
-        <Typography style={TypographyStyles.bodyText}>
-          Tudo da sua viagem para {' '}
-
-          <Typography style={TypographyStyles.bodyTextHighlighted}>
-            {DestinoUser}
-          </Typography>
-        </Typography>
-        <Typography style={TypographyStyles.bodyText}>
-          O valor final da sua viagem é de{' '}
-          <Typography style={TypographyStyles.bodyTextHighlighted}>
-            $travel_value
-          </Typography>
-        </Typography>
-
-        <View style={styles.container}>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <Container />
-            <TouchableOpacity onPress={handlePressBagagem}>
-              <Card style={styles.cardMala}>
-
-
-                <ImageBackground
-                  source={require('../assets/Mala-de-viagem.png')}
-                  resizeMode="cover"
-                  style={styles.mala}
-                >
-                  <View style={styles.cardContent}>
-                    <Text style={styles.cardText}>Sua mala de viagem</Text>
-                  </View>
-                </ImageBackground>
-              </Card>
-            </TouchableOpacity>
-
-            <View style={styles.cardsContainer}>
-              <TouchableOpacity onPress={handlePressPassagem}>
-                <Card style={styles.card}>
-                  <ImageBackground
-                    source={require('../assets/Passagem.png')}
-                    resizeMode="cover"
-                    style={styles.cardImage}
-                    overlayColor="rgba(0, 0, 0, 0.7)" // Gradiente escuro
-                  >
-                    <View style={styles.cardContent}>
-                      <Text style={styles.cardText}>Passagem</Text>
-                    </View>
-                  </ImageBackground>
-                </Card>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={handlePressHospedagem}>
-                <Card style={styles.card}>
-                    
-                  <ImageBackground
-                    source={require('../assets/Hospedagem.png')}
-                    resizeMode="cover"
-                    style={styles.cardImage}
-                  > 
-                    <View style={styles.cardContent}>
-                      <Text style={styles.cardText}>Hospedagem</Text>
-                    </View>
-                  </ImageBackground>
-                </Card>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={handlePressAlimentacao}>
-                <Card style={styles.card}>
-                  <ImageBackground
-                    source={require('../assets/Alimentacao.png')}
-                    resizeMode="cover"
-                    style={styles.cardImage}
-                  
-                  >
-                    <View style={styles.cardContent}>
-                      <Text style={styles.cardText}>Alimentação</Text>
-                    </View>
-                  </ImageBackground>
-                </Card>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={handlePressPasseios}>
-                <Card style={styles.card}>
-                  <ImageBackground
-                    source={require('../assets/Passeios.png')}
-                    resizeMode="cover"
-                    style={styles.cardImage}
-                    
-                  >
-                    <View style={styles.cardContent}>
-                      <Text style={styles.cardText}>Passeios</Text>
-                    </View>
-                  </ImageBackground>
-                </Card>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={handlePressRoteiro}>
-                <Card style={styles.card}>
-                  <ImageBackground
-                    source={require('../assets/Roteiro.png')}
-                    resizeMode="cover"
-                    style={styles.cardImage}
-                   
-                  >
-                    <View style={styles.cardContent}>
-                      <Text style={styles.cardText}>Roteiro</Text>
-                    </View>
-                  </ImageBackground>
-                </Card>
-              </TouchableOpacity>
-
-              <TouchableOpacity onPress={handlePressEmergencia}>
-                <Card style={styles.card}>
-
-                  <ImageBackground
-                    source={require('../assets/Emergencia.png')}
-                    resizeMode="cover"
-                    style={styles.cardImage}
-                    
-                  >
-                    <View style={styles.cardContent}>
-                      <Text style={styles.cardText}>Emergência</Text>
-                    </View>
-                  </ImageBackground>
-                </Card>
-              </TouchableOpacity>
-            </View>
-          </ScrollView>
+    <View style={styles.container}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={styles.header}>
+          <Text style={{ fontSize: 18, fontWeight: 'bold', color: 'black'}}>Olá, {UserName}!</Text>
+          <Text>Tudo sobre sua viagem para {DestinoUser}</Text>
         </View>
 
-      </Body>
-    </Container>
+        <TouchableOpacity style={styles.malaViagemContainer} onPress={handlePressBagagem}>
+          <Card style={styles.cardMala}>
+            <ImageBackground
+              source={require('../assets/Mala-de-viagem.png')}
+              resizeMode="cover"
+              style={styles.mala}
+            >
+              <View style={styles.cardContent}>
+                <Text style={styles.cardText}>Sua mala de viagem</Text>
+              </View>
+            </ImageBackground>
+          </Card>
+        </TouchableOpacity>
+
+        <View style={styles.cardsContainer}>
+          <TouchableOpacity onPress={handlePressPassagem}>
+            <Card style={styles.card}>
+              <ImageBackground
+                source={require('../assets/Passagem.png')}
+                resizeMode="cover"
+                style={[styles.cardImage, styles.cardImagemPassagem]}
+                overlayColor="rgba(0, 0, 0, 0.7)"
+              >
+                <View style={styles.cardContent}>
+                  <Text style={styles.cardText}>Passagem</Text>
+                </View>
+              </ImageBackground>
+            </Card>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handlePressHospedagem}>
+            <Card style={styles.card}>
+                
+              <ImageBackground
+                source={require('../assets/Hospedagem.png')}
+                resizeMode="cover"
+                style={styles.cardImage}
+              > 
+                <View style={styles.cardContent}>
+                  <Text style={styles.cardText}>Hospedagem</Text>
+                </View>
+              </ImageBackground>
+            </Card>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handlePressAlimentacao}>
+            <Card style={styles.card}>
+              <ImageBackground
+                source={require('../assets/Alimentacao.png')}
+                resizeMode="cover"
+                style={styles.cardImage}
+              
+              >
+                <View style={styles.cardContent}>
+                  <Text style={styles.cardText}>Alimentação</Text>
+                </View>
+              </ImageBackground>
+            </Card>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handlePressPasseios}>
+            <Card style={styles.card}>
+              <ImageBackground
+                source={require('../assets/Passeios.png')}
+                resizeMode="cover"
+                style={styles.cardImage}
+              >
+                <View style={styles.cardContent}>
+                  <Text style={styles.cardText}>Passeios</Text>
+                </View>
+              </ImageBackground>
+            </Card>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handlePressRoteiro}>
+            <Card style={styles.card}>
+              <ImageBackground
+                source={require('../assets/Roteiro.png')}
+                resizeMode="cover"
+                style={styles.cardImage}
+              >
+                <View style={styles.cardContent}>
+                  <Text style={styles.cardText}>Roteiro</Text>
+                </View>
+              </ImageBackground>
+            </Card>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={handlePressEmergencia}>
+            <Card style={styles.card}>
+
+              <ImageBackground
+                source={require('../assets/Emergencia.png')}
+                resizeMode="cover"
+                style={styles.cardImage}
+              >
+                <View style={styles.cardContent}>
+                  <Text style={styles.cardText}>Emergência</Text>
+                </View>
+              </ImageBackground>
+            </Card>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  malaViagemContainer: {
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -229,7 +210,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    marginTop: 10,
+  },
+  cardImagemPassagem: {
+    width: '100%',
+    height: '103%',
   },
   card: {
     marginHorizontal: 10,
@@ -242,15 +226,13 @@ const styles = StyleSheet.create({
     shadowColor: 'black',
   },
   cardMala: {
-    width: 286,
+    width: 300,
     height: 130,
-    marginLeft: 30,
     marginTop: 15,
   },
   mala: {
     width: '100%',
     height: '100%',
-    margin: 2,
   },
   cardImage: {
     width: '100%',
@@ -266,6 +248,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold'
+  },
+  header: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 80,
+    gap: 5,
   },
 });
 
