@@ -50,11 +50,11 @@ const StackNavigation = ({ user, handleAuthentication, userId, objectUser, type 
                 {(props) => <Home {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser}/>} 
             </Stack.Screen>
 
-            <Stack.Screen name="Atualizar_viagem" options={{headerTintColor: '#063A7A'}}>
+            <Stack.Screen name="Atualizar Viagem" options={{headerTintColor: '#063A7A'}}>
                 {(props) => <Atualizar_viagem {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser} />} 
             </Stack.Screen>
 
-            <Stack.Screen name="SubMenu" options={{headerTintColor: '#063A7A'}}>
+            <Stack.Screen name="Minha Viagem" options={{headerTintColor: '#063A7A'}}>
               {(props) => <SubMenu {...props} user={user} handleAuthentication={handleAuthentication} userId={userId} objectUser={objectUser}/>} 
             </Stack.Screen>
 

@@ -4,7 +4,8 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendPasswordResetEmail  } from 'firebase/auth';
-import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
+import { collection, addDoc, doc, query, where, getDocs, updateDoc} from '@firebase/firestore';
+
 import { app, firestore } from './firebase/config';
 import Autenticador from './pages/Autenticador';
 import AuthenticatedScreen from './pages/authenticatedScreen';
@@ -32,6 +33,7 @@ const App = () => {
   const Stack = createStackNavigator()
 
   const auth = getAuth(app);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
@@ -45,6 +47,8 @@ const App = () => {
     try {
       if (user) {
         console.log('User logged out successfully!');
+
+        alert('Você foi desconectado!')
         await signOut(auth);
         
       } else {
@@ -53,14 +57,20 @@ const App = () => {
             const login = await signInWithEmailAndPassword(auth, email, password);
             console.log('User signed in successfully!');
             
-            if(login){
+            if(login.user){
               let querySnapshot = await getDocs(query(collection(firestore, 'users'), where('Email', '==', email)));
 
               if (!querySnapshot.empty) {
-                const docSnap = querySnapshot.docs[0];
-
+                const docSnap = querySnapshot.docs[0];   
                 const userData = { id: docSnap.id, ...docSnap.data() };
 
+                if (userData.Senha != password) {
+                  await updateDoc(doc(firestore, 'users', docSnap.id), {
+                    Senha: password
+                  });
+
+                  userData.Senha = password;
+                }
                 setObjectUser(userData);
                 setUserId(docSnap.id);
               }
@@ -72,6 +82,7 @@ const App = () => {
           }
           catch(error){
             alert('Email ou senha inválidos!')
+            console.log('Ocorreu um erro', error)
           }
         } else {
        
@@ -102,6 +113,7 @@ const App = () => {
         }
       }
     } catch (error) {
+      alert('Usuário ou senha inválidos!')
       console.error('Authentication error:', error.message);
     }
   };

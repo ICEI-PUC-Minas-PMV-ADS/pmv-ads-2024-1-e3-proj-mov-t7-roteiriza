@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
+
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
@@ -21,7 +22,7 @@ const Viagem02 = ({ userId }) => {
   moment.locale('pt-br');
 
   const handleSelecionarDataInicio = (data) => {
-    var date = data.toISOString().split('T')[0]
+    var date = data.toISOString().split('T')[0];
     setDataInicio(moment(date).format('L'));
     setMostrarCalendarioDataInicio(false);
   };

@@ -61,7 +61,7 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
   };
 
   const handlePressEdit = (viagemId) => {
-    navigation.navigate('Atualizar_viagem', {viagemId})
+    navigation.navigate('Atualizar Viagem', {viagemId})
   };
 
   const handlePressDelete = async (viagemId) => {
@@ -75,7 +75,7 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
   };
 
   const handleApontador = (viagemId) => {
-    navigation.navigate('SubMenu', {viagemId})
+    navigation.navigate('Minha Viagem', {viagemId})
   }
    
   return (
