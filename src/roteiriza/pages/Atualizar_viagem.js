@@ -3,29 +3,45 @@ import { StyleSheet, TextInput, View } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { firestore } from '../firebase/config';
 import { doc, getDoc, updateDoc } from '@firebase/firestore';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import Button from '../components/button';
 import ContainerTitle from '../components/ContainerTitle';
 import ContainerInput from '../components/ContainerInput';
 import { Background } from '../components/ContainerTitle';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 const Atualizar_viagem = () => {
   const [destinoUser, setDestinoUser] = useState('');
   const [dtInicial, setDtInicial] = useState('');
   const [dtFinal, setDtFinal] = useState('');
   const [isLoaded, setIsLoaded] = useState(false);
+  const [mostrarCalendarioDataInicio, setMostrarCalendarioDataInicio] = useState(false);
+  const [mostrarCalendarioDataFinal, setMostrarCalendarioDataFinal] = useState(false);
+
+  moment.locale('pt-br');
+
+  const handleSelecionarDataInicio = (data) => {
+    var date = data.toISOString().split('T')[0]
+    setDtInicial(moment(date).format('L'));
+    setMostrarCalendarioDataInicio(false);
+  };
+
+  const handleSelecionarDataFinal = (data) => {
+    var date = data.toISOString().split('T')[0]
+    setDtFinal(moment(date).format('L'));
+    setMostrarCalendarioDataFinal(false);
+  };
 
   const route = useRoute();
   const { viagemId } = route.params;
 
   useEffect(() => {
-
     if (!isLoaded) {
       carregarDados();
     }  
-
   }, [isLoaded, viagemId]);
-
 
   const carregarDados = async () => {
     if(isLoaded == false){
@@ -61,7 +77,7 @@ const Atualizar_viagem = () => {
           DataInicio_Viagem: dtInicial,
           DataFinal_Viagem: dtFinal,
         });
-        console.log('Dados atualizados com sucesso');
+        alert('Viagem atualizada com sucesso');
       } else {
         console.log('Preencha os campos corretamente');
       }
@@ -73,51 +89,59 @@ const Atualizar_viagem = () => {
   return (
     <Background style={styles.container} colors={['#75B1FA', '#063A7A']}>
       <ContainerTitle />
-
       <ContainerInput
-        titleText={'Destino da viagem'}
-        subText={'Quer mudar o destino ?'}
+        titleText={'Atualize a data final'}
         value={destinoUser}
         onChangeText={setDestinoUser}
       />
       <ContainerInput
-        titleText={'Data de início da viagem'}
-        subText={'Quer mudar a data de início ?'}
+        titleText={'Atualize a data inicial'}
         value={dtInicial}
         onChangeText={setDtInicial}
+        onFocus={() => setMostrarCalendarioDataInicio(true)}
       />
       <ContainerInput
-        titleText={'Data final da viagem'}
-        subText={'Quer mudar a data final ?'}
+        titleText={'Atualize a data final'}
         value={dtFinal}
         onChangeText={setDtFinal}
+        onFocus={() => setMostrarCalendarioDataFinal(true)}
       />
-
       <View style={styles.containerButtons}>
-        <Button textButton={'SALVAR'} color="#F5BD60" onpress={salvarDados} />
-        <Button textButton={'CANCELAR'} borderColor={'white'} borderWidth={2} />
+        <Button textButton={'SALVAR'} color="#F5BD60" onpress={salvarDados}/>
       </View>
+
+      <DateTimePickerModal
+        isVisible={mostrarCalendarioDataInicio}
+        mode="date"
+        locale="pt_BR" 
+        onConfirm={handleSelecionarDataInicio}
+        onCancel={() => setMostrarCalendarioDataInicio(false)}
+      />
+      <DateTimePickerModal
+        isVisible={mostrarCalendarioDataFinal}
+        mode="date"
+        locale="pt_BR" 
+        onConfirm={handleSelecionarDataFinal}
+        onCancel={() => setMostrarCalendarioDataFinal(false)}
+      />
     </Background>
   );
 };
 
 export default Atualizar_viagem
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     padding: 20,
+    justifyContent: 'center',
     backgroundColor: '#75B1FA',
     justifyContent: 'space-evenly',
   },
-
   containerButtons: {
-    flexDirection: 'row',
     height: 50,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
   },
-
 });
