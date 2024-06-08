@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { View, Image, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { useRoute } from '@react-navigation/native';
+import { formatDistance } from 'date-fns';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from '@firebase/firestore';
 import { firestore } from '../firebase/config';
-import Button from '../components/buttonAdicionar';
 
+
+import Button from '../components/buttonAdicionar';
 import Typography from '../components/Typography';
 
 const Hospedagem = ({ user, handleAuthentication, userId }) => {
@@ -38,10 +40,27 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
   };
 
   useEffect(() => {
-    if (!isLoaded) {
-      loadHospedagem();
-    }
+    loadHospedagem();
   }, [isLoaded, viagemId]);
+
+  useEffect(() => {
+    if (checkIn && checkOut) {
+      try {
+          const dataCheckIn = new Date(checkIn);
+          const dataCheckOut = new Date(checkOut);
+      
+          if (!isNaN(dataCheckIn) && !isNaN(dataCheckOut)) {
+              let periodo = calcularPeriodo(dataCheckIn, dataCheckOut);
+              setDias(periodo);
+          } else {
+              alert('Data inválida!');
+          }
+      } catch (error) {
+          console.log('Ocorreu um erro: ', error);
+      }
+    }
+  } , [checkIn, checkOut]);
+
 
   const loadHospedagem = async () => {
     if (!isLoaded) {
@@ -81,6 +100,7 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
     const hospRef = collection(firestore, 'hospedagem');
 
     if (local && checkIn && checkOut && dias && valor) {
+      
       let dadosHosp = {
         Endereco: local,
         Dt_checkIn: checkIn,
@@ -91,17 +111,13 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
         viagemId: viagemId
       };
 
-      try {
-        console.log(dadoOnStore)
-        
+      try {        
         if(dadoOnStore == false){
           await addDoc(hospRef, dadosHosp);
           alert('Cadastro de hospedagem realizado com sucesso!');
         }
-        if(dadoOnStore == true) {
-           
+        if(dadoOnStore == true) {  
           const docRef = doc(firestore, 'hospedagem', documentId);
-
           await updateDoc(docRef, {
             Endereco: local,
             Dt_checkIn: checkIn,
@@ -121,9 +137,16 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
     }
   };
 
+  const calcularPeriodo = (dataInicial, dataFinal) => {
+    let resultado = formatDistance(dataInicial, dataFinal);
+    let resultadoFormatado = resultado.replace('days', 'dias').replace('day', 'dia');
+    return resultadoFormatado;
+  }
+
   const cancelHospedagem = () => {
     alert('Cancel');
   };
+  
 
   return (
     <View style={styles.container}>
