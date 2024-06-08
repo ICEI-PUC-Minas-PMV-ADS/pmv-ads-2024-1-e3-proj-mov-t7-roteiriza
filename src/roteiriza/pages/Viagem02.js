@@ -22,13 +22,13 @@ const Viagem02 = ({ user, handleAuthentication, userId }) => {
 
   const handleSelecionarDataInicio = (data) => {
     var date = data.toISOString().split('T')[0]
-    setDataInicio(moment(date).format('LL'));
+    setDataInicio(moment(date).format('L'));
     setMostrarCalendarioDataInicio(false);
   };
 
   const handleSelecionarDataFinal = (data) => {
     var date = data.toISOString().split('T')[0]
-    setDataFinal(moment(date).format('LL'));
+    setDataFinal(moment(date).format('L'));
     setMostrarCalendarioDataFinal(false);
   };
 
