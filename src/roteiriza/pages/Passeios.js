@@ -17,6 +17,8 @@ import { firestore } from '../firebase/config';
 
 //Calendario
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 
 const Passeios = ({userId}) => {
@@ -51,10 +53,12 @@ const Passeios = ({userId}) => {
     //calendario
     const [mostrarCalendarioData, setMostrarCalendarioData] = useState(false);
 
+      moment.locale('pt-br');
 
     // Função para lidar com a seleção da data
     const handleSelecionarData = (data) => {
-        setData(data.toISOString().split('T')[0]);
+        var date = data.toISOString().split('T')[0];
+        setData(moment(date).format('L'));
         setMostrarCalendarioData(false);
     };
 

@@ -12,6 +12,8 @@ import { collection, addDoc, query, where, getDocs, updateDoc, doc } from '@fire
 import { firestore } from '../firebase/config';
 
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 
 const Passagem = ({ userId }) =>{
@@ -45,17 +47,20 @@ const Passagem = ({ userId }) =>{
   const [mostrarCalendarioDataSaida, setMostrarCalendarioDataSaida] = useState(false);
   const [mostrarCalendarioDataRetorno, setMostrarCalendarioDataRetorno] = useState(false);
 
+  moment.locale('pt-br');
 
 
   // Função para lidar com a seleção da data de início
   const handleSelecionarDataSaida = (data) => {
-    setDataSaida(data.toISOString().split('T')[0]);
+    var date = data.toISOString().split('T')[0];
+    setDataSaida(moment(date).format('L'));
     setMostrarCalendarioDataSaida(false);
   };
 
   // Função para lidar com a seleção da data final
   const handleSelecionarDataRetorno = (data) => {
-    setDataRetorno(data.toISOString().split('T')[0]);
+    var date = data.toISOString().split('T')[0];
+    setDataRetorno(moment(date).format('L'));
     setMostrarCalendarioDataRetorno(false);
   }; 
 

@@ -9,8 +9,11 @@ import {eachDayOfInterval, format} from 'date-fns';
 import { firestore } from '../firebase/config'; 
 import { TextInput } from "react-native-paper";
 import { Calendar } from "react-native-calendars";
-import "moment/locale/pt-br";
+import moment from 'moment';
+import 'moment/locale/pt-br';
 import { useRoute } from '@react-navigation/native';
+
+
 
 const Roteiro = () => {
 
@@ -27,6 +30,7 @@ const Roteiro = () => {
     const [dtInicio, setDtInicio] = useState('');
     const [dtFinal, setDtFinal] = useState('');
 
+    moment.locale('pt-br');
 
     const loadDados = async (viagemId) => {
 
@@ -35,10 +39,9 @@ const Roteiro = () => {
             const snap = refDateViagem.data()
 
             setDtInicio(snap.DataInicio_Viagem)
-            console.log(snap.DataInicio_Viagem)
-
+            
             setDtFinal(snap.DataFinal_Viagem)
-            console.log(snap.DataFinal_Viagem)
+            
 
 
             const passeioCollectionRef = collection(firestore, 'passeios');
@@ -100,15 +103,20 @@ const Roteiro = () => {
     }
 
     const intervaloDeDatas = (valorInicio, valorFinal) => {
-        if (!valorInicio||!valorFinal) return {};
-
-        const startDate = new Date(valorInicio);
-        const finalDate = new Date(valorFinal)
-
-        if (valorInicio > valorFinal) return {};
-
-        const intervalo = eachDayOfInterval({start: startDate, end: finalDate});
-
+        if (!valorInicio || !valorFinal) return { erro: 'set' };
+    
+        const convertToDate = (dateStr) => {
+            const [day, month, year] = dateStr.split('/');
+            return new Date(`${year}-${month}-${day}`);
+        };
+    
+        const startDate = convertToDate(valorInicio);
+        const finalDate = convertToDate(valorFinal);
+    
+        if (startDate > finalDate) return { erro: 'erro' };
+    
+        const intervalo = eachDayOfInterval({ start: startDate, end: finalDate });
+        
         const markedDates = intervalo.reduce((acc, date) => {
             const formattedDate = format(date, "yyyy-MM-dd");
             acc[formattedDate] = {
@@ -116,9 +124,10 @@ const Roteiro = () => {
                 marked: false,
                 selectedColor: "#063A7A",
             };
+    
             return acc;
         }, {});
-
+        
         return markedDates;
     }
 

@@ -6,6 +6,8 @@ import { formatDistance } from 'date-fns';
 import { collection, addDoc, query, where, getDocs, updateDoc, doc } from '@firebase/firestore';
 import { firestore } from '../firebase/config';
 
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 import Button from '../components/buttonAdicionar';
 import Typography from '../components/Typography';
@@ -27,9 +29,12 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
   const [mostrarCalendarioDataInicio, setMostrarCalendarioDataInicio] = useState(false);
   const [mostrarCalendarioDataFinal, setMostrarCalendarioDataFinal] = useState(false);
 
+  moment.locale('pt-br');
+  
   // Função para lidar com a seleção da data de início
   const handleSelecionarDataInicio = (data) => {
-    setCheckIn(data.toISOString().split('T')[0]);
+    var date = data.toISOString().split('T')[0]
+    setCheckIn(moment(date).format('L'));
     setMostrarCalendarioDataInicio(false);
   };
 
