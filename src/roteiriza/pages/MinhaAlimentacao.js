@@ -27,12 +27,13 @@ const MinhaAlimentacao = ({userId}) => {
 
     const loadAlimentacao = async () => {
         try {
-            const q = query(collection(firestore, 'restaurantes'), where('viagemId', '==', viagemId));
+            const q = query(collection(firestore, 'alimentacao'), where('viagemId', '==', viagemId));
             const querySnapshot = await getDocs(q);
       
             if (!querySnapshot.empty) {
               const docSnap = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data()}));
               setListAlimentacao(docSnap);
+
             } else {
               console.log('Sem restaurantes cadastrados');
               setListAlimentacao([]);
@@ -43,12 +44,8 @@ const MinhaAlimentacao = ({userId}) => {
     };
 
     const handleAdicionar = (alimentacaoId) => {
-        navigation.navigate('Adicionar restaurante', {viagemId, alimentacaoId})
+        navigation.navigate('Cadastrar restaurante', {viagemId, alimentacaoId})
     }
-
-    const handlePressEdit = (alimentacaoId) => {
-        navigation.navigate('Editar Alimentação', { viagemId, alimentacaoId });
-    };
 
     const handlePressDelete = async (alimentacaoId) => {
         try {
@@ -74,7 +71,7 @@ const MinhaAlimentacao = ({userId}) => {
                                 Horario={alimentacao.Horario}
                             />
                             <View style={styles.acaoBox}>
-                                <TouchableOpacity onPress={() => handlePressEdit(alimentacao.id)}>
+                                <TouchableOpacity onPress={() => handleAdicionar(alimentacao.id)}>
                                     <Image style={styles.icons} source={require('../assets/img/editarIcon.png')} />
                                 </TouchableOpacity>
 

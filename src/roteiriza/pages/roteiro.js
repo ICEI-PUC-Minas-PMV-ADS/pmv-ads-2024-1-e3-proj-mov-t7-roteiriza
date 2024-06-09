@@ -87,7 +87,6 @@ const Roteiro = () => {
     const filtro = (selectedDate) => {
 
         
-
         var date = moment(selectedDate).format('L');
 
         console.log(date);

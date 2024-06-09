@@ -40,7 +40,9 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
 
   // Função para lidar com a seleção da data final
   const handleSelecionarDataFinal = (data) => {
-    setCheckOut(data.toISOString().split('T')[0]);
+    var date = data.toISOString().split('T')[0];
+
+    setCheckOut(moment(date).format('L'));
     setMostrarCalendarioDataFinal(false);
   };
 
@@ -50,16 +52,11 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
 
   useEffect(() => {
     if (checkIn && checkOut) {
-      try {
-          const dataCheckIn = new Date(checkIn);
-          const dataCheckOut = new Date(checkOut);
-      
-          if (!isNaN(dataCheckIn) && !isNaN(dataCheckOut)) {
-              let periodo = calcularPeriodo(dataCheckIn, dataCheckOut);
-              setDias(periodo);
-          } else {
-              alert('Data inválida!');
-          }
+      try {   
+        
+        let periodo = calcularPeriodo(dataCheckIn, dataCheckOut);
+        setDias(periodo);
+          
       } catch (error) {
           console.log('Ocorreu um erro: ', error);
       }
@@ -143,7 +140,16 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
   };
 
   const calcularPeriodo = (dataInicial, dataFinal) => {
-    let resultado = formatDistance(dataInicial, dataFinal);
+
+    const convertToDate = (dateStr) => {
+      const [day, month, year] = dateStr.split('/');
+      return new Date(`${year}-${month}-${day}`);
+    };
+
+    const startDate = convertToDate(dataInicial);
+    const finalDate = convertToDate(dataFinal);
+
+    let resultado = formatDistance(startDate, finalDate);
     let resultadoFormatado = resultado.replace('days', 'dias').replace('day', 'dia');
     return resultadoFormatado;
   }
