@@ -309,6 +309,12 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
   },
+  addEdit: {
+    backgroundColor: '181818',
+    borderRadius: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+  },
   addButtonText: {
     color: 'white',
     fontWeight: 'bold',
