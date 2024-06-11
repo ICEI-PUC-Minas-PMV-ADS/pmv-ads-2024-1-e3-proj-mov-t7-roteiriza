@@ -248,8 +248,10 @@ export default function CheckboxForm({ viagemId }) {
           {status==false?(<Pressable style={styles.addButton} onPress={handleAddItem}>
             <Text style={styles.addButtonText}>+</Text>
           
-          </Pressable>):(<Pressable style={styles.addButton} onPress={handleSaveEdit}>
-            <Text style={styles.addButtonText}>+</Text>
+          </Pressable>):(<Pressable style={styles.addEdit} onPress={handleSaveEdit}>
+            <Text style={styles.addButtonText}><svg width="13" height="9" viewBox="0 0 13 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.5 5L4.5 8L11.5 1" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></Text>
           
           </Pressable>)}
 
@@ -280,6 +282,12 @@ const styles = StyleSheet.create({
   },
   addButton: {
     backgroundColor: '#F5BD60',
+    borderRadius: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+  },
+  addEdit: {
+    backgroundColor: '181818',
     borderRadius: 4,
     paddingVertical: 10,
     paddingHorizontal: 16,
