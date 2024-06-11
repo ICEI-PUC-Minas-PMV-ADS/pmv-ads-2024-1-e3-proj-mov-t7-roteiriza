@@ -54,7 +54,7 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
     if (checkIn && checkOut) {
       try {   
         
-        let periodo = calcularPeriodo(dataCheckIn, dataCheckOut);
+        let periodo = calcularPeriodo(checkIn, checkOut);
         setDias(periodo);
           
       } catch (error) {

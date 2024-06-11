@@ -39,7 +39,7 @@ function MyCheckbox({
   );
 }
 
-export default function CheckboxForm({ viagemId }) {
+export default function CheckboxForm({ viagemId, userId }) {
   
 
   const [documentId, setDocumentId] = useState('');
@@ -101,6 +101,7 @@ export default function CheckboxForm({ viagemId }) {
   };
 
   const handleAddItem = async () => {
+    console.log(documentId)
     try{
       if (inputValue.trim() !== '') {
         const newItem = {
@@ -114,16 +115,38 @@ export default function CheckboxForm({ viagemId }) {
         setInputValue('');
 
         //Firebase
-        const lisAux = [];
-        for (let i = 0; i < listAdd.length; i++) {
-          lisAux.push(listAdd[i].text);
+        /*
+          Se caso a variável de id do documento estiver setado,
+          significa que iremos atualizar o documento. 
+          Se não, vamos adicionar um novo documento.
+        */
+
+        //Atualizando o documento de acordo com o ID capturado na função loadList na linha 81.
+        if(documentId){
+          const lisAux = [];
+          for (let i = 0; i < listAdd.length; i++) {
+            lisAux.push(listAdd[i].text);
+          }
+          const bagRef = doc(firestore, 'bagagens', documentId);
+          await updateDoc(bagRef, { Itens: lisAux });
+          alert('Bagagem atualizada!');
+        } 
+
+        //Adicionando um novo documento.
+        else {
+          const lisAux = [];
+          for (let i = 0; i < listAdd.length; i++) {
+            lisAux.push(listAdd[i].text);
+          }
+          const bagagensRef = collection(firestore, 'bagagens');
+
+          await addDoc(bagagensRef, {Itens: lisAux, userId: userId, viagemId: viagemId});
+          alert('Cadastro de bagagem realizado com sucesso!');
         }
-        const bagRef = doc(firestore, 'bagagens', documentId);
-        await updateDoc(bagRef, { Itens: lisAux });
-        alert('Cadastro de bagagem realizado com sucesso!');
       } else {
         console.log('Digite algo para adicionar!');
       }
+      
     } catch(error){
       console.log('Ocorreu um erro ao salver no firebase: ', error)
     }
@@ -181,6 +204,7 @@ export default function CheckboxForm({ viagemId }) {
         }
         const bagRef = doc(firestore, 'bagagens', documentId);
         await updateDoc(bagRef, { Itens: lisAux });
+        alert('Bagagem atualizada!')
       }
     } catch(error){
       console.log('Ocorreu um erro ao salvar no firebase: ', error)
@@ -245,14 +269,15 @@ export default function CheckboxForm({ viagemId }) {
             onChangeText={setInputValue}
             placeholder="Adicionar um novo item..."
           />
-          {status==false?(<Pressable style={styles.addButton} onPress={handleAddItem}>
-            <Text style={styles.addButtonText}>+</Text>
-          
-          </Pressable>):(<Pressable style={styles.addButton} onPress={handleSaveEdit}>
-            <Text style={styles.addButtonText}>+</Text>
-          
-          </Pressable>)}
-
+          {status == false ? (
+            <Pressable style={styles.addButton} onPress={handleAddItem}>
+              <Text style={styles.addButtonText}>+</Text>
+            </Pressable>
+          ) : (
+            <Pressable style={styles.addEdit} onPress={handleSaveEdit}>
+              <Text style={styles.addButtonText}>AT</Text>
+            </Pressable>
+          )}
         </View>  
       </View>
   );
@@ -287,6 +312,12 @@ const styles = StyleSheet.create({
   addButtonText: {
     color: 'white',
     fontWeight: 'bold',
+  },
+  addEdit: {
+    backgroundColor: '181818',
+    borderRadius: 4,
+    paddingVertical: 10,
+    paddingHorizontal: 16,
   },
   checkboxContainer: {
     flexDirection: 'column',

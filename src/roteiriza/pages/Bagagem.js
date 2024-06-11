@@ -8,7 +8,7 @@ import Body from '../components/Body';
 import CheckboxForm from '../components/CheckboxForm';
 import Typography from '../components/Typography';
 
-const Bagagem = () => {
+const Bagagem = ({ userId }) => {
   const route = useRoute();
   const { viagemId } = route.params;
 
@@ -52,7 +52,7 @@ const Bagagem = () => {
           </Typography>
         </View>
         
-          <CheckboxForm onCheckboxPress={handleCheckboxPress} viagemId={viagemId} />
+          <CheckboxForm onCheckboxPress={handleCheckboxPress} viagemId={viagemId} userId={userId} />
         
           </ScrollView>
 
