@@ -47,6 +47,7 @@ export default function CheckboxForm({ viagemId }) {
 
   const [editingItemId, setEditingItemId] = useState(null);
   const [checkboxes, setCheckboxes] = useState([]);
+  const [status, setStatus] = useState(false);
 
   useEffect(() => {
    
@@ -151,6 +152,7 @@ export default function CheckboxForm({ viagemId }) {
     if (itemToEdit) {
       setInputValue(itemToEdit.text);
       setEditingItemId(id);
+      setStatus(true);
     }
   };
 
@@ -170,6 +172,7 @@ export default function CheckboxForm({ viagemId }) {
         setCheckboxes(updatedCheckboxes);
         setInputValue('');
         setEditingItemId(null);
+        setStatus(false);
 
         //Firebase
         const lisAux = [];
@@ -242,9 +245,14 @@ export default function CheckboxForm({ viagemId }) {
             onChangeText={setInputValue}
             placeholder="Adicionar um novo item..."
           />
-          <Pressable style={styles.addButton} onPress={handleAddItem}>
+          {status==false?(<Pressable style={styles.addButton} onPress={handleAddItem}>
             <Text style={styles.addButtonText}>+</Text>
-          </Pressable>
+          
+          </Pressable>):(<Pressable style={styles.addButton} onPress={handleSaveEdit}>
+            <Text style={styles.addButtonText}>+</Text>
+          
+          </Pressable>)}
+
         </View>  
       </View>
   );
