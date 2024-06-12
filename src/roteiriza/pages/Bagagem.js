@@ -14,27 +14,20 @@ const Bagagem = ({ userId }) => {
 
   const [selectedItems, setSelectedItems] = useState([]);
 
-  // Função para adicionar ou remover um item da lista de itens selecionados
   const handleCheckboxPress = (item) => {
     const index = selectedItems.findIndex((selectedItem) => selectedItem === item);
     if (index === -1) {
-      // Adiciona o item à lista se não estiver presente
       setSelectedItems([...selectedItems, item]);
     } else {
-      // Remove o item da lista se estiver presente
       setSelectedItems(selectedItems.filter((selectedItem) => selectedItem !== item));
     }
   };
 
-  // Função para salvar a lista de itens selecionados em um arquivo JSON
   const saveLista = () => {
-    // Converte a lista de itens selecionados para JSON
     const jsonItems = JSON.stringify(selectedItems);
-    // Aqui você pode salvar jsonItems em um arquivo ou enviá-lo para um serviço de backend
     console.log('Itens salvos:', jsonItems);
   };
 
-  // Função para limpar a lista de itens selecionados
   const clearList = () => {
     setSelectedItems([]);
   };

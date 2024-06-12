@@ -1,19 +1,25 @@
 import { initializeApp } from '@firebase/app';
 import { getFirestore } from '@firebase/firestore';
+import {
+  FIREBASE_API_KEY,
+  FIREBASE_AUTH_DOMAIN,
+  FIREBASE_PROJECT_ID,
+  FIREBASE_STORAGE_BUCKET,
+  FIREBASE_MESSAGING_SENDER_ID,
+  FIREBASE_APP_ID
+  } from '@env';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC-Tz-volbh5B9ajv_3IlI8kUMbKF2-8zA",
-  authDomain: "teste-auth-84f28.firebaseapp.com",
-  projectId: "teste-auth-84f28",
-  storageBucket: "teste-auth-84f28.appspot.com",
-  messagingSenderId: "508782609622",
-  appId: "1:508782609622:web:6b36e2cf364252d67af577"
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  projectId: FIREBASE_PROJECT_ID,
+  storageBucket: FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+  appId: FIREBASE_APP_ID
 };
 
-// Inicialize o Firebase
 const app = initializeApp(firebaseConfig);
 
-// Obtenha uma instância do Firestore
 const firestore = getFirestore(app);
 
 export { app, firestore };
