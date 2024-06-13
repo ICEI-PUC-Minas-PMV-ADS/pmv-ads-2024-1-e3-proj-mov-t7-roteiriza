@@ -152,12 +152,7 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
     let resultado = formatDistance(startDate, finalDate);
     let resultadoFormatado = resultado.replace('days', 'dias').replace('day', 'dia');
     return resultadoFormatado;
-  }
-
-  const cancelHospedagem = () => {
-    alert('Cancel');
-  };
-  
+  }  
 
   return (
     <View style={styles.container}>
@@ -232,20 +227,13 @@ const Hospedagem = ({ user, handleAuthentication, userId }) => {
 
           <View style={styles.buttonBox}>
             <Button 
-              textButton={"ADICIONAR"} 
+              textButton={"SALVAR"} 
               color='#F5BD60' 
               fontColor='#FFFFFF'
               onpress={saveHospedagem}
             />
 
-            <Button 
-              textButton={"CANCELAR"} 
-              color='#FFFFFF' 
-              fontColor='#181818' 
-              borderColor={'black'} 
-              borderWidth={2}
-              onpress={cancelHospedagem}
-            />
+            
           </View>
 
           {/*

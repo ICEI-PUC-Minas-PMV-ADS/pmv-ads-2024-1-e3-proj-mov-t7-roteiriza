@@ -89,9 +89,6 @@ const Roteiro = () => {
         
         var date = moment(selectedDate).format('L');
 
-        console.log(date);
-
-
         const filteredListDados = listDados.filter(item => item.Data === date);
 
         const ListManha = filteredListDados.filter(item => item.Horario === 'Manhã');
