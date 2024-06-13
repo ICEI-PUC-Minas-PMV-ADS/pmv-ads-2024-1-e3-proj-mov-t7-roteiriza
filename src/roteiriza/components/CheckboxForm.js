@@ -140,7 +140,9 @@ export default function CheckboxForm({ viagemId, userId }) {
           }
           const bagagensRef = collection(firestore, 'bagagens');
 
-          await addDoc(bagagensRef, {Itens: lisAux, userId: userId, viagemId: viagemId});
+          let docRefAdd = await addDoc(bagagensRef, {Itens: lisAux, userId: userId, viagemId: viagemId});
+          setDocumentId(docRefAdd.id)
+
           alert('Cadastro de bagagem realizado com sucesso!');
         }
       } else {

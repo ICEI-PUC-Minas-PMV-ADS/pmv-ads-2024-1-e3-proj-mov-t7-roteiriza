@@ -67,6 +67,71 @@ const Home = ({ user, handleAuthentication, userId, objectUser }) => {
   const handlePressDelete = async (viagemId) => {
     try{
       await deleteDoc(doc(firestore, 'viagem', viagemId));
+      
+      //Exclusão de Objetos associados a viagem
+      try { 
+
+        //Exclusão de Mala de viagem
+        const queryBagagens = query(collection(firestore, 'bagagens'), where('viagemId', '==', viagemId));
+        const querySnapshotBagagegns = await getDocs(queryBagagens);
+
+        if (!querySnapshotBagagegns.empty) {
+          querySnapshotBagagegns.forEach(async (doc) => {
+            await deleteDoc(doc.ref);
+          });
+        }
+        
+        //Exclusão de Passeios
+        const queryPasseios = query(collection(firestore, 'passeios'), where('viagemId', '==', viagemId));
+        const querySnapshotPasseios = await getDocs(queryPasseios);
+
+        if (!querySnapshotPasseios.empty) {
+          querySnapshotPasseios.forEach(async (doc) => {
+            await deleteDoc(doc.ref);
+          });
+        }
+
+        //Exclusão de Alimentação
+        const queryAlimentacao = query(collection(firestore, 'alimentacao'), where('viagemId', '==', viagemId));
+        const querySnapshotAlimentacao = await getDocs(queryAlimentacao);
+
+        if (!querySnapshotAlimentacao.empty) {
+          querySnapshotAlimentacao.forEach(async (doc) => {
+            await deleteDoc(doc.ref);
+          });
+        }
+
+        //Exclusão de Hospedagem
+        const queryHospedagem = query(collection(firestore, 'hospedagem'), where('viagemId', '==', viagemId));
+        const querySnapshotHospedagem = await getDocs(queryHospedagem);
+
+        if (!querySnapshotHospedagem.empty) {
+          const docRef = querySnapshotHospedagem.docs[0].ref;
+          await deleteDoc(docRef);
+        }
+
+        //Exclusão de Passagem
+        const queryPassagem = query(collection(firestore, 'passagem'), where('viagemId', '==', viagemId));
+        const querySnapshotPassagem = await getDocs(queryPassagem);
+
+        if (!querySnapshotPassagem.empty) {
+          const docRef = querySnapshotPassagem.docs[0].ref;
+          await deleteDoc(docRef);
+        }
+
+        //Exclusão de Emergencia
+        const queryEmergencia = query(collection(firestore, 'emergencia'), where('viagemId', '==', viagemId));
+        const querySnapshotEmergencia = await getDocs(queryEmergencia);
+
+        if (!querySnapshotEmergencia.empty) {
+          const docRef = querySnapshotEmergencia.docs[0].ref;
+          await deleteDoc(docRef);
+        }
+
+      } catch (error) {
+        console.log('Ocorreu um erro ao tentar excluir demais objetos', error)
+      }
+
       listViagem();
     }
     catch(error){
