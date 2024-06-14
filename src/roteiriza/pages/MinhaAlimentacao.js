@@ -99,7 +99,7 @@ export default MinhaAlimentacao;
 const styles = StyleSheet.create({
     boxLista: {
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     btn1: {
         width: 282,

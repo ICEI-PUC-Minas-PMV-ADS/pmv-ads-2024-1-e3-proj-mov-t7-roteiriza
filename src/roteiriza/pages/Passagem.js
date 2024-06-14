@@ -158,11 +158,6 @@ const Passagem = ({ userId }) =>{
     }
   };
 
-  const cancelPassagem = () => {
-
-    alert('Cadastro de passagem cancelada com sucesso!');
-  };
-
 
   return(
 
@@ -311,21 +306,12 @@ const Passagem = ({ userId }) =>{
         </View>
         
 
-        <View style={styles.buttonBox}>
+        <View>
           <Button 
             textButton={"SALVAR"} 
             color='#F5BD60' 
             fontColor='#FFFFFF'
             onpress={savePassagem}
-          />
-
-         <Button 
-            textButton={"CANCELAR"} 
-            color='#FFFFFF' 
-            fontColor='#181818' 
-            borderColor={'black'} 
-            borderWidth={2}
-            onpress={cancelPassagem}
           />
         </View>
 
@@ -404,14 +390,6 @@ const styles = StyleSheet.create({
     gap: 25,
     marginBottom: 10,
     top: 1
-  },
-  buttonBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 10,
-    bottom: 10,
-    top: 10
   },
   content: {
     marginTop: 10
