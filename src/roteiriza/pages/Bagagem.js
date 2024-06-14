@@ -34,7 +34,6 @@ const Bagagem = ({ userId }) => {
 
   return (
     <Container>
-      <Header title="Mala de viagem" />
       <Body>
       <ScrollView>
 

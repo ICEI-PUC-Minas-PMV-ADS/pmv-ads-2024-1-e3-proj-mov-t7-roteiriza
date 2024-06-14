@@ -69,9 +69,9 @@ export default function CheckboxForm({ viagemId, userId }) {
 
         for (let i = 0; i < doc.Itens.length; i++) {
           const itenListFirestore = {
-            id: i,
-            text: doc.Itens[i],
-            checked: false,
+            id: doc.Itens[i].id,
+            text: doc.Itens[i].text,
+            checked: doc.Itens[i].checked,
           };
 
           lisAux.push(itenListFirestore);
@@ -87,7 +87,7 @@ export default function CheckboxForm({ viagemId, userId }) {
     }
   };
 
-  const handleCheckboxPress = (id) => {
+  const handleCheckboxPress = async (id) => {
     const updatedCheckboxes = checkboxes.map((checkbox) => {
       if (checkbox.id === id) {
         return {
@@ -98,6 +98,17 @@ export default function CheckboxForm({ viagemId, userId }) {
       return checkbox;
     });
     setCheckboxes(updatedCheckboxes);
+
+    //Firebase
+    try{
+      if(documentId){
+        const bagRef = doc(firestore, 'bagagens', documentId);
+        await updateDoc(bagRef, { Itens: updatedCheckboxes });
+        alert('Bagagem atualizada!');
+      } 
+    } catch (error){
+      console.log('Ocorreu um erro ao salvar o check no firebase', error)
+    }
   };
 
   const handleAddItem = async () => {
@@ -111,6 +122,8 @@ export default function CheckboxForm({ viagemId, userId }) {
         };
         const listAdd = [...checkboxes, newItem];
 
+        console.log(listAdd)
+
         setCheckboxes(listAdd);
         setInputValue('');
 
@@ -123,24 +136,16 @@ export default function CheckboxForm({ viagemId, userId }) {
 
         //Atualizando o documento de acordo com o ID capturado na função loadList na linha 81.
         if(documentId){
-          const lisAux = [];
-          for (let i = 0; i < listAdd.length; i++) {
-            lisAux.push(listAdd[i].text);
-          }
           const bagRef = doc(firestore, 'bagagens', documentId);
-          await updateDoc(bagRef, { Itens: lisAux });
+          await updateDoc(bagRef, { Itens: listAdd });
           alert('Bagagem atualizada!');
         } 
 
         //Adicionando um novo documento.
         else {
-          const lisAux = [];
-          for (let i = 0; i < listAdd.length; i++) {
-            lisAux.push(listAdd[i].text);
-          }
           const bagagensRef = collection(firestore, 'bagagens');
 
-          let docRefAdd = await addDoc(bagagensRef, {Itens: lisAux, userId: userId, viagemId: viagemId});
+          let docRefAdd = await addDoc(bagagensRef, {Itens: listAdd, userId: userId, viagemId: viagemId});
           setDocumentId(docRefAdd.id)
 
           alert('Cadastro de bagagem realizado com sucesso!');
@@ -161,12 +166,8 @@ export default function CheckboxForm({ viagemId, userId }) {
     
     //Firebase
     try{  
-      const lisAux = [];
-      for (let i = 0; i < updatedCheckboxes.length; i++) {
-        lisAux.push(updatedCheckboxes[i].text);
-      }
       const bagRef = doc(firestore, 'bagagens', documentId);
-      await updateDoc(bagRef, { Itens: lisAux });
+      await updateDoc(bagRef, { Itens: updatedCheckboxes });
     } catch(error){
       console.log('Ocorreu um erro ao salvar no firebase: ', error)
     }
@@ -200,12 +201,9 @@ export default function CheckboxForm({ viagemId, userId }) {
         setStatus(false);
 
         //Firebase
-        const lisAux = [];
-        for (let i = 0; i < updatedCheckboxes.length; i++) {
-          lisAux.push(updatedCheckboxes[i].text);
-        }
+
         const bagRef = doc(firestore, 'bagagens', documentId);
-        await updateDoc(bagRef, { Itens: lisAux });
+        await updateDoc(bagRef, { Itens: updatedCheckboxes });
         alert('Bagagem atualizada!')
       }
     } catch(error){
