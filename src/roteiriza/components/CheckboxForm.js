@@ -275,7 +275,7 @@ export default function CheckboxForm({ viagemId, userId }) {
             </Pressable>
           ) : (
             <Pressable style={styles.addEdit} onPress={handleSaveEdit}>
-              <Text style={styles.addButtonText}>AT</Text>
+              <Text style={styles.addButtonText}>Atualizar</Text>
             </Pressable>
           )}
         </View>  

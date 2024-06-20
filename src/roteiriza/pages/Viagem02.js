@@ -5,6 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { MaterialIcons } from '@expo/vector-icons';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import { collection, addDoc, query, where, getDocs} from '@firebase/firestore';
+import { useNavigation } from '@react-navigation/native';
 
 import moment from 'moment';
 import 'moment/locale/pt-br';
@@ -18,6 +19,7 @@ const Viagem02 = ({ userId }) => {
   const [mostrarCalendarioDataFinal, setMostrarCalendarioDataFinal] = useState(false);
   const [idDoUsuario, setidDoUsuario] = useState('');
   const [mensagem, setMensagem] = useState('');
+  const navigation = useNavigation();
 
   moment.locale('pt-br');
 
@@ -53,13 +55,17 @@ const Viagem02 = ({ userId }) => {
         DataFinal_Viagem:dataFinal,
         userId: userId,
         img: indexImg
-  
       }
 
         addDoc(userRef,viagem) 
+        .then(() => {
           setMensagem('Parabéns! Viagem roteirizada com sucesso!');
-
-    } else {
+    }) 
+    .catch(error => {
+      console.error("Error adding document: ", error);
+      setMensagem('Ocorreu um erro ao adicionar a viagem. Por favor, tente novamente.');
+    });
+  } else {
       setMensagem('Por favor, preencha todos os campos');
     }
   };

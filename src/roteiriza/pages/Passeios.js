@@ -162,11 +162,6 @@ const Passeios = ({userId}) => {
           alert('Preencha os campos corretamente!');
         }
       };
-    
-      const cancelPasseio = () => {
-    
-        alert('Cadastro de Passeio cancelado!');
-      };
 
 
     return(
@@ -332,21 +327,12 @@ const Passeios = ({userId}) => {
                 </View> 
                     
                     
-                    <View style={styles.buttonBox}>
+                    <View>
                         <Button 
                             textButton={"SALVAR"} 
                             color='#F5BD60' 
                             fontColor='#FFFFFF'
                             onpress={savePasseio}
-                        />
-
-                        <Button 
-                            textButton={"CANCELAR"} 
-                            color='#FFFFFF' 
-                            fontColor='#181818' 
-                            borderColor={'black'} 
-                            borderWidth={2}
-                            onpress={cancelPasseio}
                         />
                     </View>
                 </View>
@@ -369,14 +355,6 @@ const Passeios = ({userId}) => {
 export default Passeios;
 
 const styles = StyleSheet.create({
-    buttonBox: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        gap: 10,
-
-
-    },
     boxPasseios: {
         alignItems: 'center',
         margin: 25,

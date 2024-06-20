@@ -150,10 +150,6 @@ const saveAlimentacao = async () => {
     }
   };
 
-  const cancelAlimentacao = () => {
-    alert('Cadastro de Restaurante cancelado!');
-  };
-
   return (
     <View style={styles.containerPai}>
             <View>               
@@ -265,21 +261,12 @@ const saveAlimentacao = async () => {
 
                 </View> 
                                       
-                    <View style={styles.buttonBox}>
+                    <View>
                         <Button 
                             textButton={"SALVAR"} 
                             color='#F5BD60' 
                             fontColor='#FFFFFF'
                             onpress={saveAlimentacao}
-                        />
-
-                        <Button 
-                            textButton={"CANCELAR"} 
-                            color='#FFFFFF' 
-                            fontColor='#181818' 
-                            borderColor={'black'} 
-                            borderWidth={2}
-                            onpress={cancelAlimentacao}
                         />
                     </View>
                 </View>
@@ -298,14 +285,6 @@ const saveAlimentacao = async () => {
 };
 
 const styles = StyleSheet.create({
-  buttonBox: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: 10,
-
-
-  },
   boxPasseios: {
       alignItems: 'center',
       margin: 25,
