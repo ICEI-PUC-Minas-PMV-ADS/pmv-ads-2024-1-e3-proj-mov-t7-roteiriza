@@ -19,7 +19,13 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriz
 
 ## Teste 03 - Recuperação de Senha
 
-_[ EM ANDAMENTO ]_
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/44c6649c-3ef7-42e5-b527-9d705e1b10e3
+
+
+**Resultado esperado:** Usuario conseguir recuperar a sua senha atraves de um link de recuperação de senha enviado pelo email cadastrado <br>
+**Resultado obtido:** O usuário conseguiu recuperar/redefinir a sua senha por meio do link de recuperação enviado pelo email cadastrado. <br>
+**Status do Teste:** Aprovado <br>
 
 ## Teste 04 - Registrar uma Viagem
 
@@ -31,7 +37,13 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriz
 
 ## Teste 05 - Editar uma Viagem
 
-_[ EM ANDAMENTO ]_
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/978faf7c-4e78-4b2e-bdb6-b2ddd02ef455
+
+
+**Resultado esperado:**  Usuário  conseguir conseguir editar uma viagem corretamente. <br>
+**Resultado obtido:** O usuário conseguiu editar uma viagem corretamente. <br>
+**Status do Teste:** Aprovado <br>
 
 ## Teste 6 - Apagar uma viagem
 
@@ -66,40 +78,52 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriz
 **Status do Teste:** Aprovado <br>
 
 ## Teste 10 - Registrar uma Mala de viagem
-_[ EM ANDAMENTO ]_
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/cbdf7d75-f8fb-462a-8d5e-be1112990a26
+
+**Resultado esperado:** Usuario conseguir registrar uma bagagem corretamente. <br>
+**Resultado obtido:** O usuario conseguiu registrar uma bagagem corretamente. <br>
+**Status do Teste:** Aprovado <br>
 
 ## Teste 11 - Registrar uma Alimentação
-_[ EM ANDAMENTO ]_
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/88ea81f9-b59b-43d5-a6ae-aac5ef032c29
+
+**Resultado esperado:** Usuario conseguir registrar uma alimentação corretamente. <br>
+**Resultado obtido:** O usuario conseguiu registrar uma alimentação corretamente. <br>
+**Status do Teste:** Aprovado <br>
 
 ## Teste 12 -  Registrar uma Passagem
-_[ EM ANDAMENTO ]_
+
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/72c2ce44-8f99-4f2f-a685-ce558306add5
+
+**Resultado esperado:** Usuario conseguir registrar uma passagem corretamente. <br>
+**Resultado obtido:** O usuario conseguiu registrar uma passagem corretamente. <br>
+**Status do Teste:** Aprovado <br>
 
 ## Teste 13 - Registrar um Passeio
-_[ EM ANDAMENTO ]_
+
+
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/5eab80ab-0b60-4591-ab08-98148520ea31
+
+**Resultado esperado:** Usuario conseguir registrar um passeio corretamente. <br>
+**Resultado obtido:** O usuario conseguiu registrar um passeio corretamente. <br>
+**Status do Teste:** Aprovado <br>
 
 ## Teste 14 - Visualização do roteiro de Viagem
-_[ EM ANDAMENTO ]_
 
 
--------
+https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/11d6ceed-5f23-4120-b1cc-e0ccb372968c
 
-| ID | Descrição do Teste | Etapas do Teste | Resultado Esperado | Resultado Alcançado |
-| -- | ------------------ | --------------- | ------------------ | ------------------- |
-| 01 | Realizar cadastro  | 1. Acessar o aplicativo <br> 2. Acessar a página de cadastro <br> 3. Preencher o formulário de cadastro <br> 4. Clicar em "Cadastrar" | O resultado esperado é a conclusão do <br> cadastro do usuário e redirecionamento<br>para a página de criação de Viagens. | O resultado alcançado foi a efetiva realização do cadastro na base de dados no firebase. |
-| 02 | Realizar login     | 1. Acessar o aplicativo<br>2. Acessar a página de Login<br> 3. Preencher o formulário de Login<br> 4. Clicar em "Login"| O resultado esperado do teste é o login<br>realizado com sucesso pelo usuário, onde<br>é validado se o usuário realmente existe<br> na base de Dados. | |
-| 03 | Realizar Recuperação de Senha | 1. Acessar o aplicativo<br>2. Acessar a página de Login<br>3. Clicar em "Esqueci minha senha";<br>4. Inserir email para recuperação <br>de acordo com o que foi cadastrado;<br>5. Resgatar o código enviado no email;<br>6. Inserir Código no campo<br> especificado e adicionar nova senha;<br>7. Clicar em "Alterar senha" | O resultado esperado do teste é o<br> envio de um código de recuperação<br> no email do usuário, este código é<br> validado na redefinição de senha<br> para que constate que seja o<br> usuário real a fazer a solicitação; | |
-| 04 | Registrar uma viagem | 1. Logar-se no app<br>2. Na página inicial, clicar em<br> "Adicionar uma nova viagem"<br> 3. Preencher o formulário de nova viagem;<br>4. Clicar em Adicionar; | O resultado esperado do teste é o Registro de uma nova viagem | |
-| 05 | Editar uma viagem | 1. Logar-se no app<br> 2. Na página inicial, clicar em "Atualizar Viagem"<br> 3. Preencher o formulário de novamente;<br>4. Clicar em salvar; | O resultado esperado deste teste é o usuário  conseguir editar uma viagem corretamente. | |
-| 06 | Apagar uma viagem | 1. Logar-se no app<br> 2. Na página inicial de viagens, clicar em "Apagar viagem" | O resultado esperado deste teste é o usuário  conseguir apagar uma viagem corretamente. | |
-| 07 | Visualizar Informações relacionadas a viagem | 1. Logar-se no app<br> 2. Ter uma viagem já cadastrada<br> 3. Entrar na viagem que deseja visualizar<br> 4. Quando entrar na viagem selecionada sera mostrado a bagagem, passagem, hospedagem, passeios, roteiro, emergência. | O resultado esperado deste teste é o usuário  visualizar informações relacionada a viagem corretamente. | |
-| 08 | Registrar uma hospedagem | 1. Logar-se no app<br> 2. Ter uma viagem já cadastrada<br> 3. Entrar na sessão Hospedagem<br> 4. Inserir Endereço<br> 5. Inserir Data do check-in<br> 6. Inserir Data do check-out<br> 7. Inserir Dias<br> 8. Inserir Valor<br> 9. Clicar em salvar para salvar sua hospedagem | O resultado esperado deste teste é o usuario conseguir registrar uma hospedagem corretamente | |
-| 09 | Registrar informações de emergência | 1. Logar-se no app<br> 2. Ter uma viagem já cadastrada<br> 3. Entrar na sessão Emergência<br> 4. Inserir Hospital ( não obrigatorio )<br> 5. Inserir Corpo de bombeiros ( não obrigatorio )<br> 6. Inserir Samu ( não obrigatorio )<br>7. Inserir Polícia ( não obrigatorio )<br>8. Clicar em salvar para adicionar as informações de emergência. | O resultado esperado deste teste é o usuario conseguir registrar informaçoes de emergência corretamente. | |
-| 10 | Registrar uma mala de viagem | 1. Logar-se no app<br> 2. Ter uma viagem já cadastrada<br> 3. Entrar na sessão de mala<br>4. Adicionar os itens<br>5. Clicar em salvar | O resultado esperado deste teste é o usuario conseguir registrar uma bagagem corretamente | |
-| 11 | Registrar uma alimentação | 1. Logar-se no app<br> 2. Ter uma viagem já cadastrada<br>3. Entrar na sessão Alimentação<br>4. Inserir Local<br>5. Inserir Endereço<br>6. Inserir Data<br>7. Inserir Horário<br>8. Inserir Valor<br>9. Clicar em adicionar para adicionar a alimentação | O resultado esperado deste teste é o usuario conseguir registrar uma alimentação corretamente | |
-| 12 | Registrar uma passagem | 1. Logar-se no app<br>2. Ter uma viagem já cadastrada<br>3. Entrar na sessão Passagem<br>4. Inserir Datas<br> 5. Inserir Pessoas<br> 6. Inserir Valor<br>7. Inserir Transporte<br>8. Clicar em adicionar para adicionar a passagem | O resultado esperado deste teste é o usuario conseguir registrar uma passagem corretamente. | |
-| 13 | Registrar um Passeio | 1. Logar-se no app<br>2. Ter uma viagem já cadastrada<br>3. Entrar na sessão Passeios<br>4. Inserir Local <br> 5. Inserir Endereço<br>6. Inserir Data<br>7. Inserir Transporte<br>8. Inserir Valor<br>9. Clicar em adicionar para adicionar o passeio | O resultado esperado deste teste é o usuario conseguir registrar um passeio corretamente. | |
-| 14 | Visualização do roteiro de Viagem | 1. Logar-se no app<br>2. Ter uma viagem já cadastrada<br>3. Entrar na sessão Roteiro<br>4. Clicar no calendário o dia desejado |  O resultado esperado deste teste é o usuario conseguir visualizar o seu roteiro corretamente. | |
+**Resultado esperado:** Usuario conseguir visualizar o seu roteiro corretamente. <br>
+**Resultado obtido:** O usuario conseguiu visualizar o seu roteiro corretamente. <br>
+**Status do Teste:** Aprovado <br>
+
 ## Avaliação
 
 [21/04] Os testes que foram executados, ocorreram da forma esperada sem empoecilho. A sequencia dos testes vão ocorrer de forma gradual, proporcional ao desenvolvimento.
+
+[23/06] Todos os testes foram executados e ocorreram da forma esperada sem empoecilho.
+
 
