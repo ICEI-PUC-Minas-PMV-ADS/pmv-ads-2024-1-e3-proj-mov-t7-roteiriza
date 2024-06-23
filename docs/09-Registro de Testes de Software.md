@@ -122,8 +122,8 @@ https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriz
 
 ## Avaliação
 
-[21/04] Os testes que foram executados, ocorreram da forma esperada sem empoecilho. A sequencia dos testes vão ocorrer de forma gradual, proporcional ao desenvolvimento.
+[21/04] Os testes que foram executados, ocorreram da forma esperada sem empecilho. A sequencia dos testes vão ocorrer de forma gradual, proporcional ao desenvolvimento.
 
-[23/06] Todos os testes foram executados e ocorreram da forma esperada sem empoecilho.
+[23/06] Todos os testes foram executados e ocorreram da forma esperada sem empecilho.
 
 
