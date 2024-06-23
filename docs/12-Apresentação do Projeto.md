@@ -12,7 +12,7 @@ Roteiriza
 - Paletade cores: <br>
  ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/e4096934-106d-4ae8-9819-d751626e2ffb)
 
-- Logo <br>
+- Logo: <br>
   ![image](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2024-1-e3-proj-mov-t7-roteiriza/assets/127251265/5aeb53b3-830b-4214-bc82-883400797bfc)
 
 
